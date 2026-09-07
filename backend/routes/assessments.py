@@ -1,9 +1,12 @@
 import os
 import shutil
 import uuid
+import logging
 from datetime import datetime
 from typing import List, Optional, Any
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, status
+
+logger = logging.getLogger("assessments_route")
 from backend.db import get_collection
 from backend.schemas import AssessmentResponse, AssessmentCreate, DirectAssessmentCreate, ClinicalScores, MovementFeatures
 from backend.auth import require_therapist_or_doctor, get_current_user
@@ -240,6 +243,7 @@ def create_assessment(
     try:
         features = analyze_video(actual_path)
     except Exception as e:
+        logger.exception(f"Video processing failed for video at {actual_path}: {e}")
         raise HTTPException(
             status_code=400,
             detail=f"Video processing failed: {str(e)}"

@@ -252,153 +252,33 @@ export const PatientProfile: React.FC = () => {
 
     setAnalyzing(true);
     setFormError('');
-    setScanProgress(0);
-
-    const scores = {
-      fma_score: parseInt(fmaScore) || 0,
-      bbs_score: parseInt(bbsScore) || 0,
-      fac_score: parseInt(facScore) || 0,
-      tug_score: parseFloat(tugScore) || 0.0
-    };
-
-    const directSubmit = async (features: any) => {
-      try {
-        const payload = {
-          patient_id: patient.patient_id,
-          session_number: sessionNumber,
-          clinical_scores: scores,
-          extracted_features: features,
-          model_used: modelUsed,
-          therapist_notes: therapistNotes
-        };
-        const newSess = await api.assessments.createDirect(payload);
-        await loadData();
-        setVideoFile(null);
-        setTherapistNotes('');
-        setSelectedAssessment(newSess);
-        setActiveTab('inspector');
-      } catch (err: any) {
-        setFormError(err.message || 'Saving assessment results failed.');
-      } finally {
-        setAnalyzing(false);
-        setScanProgress(null);
-      }
-    };
-
-    const ensureMediaPipeLoaded = (): Promise<boolean> => {
-      return new Promise((resolve) => {
-        if ((window as any).Pose) {
-          resolve(true);
-          return;
-        }
-
-        console.log("MediaPipe Pose script not detected. Loading dynamically...");
-        const script = document.createElement("script");
-        script.src = "/mediapipe/pose.js";
-        script.crossOrigin = "anonymous";
-        script.onload = () => {
-          setTimeout(() => {
-            if ((window as any).Pose) {
-              console.log("MediaPipe Pose script loaded dynamically.");
-              resolve(true);
-            } else {
-              resolve(false);
-            }
-          }, 150);
-        };
-        script.onerror = () => resolve(false);
-        document.body.appendChild(script);
-      });
-    };
-
-    const loaded = await ensureMediaPipeLoaded();
-    if (!loaded) {
-      setFormError("Failed to initialize client-side MediaPipe Pose engine. Please check your network connection.");
-      setAnalyzing(false);
-      setScanProgress(null);
-      return;
-    }
+    setScanProgress(10);
 
     try {
-      const videoEl = document.createElement('video');
-      videoEl.src = URL.createObjectURL(videoFile);
-      videoEl.muted = true;
-      videoEl.playsInline = true;
+      const formData = new FormData();
+      formData.append('patient_id', patient.patient_id);
+      formData.append('session_number', sessionNumber.toString());
+      formData.append('fma_score', fmaScore);
+      formData.append('bbs_score', bbsScore);
+      formData.append('fac_score', facScore);
+      formData.append('tug_score', tugScore);
+      formData.append('model_used', modelUsed);
+      formData.append('therapist_notes', therapistNotes);
+      formData.append('video', videoFile);
 
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+      setScanProgress(50);
+      const newSess = await api.assessments.create(formData);
+      setScanProgress(100);
 
-      videoEl.onloadeddata = () => {
-        canvas.width = videoEl.videoWidth || 640;
-        canvas.height = videoEl.videoHeight || 480;
-
-        const pose = new (window as any).Pose({
-          locateFile: (file: string) => `/mediapipe/${file}`
-        });
-
-        pose.setOptions({
-          modelComplexity: 1,
-          smoothLandmarks: true,
-          minDetectionConfidence: 0.3,
-          minTrackingConfidence: 0.3
-        });
-
-        const keypointsHistory: any[] = [];
-
-        pose.onResults((results: any) => {
-          if (results.poseLandmarks) {
-            keypointsHistory.push(results.poseLandmarks);
-          }
-        });
-
-        videoEl.pause();
-        
-        const processVideoFrames = async () => {
-          const duration = videoEl.duration && !isNaN(videoEl.duration) ? videoEl.duration : 5.0;
-          const step = 0.2; // sample 5 frames per second
-          let currentTime = 0;
-
-          while (currentTime <= duration) {
-            videoEl.currentTime = currentTime;
-            await new Promise((res) => {
-              const onSeeked = () => {
-                videoEl.removeEventListener('seeked', onSeeked);
-                res(true);
-              };
-              videoEl.addEventListener('seeked', onSeeked);
-              setTimeout(onSeeked, 120);
-            });
-
-            if (ctx) {
-              ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
-              try {
-                await pose.send({ image: canvas });
-              } catch (e) {
-                console.error("Frame send error:", e);
-              }
-            }
-
-            const currentProgress = Math.min(100, Math.round((currentTime / duration) * 100));
-            setScanProgress(currentProgress);
-            currentTime += step;
-          }
-
-          if (keypointsHistory.length === 0) {
-            setFormError("No valid pose detected in the uploaded video.");
-            setAnalyzing(false);
-            setScanProgress(null);
-            return;
-          } else {
-            const calculatedFeatures = calculateFeaturesFromHistory(keypointsHistory, patient.affected_side, duration);
-            await directSubmit(calculatedFeatures);
-          }
-        };
-
-        processVideoFrames();
-      };
+      await loadData();
+      setVideoFile(null);
+      setTherapistNotes('');
+      setSelectedAssessment(newSess);
+      setActiveTab('inspector');
     } catch (err: any) {
-      console.error("MediaPipe initialization error:", err);
-      setFormError("No valid pose detected in the uploaded video.");
+      console.error("Assessment creation error:", err);
+      setFormError(err.message || "No valid pose detected in the uploaded video.");
+    } finally {
       setAnalyzing(false);
       setScanProgress(null);
     }

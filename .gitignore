@@ -46,9 +46,8 @@ Thumbs.db
 *.swo
 
 # Project specific artifacts
-uploads/*.mp4
-uploads/*.avi
-uploads/*.mov
+uploads/
+backend/uploads/
 reports/*.pdf
 *.log
 
