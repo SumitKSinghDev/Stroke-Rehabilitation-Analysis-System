@@ -22,6 +22,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from pathlib import Path
+from fastapi.responses import FileResponse
+
 # Serve upload videos and reports statically
 app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 app.mount("/reports", StaticFiles(directory=str(REPORT_DIR)), name="reports")
@@ -34,14 +37,31 @@ app.include_router(progress.router, prefix="/api")
 app.include_router(admin.router, prefix="/api")
 app.include_router(reports.router, prefix="/api")
 
+# Serve built React frontend in production if dist directory exists
+FRONTEND_DIST = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 
-@app.get("/")
-def read_root():
-    return {
-        "title": "Stroke Rehabilitation Decision Support System API",
-        "status": "Online",
-        "documentation": "/docs"
-    }
+if FRONTEND_DIST.exists():
+    if (FRONTEND_DIST / "assets").exists():
+        app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIST / "assets")), name="assets")
+    if (FRONTEND_DIST / "mediapipe").exists():
+        app.mount("/mediapipe", StaticFiles(directory=str(FRONTEND_DIST / "mediapipe")), name="mediapipe")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        if full_path.startswith("api/") or full_path.startswith("uploads/") or full_path.startswith("reports/"):
+            return None
+        file_path = FRONTEND_DIST / full_path
+        if file_path.exists() and file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(FRONTEND_DIST / "index.html")
+else:
+    @app.get("/")
+    def read_root():
+        return {
+            "title": "Stroke Rehabilitation Decision Support System API",
+            "status": "Online",
+            "documentation": "/docs"
+        }
 
 
 # ---------------- DATABASE SEEDER ----------------
