@@ -199,36 +199,36 @@ export const Settings: React.FC<SettingsProps> = ({ darkMode, toggleDarkMode }) 
             )}
 
             <div>
-              <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Old Password</label>
+              <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Old Password</label>
               <input
                 type="password"
                 required
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
-                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs focus:outline-none focus:border-primary"
+                className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">New Password</label>
+                <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">New Password</label>
                 <input
                   type="password"
                   required
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs focus:outline-none focus:border-primary"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Confirm New</label>
+                <label className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Confirm New</label>
                 <input
                   type="password"
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs focus:outline-none focus:border-primary"
+                  className="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
@@ -261,11 +261,12 @@ export const Settings: React.FC<SettingsProps> = ({ darkMode, toggleDarkMode }) 
 
           <div className="grid grid-cols-2 gap-4 pt-2">
             <button
+              type="button"
               onClick={() => { if (darkMode) toggleDarkMode(); }}
               className={`p-4 rounded-2xl border flex flex-col items-center justify-center space-y-2 cursor-pointer transition-all ${
                 !darkMode 
-                  ? 'bg-primary/5 border-primary text-primary font-bold shadow-sm' 
-                  : 'bg-slate-50 dark:bg-slate-850 border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-primary border-primary text-white font-bold shadow-md shadow-primary/25 ring-2 ring-primary/20' 
+                  : 'bg-slate-100 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
               <Sun className="w-6 h-6" />
@@ -273,11 +274,12 @@ export const Settings: React.FC<SettingsProps> = ({ darkMode, toggleDarkMode }) 
             </button>
 
             <button
+              type="button"
               onClick={() => { if (!darkMode) toggleDarkMode(); }}
               className={`p-4 rounded-2xl border flex flex-col items-center justify-center space-y-2 cursor-pointer transition-all ${
                 darkMode 
-                  ? 'bg-primary/10 border-primary text-primary font-bold shadow-sm' 
-                  : 'bg-slate-50 dark:bg-slate-850 border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-primary border-primary text-white font-bold shadow-md shadow-primary/25 ring-2 ring-primary/20' 
+                  : 'bg-slate-100 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
               <Moon className="w-6 h-6" />

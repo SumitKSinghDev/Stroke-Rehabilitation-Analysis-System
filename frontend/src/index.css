@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', 'Outfit', sans-serif;
@@ -28,11 +27,27 @@
 }
 
 @layer base {
+  html {
+    background-color: #F8FAFC;
+    color: #0F172A;
+  }
+  
+  html.dark {
+    background-color: #020617;
+    color: #F8FAFC;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: #F8FAFC;
     color: #0F172A;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  html.dark body {
+    background-color: #020617;
+    color: #F8FAFC;
   }
   
   /* Smooth transitions */

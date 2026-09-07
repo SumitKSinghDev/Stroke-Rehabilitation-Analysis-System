@@ -21,11 +21,11 @@ const ProtectedLayout: React.FC<{
   }
 
   return (
-    <div className={`min-h-screen flex ${darkMode ? 'dark bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`}>
+    <div className={`min-h-screen flex w-full transition-colors duration-200 ${darkMode ? 'dark bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`}>
       <Sidebar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       
       {/* Main content wrapper */}
-      <div className="flex-1 pl-64 min-h-screen flex flex-col">
+      <div className={`flex-1 pl-64 min-h-screen flex flex-col transition-colors duration-200 ${darkMode ? 'bg-slate-950 text-white' : 'bg-slate-50 text-slate-900'}`}>
         <main className="flex-grow p-8 max-w-7xl w-full mx-auto">
           <Outlet />
         </main>
