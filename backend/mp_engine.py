@@ -84,6 +84,10 @@ def process_video_real(video_path: str) -> dict:
         raise ValueError(f"Video file not found at path: {video_path}")
 
     file_size = os.path.getsize(video_path)
+    if file_size == 0:
+        logger.error(f"Uploaded video file is empty (0 bytes): {video_path}")
+        raise ValueError("Unable to open the uploaded video. File size is 0 bytes.")
+
     logger.info(f"Video file verified on disk. Size: {file_size} bytes")
 
     if not OPENCV_AVAILABLE or cv2 is None:
@@ -97,7 +101,7 @@ def process_video_real(video_path: str) -> dict:
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
         logger.error(f"cv2.VideoCapture failed to open file: {video_path}")
-        raise ValueError(f"Could not open or decode video file: {video_path}")
+        raise ValueError("Unable to open the uploaded video.")
 
     fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0)

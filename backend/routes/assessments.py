@@ -242,6 +242,18 @@ def create_assessment(
     
     try:
         features = analyze_video(actual_path)
+    except ValueError as ve:
+        logger.warning(f"Video analysis validation error for {actual_path}: {ve}")
+        raise HTTPException(
+            status_code=400,
+            detail=str(ve)
+        )
+    except RuntimeError as re:
+        logger.error(f"Pose model initialization error for {actual_path}: {re}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Pose model could not be initialized: {str(re)}"
+        )
     except Exception as e:
         logger.exception(f"Video processing failed for video at {actual_path}: {e}")
         raise HTTPException(

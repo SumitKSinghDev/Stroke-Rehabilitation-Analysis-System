@@ -54,192 +54,16 @@ export const PatientProfile: React.FC = () => {
 
   // New assessment form states
   const [sessionNumber, setSessionNumber] = useState(1);
-  const [fmaScore, setFmaScore] = useState('120');
-  const [bbsScore, setBbsScore] = useState('38');
-  const [facScore, setFacScore] = useState('3');
-  const [tugScore, setTugScore] = useState('14.2');
+  const [fmaScore, setFmaScore] = useState('');
+  const [bbsScore, setBbsScore] = useState('');
+  const [facScore, setFacScore] = useState('');
+  const [tugScore, setTugScore] = useState('');
   const [modelUsed, setModelUsed] = useState('Random Forest');
   const [therapistNotes, setTherapistNotes] = useState('');
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [formError, setFormError] = useState('');
   const [scanProgress, setScanProgress] = useState<number | null>(null);
-
-  const loadData = async () => {
-    if (!id) return;
-    try {
-      // 1. Fetch Patient details
-      const patientData = await api.patients.get(id);
-      setPatient(patientData);
-      
-      // 2. Fetch Sessions list
-      const sess = await api.assessments.list(patientData.patient_id);
-      setAssessments(sess);
-      
-      // Auto-increment session number for new runs
-      setSessionNumber(sess.length > 0 ? sess[sess.length - 1].session_number + 1 : 1);
-      
-      // 3. Fetch progress aggregates
-      const prog = await api.progress.get(patientData.patient_id);
-      setProgress(prog);
-
-      // Default inspector to latest session if any exists
-      if (sess.length > 0) {
-        setSelectedAssessment(sess[sess.length - 1]);
-      }
-    } catch (err) {
-      console.error('Error loading patient profile:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    loadData();
-  }, [id]);
-
-  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setVideoFile(e.target.files[0]);
-    }
-  };
-
-  // Mathematical angle calculations inside browser client
-  const calculateAngleJS = (a: any, b: any, c: any) => {
-    if (!a || !b || !c) return 120.0;
-    const ang = Math.abs(
-      Math.atan2(c.y - b.y, c.x - b.x) - Math.atan2(a.y - b.y, a.x - b.x)
-    ) * (180 / Math.PI);
-    return ang > 180 ? 360 - ang : ang;
-  };
-
-  // Map coordinate array to joint angles, gait metrics, and center of pressure lateral sway
-  const calculateFeaturesFromHistory = (history: any[], affectedSide: string, durationSec: number) => {
-    const angles = { hip: [] as number[], knee: [] as number[], shoulder: [] as number[], elbow: [] as number[] };
-    const anklesX = { left: [] as number[], right: [] as number[] };
-    const trunkX = [] as number[];
-
-    history.forEach(frame => {
-      const shL = frame[11];
-      const shR = frame[12];
-      const elL = frame[13];
-      const elR = frame[14];
-      const wrL = frame[15];
-      const wrR = frame[16];
-      const hipL = frame[23];
-      const hipR = frame[24];
-      const knL = frame[25];
-      const knR = frame[26];
-      const akL = frame[27];
-      const akR = frame[28];
-
-      if (shL && shR && elL && elR && wrL && wrR && hipL && hipR && knL && knR && akL && akR) {
-        const hipAng = (calculateAngleJS(shL, hipL, knL) + calculateAngleJS(shR, hipR, knR)) / 2;
-        const kneeAng = (calculateAngleJS(hipL, knL, akL) + calculateAngleJS(hipR, knR, akR)) / 2;
-        const shAng = (calculateAngleJS(hipL, shL, elL) + calculateAngleJS(hipR, shR, elR)) / 2;
-        const elAng = (calculateAngleJS(shL, elL, wrL) + calculateAngleJS(shR, elR, wrR)) / 2;
-
-        angles.hip.push(hipAng);
-        angles.knee.push(kneeAng);
-        angles.shoulder.push(shAng);
-        angles.elbow.push(elAng);
-
-        anklesX.left.push(akL.x);
-        anklesX.right.push(akR.x);
-
-        trunkX.push((shL.x + shR.x) / 2);
-      }
-    });
-
-    // Scale kinematics according to clinician FMA input score
-    const fmaVal = parseInt(fmaScore) || 70;
-    const clinicalFactor = fmaVal > 85 ? 1.4 : (fmaVal < 50 ? 0.55 : 1.0);
-
-    const getAvg = (arr: number[], fallback: number) => (arr.length > 0 ? arr.reduce((a, b) => a + b, 0) / arr.length : fallback) * (clinicalFactor > 1 ? 1.1 : (clinicalFactor < 0.7 ? 0.8 : 1.0));
-    const getRom = (arr: number[], fallback: number) => (arr.length > 0 ? Math.max(...arr) - Math.min(...arr) : fallback) * clinicalFactor;
-
-    const hipAvg = getAvg(angles.hip, 115.0);
-    const kneeAvg = getAvg(angles.knee, 125.0);
-    const shAvg = getAvg(angles.shoulder, 95.0);
-    const elAvg = getAvg(angles.elbow, 130.0);
-
-    const hipRom = getRom(angles.hip, 26.0);
-    const kneeRom = getRom(angles.knee, 36.0);
-    const shRom = getRom(angles.shoulder, 22.0);
-    const elRom = getRom(angles.elbow, 40.0);
-
-    let maxAnkleDist = 0.4;
-    for (let i = 0; i < anklesX.left.length; i++) {
-      const dist = Math.abs(anklesX.left[i] - anklesX.right[i]);
-      if (dist > maxAnkleDist) maxAnkleDist = dist;
-    }
-    const rawStride = Math.min(1.4, Math.max(0.3, maxAnkleDist * 1.5));
-    const strideLength = Math.round(rawStride * (clinicalFactor > 1.2 ? 1.25 : (clinicalFactor < 0.7 ? 0.65 : 1.0)) * 100) / 100;
-
-    const isLeftAffected = affectedSide.toLowerCase() === 'left';
-    const leftMove = isLeftAffected ? kneeRom * 0.7 : kneeRom;
-    const rightMove = isLeftAffected ? kneeRom : kneeRom * 0.7;
-    const rawSymmetry = Math.min(0.98, Math.max(0.4, leftMove / rightMove));
-    const stepSymmetry = Math.round((fmaVal > 85 ? Math.max(0.88, rawSymmetry * 1.2) : (fmaVal < 50 ? Math.min(0.60, rawSymmetry * 0.7) : rawSymmetry)) * 100) / 100;
-
-    const steps = (history.length / 30) * 1.5;
-    const cadence = Math.min(120, Math.max(40, steps * (60 / durationSec) * (clinicalFactor > 1.2 ? 1.15 : (clinicalFactor < 0.7 ? 0.75 : 1.0))));
-    const speed = Math.round(((strideLength * cadence) / 120) * 100) / 100;
-
-    let balanceStability = 75.0;
-    if (trunkX.length > 0) {
-      const mean = trunkX.reduce((a, b) => a + b, 0) / trunkX.length;
-      const variance = trunkX.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / trunkX.length;
-      const rawBalance = Math.min(99.0, Math.max(30.0, 100.0 - (variance * 12000)));
-      balanceStability = Math.round((fmaVal > 85 ? Math.max(82.0, rawBalance * 1.2) : (fmaVal < 50 ? Math.min(48.0, rawBalance * 0.65) : rawBalance)) * 100) / 100;
-    } else {
-      balanceStability = fmaVal > 85 ? 88.0 : (fmaVal < 50 ? 42.0 : 65.0);
-    }
-
-    // Pick the optimal mid-stride frame with maximum leg motion spread for skeleton display
-    let bestFrameIdx = Math.floor(history.length / 2);
-    let maxSpread = 0;
-
-    history.forEach((frame, fIdx) => {
-      if (frame && frame[27] && frame[28]) {
-        const dist = Math.abs(frame[27].x - frame[28].x) + Math.abs(frame[25].y - frame[26].y);
-        if (dist > maxSpread) {
-          maxSpread = dist;
-          bestFrameIdx = fIdx;
-        }
-      }
-    });
-
-    const bestFrame = history[bestFrameIdx] || history[0] || [];
-
-    const sampleLandmarks = bestFrame.map((lm: any, idx: number) => ({
-      id: idx,
-      x: lm.x,
-      y: lm.y,
-      z: lm.z || 0,
-      visibility: lm.visibility || 0.95
-    }));
-
-    return {
-      angles: {
-        hip_angle_deg: Math.round(hipAvg * 100) / 100,
-        knee_angle_deg: Math.round(kneeAvg * 100) / 100,
-        shoulder_angle_deg: Math.round(shAvg * 100) / 100,
-        elbow_angle_deg: Math.round(elAvg * 100) / 100
-      },
-      gait: {
-        stride_length_m: Math.round(strideLength * 100) / 100,
-        cadence_steps_min: Math.round(cadence * 10) / 10,
-        walking_speed_ms: Math.round(speed * 100) / 100,
-        step_width_m: Math.round(maxAnkleDist * 0.5 * 100) / 100,
-        step_symmetry_ratio: Math.round(stepSymmetry * 100) / 100
-      },
-      arm_swing_deg: Math.round(shRom * 100) / 100,
-      rom_score: Math.round(((hipRom + kneeRom + shRom + elRom) / 4) * 100) / 100,
-      balance_stability_score: Math.round(balanceStability * 100) / 100,
-      landmarks: sampleLandmarks
-    };
-  };
 
   const handleCreateAssessment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -645,7 +469,7 @@ export const PatientProfile: React.FC = () => {
               {/* Left Column: Form Scores */}
               <div className="space-y-4 md:col-span-2">
                 <h4 className="font-extrabold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest pl-0.5">
-                  Clinical Assessment Metrics
+                  Clinician-Entered Assessment Metrics (Optional)
                 </h4>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -654,14 +478,14 @@ export const PatientProfile: React.FC = () => {
                     <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Fugl-Meyer Score (FMA)</label>
                     <input
                       type="number"
-                      required
                       min="0"
                       max="226"
+                      placeholder="Optional (0-226)"
                       value={fmaScore}
                       onChange={(e) => setFmaScore(e.target.value)}
                       className="w-full px-4 py-2.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
                     />
-                    <p className="text-[9px] text-slate-400 mt-1">Motor recovery index. Range: 0-226</p>
+                    <p className="text-[9px] text-slate-400 mt-1">Clinician score. Range: 0-226</p>
                   </div>
 
                   {/* BBS */}
@@ -669,14 +493,14 @@ export const PatientProfile: React.FC = () => {
                     <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Berg Balance Scale (BBS)</label>
                     <input
                       type="number"
-                      required
                       min="0"
                       max="56"
+                      placeholder="Optional (0-56)"
                       value={bbsScore}
                       onChange={(e) => setBbsScore(e.target.value)}
                       className="w-full px-4 py-2.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
                     />
-                    <p className="text-[9px] text-slate-400 mt-1">Standing sway index. Range: 0-56</p>
+                    <p className="text-[9px] text-slate-400 mt-1">Clinician score. Range: 0-56</p>
                   </div>
                 </div>
 
@@ -689,6 +513,7 @@ export const PatientProfile: React.FC = () => {
                       onChange={(e) => setFacScore(e.target.value)}
                       className="w-full px-4 py-2.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
                     >
+                      <option value="">Not assessed</option>
                       <option value="0">0: Non-functional walker</option>
                       <option value="1">1: Dependent level II assistant</option>
                       <option value="2">2: Dependent level I assistant</option>
@@ -700,11 +525,10 @@ export const PatientProfile: React.FC = () => {
 
                   {/* TUG */}
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Timed Up & Go (TUG) *</label>
+                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Timed Up & Go (TUG)</label>
                     <input
                       type="text"
-                      required
-                      placeholder="E.g., 12.5"
+                      placeholder="Optional (seconds)"
                       value={tugScore}
                       onChange={(e) => setTugScore(e.target.value)}
                       className="w-full px-4 py-2.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary"
@@ -780,9 +604,15 @@ export const PatientProfile: React.FC = () => {
                         type="button"
                         onClick={() => {
                           setVideoFile(null);
+                          setSelectedAssessment(null);
                           setFormError('');
+                          setTherapistNotes('');
+                          setFmaScore('');
+                          setBbsScore('');
+                          setFacScore('');
+                          setTugScore('');
                         }}
-                        className="text-red-500 font-semibold text-[10px] uppercase tracking-wider mt-1 hover:underline"
+                        className="text-red-500 font-semibold text-[10px] uppercase tracking-wider mt-1 hover:underline relative z-10"
                       >
                         Remove file
                       </button>
@@ -1079,20 +909,26 @@ export const PatientProfile: React.FC = () => {
 
             {/* Clinical scores comparison card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
-              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Clinical Scales vs Model</h4>
+              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Clinician-Entered Assessment Scores</h4>
               
               <div className="space-y-3.5 text-xs">
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                   <span className="text-slate-500 dark:text-slate-400 font-semibold">FMA Score</span>
-                  <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.clinical_scores.fma_score} /226</span>
+                  <span className="font-bold text-slate-800 dark:text-white">
+                    {selectedAssessment.clinical_scores.fma_score > 0 ? `${selectedAssessment.clinical_scores.fma_score} /226` : 'Not provided'}
+                  </span>
                 </div>
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                   <span className="text-slate-500 dark:text-slate-400 font-semibold">BBS Score</span>
-                  <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.clinical_scores.bbs_score} /56</span>
+                  <span className="font-bold text-slate-800 dark:text-white">
+                    {selectedAssessment.clinical_scores.bbs_score > 0 ? `${selectedAssessment.clinical_scores.bbs_score} /56` : 'Not provided'}
+                  </span>
                 </div>
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                   <span className="text-slate-500 dark:text-slate-400 font-semibold">TUG Score</span>
-                  <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.clinical_scores.tug_score}s</span>
+                  <span className="font-bold text-slate-800 dark:text-white">
+                    {selectedAssessment.clinical_scores.tug_score > 0 ? `${selectedAssessment.clinical_scores.tug_score}s` : 'Not provided'}
+                  </span>
                 </div>
                 
                 {/* Visual score comparison HUD */}
@@ -1104,7 +940,7 @@ export const PatientProfile: React.FC = () => {
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div className="p-3 bg-blue-500/5 dark:bg-blue-500/10 rounded-xl border border-blue-500/10">
                       <span className="text-lg font-black text-blue-600 dark:text-blue-400">
-                        {selectedAssessment.clinical_scores.overall_clinical_score}%
+                        {selectedAssessment.clinical_scores.overall_clinical_score > 0 ? `${selectedAssessment.clinical_scores.overall_clinical_score}%` : 'N/A'}
                       </span>
                       <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Validation</p>
                     </div>
@@ -1114,7 +950,8 @@ export const PatientProfile: React.FC = () => {
                         {selectedAssessment.predictions.impairment_level === 'Normal' ? '98%' :
                          selectedAssessment.predictions.impairment_level === 'Mild' ? '85%' :
                          selectedAssessment.predictions.impairment_level === 'Moderate' ? '60%' :
-                         selectedAssessment.predictions.impairment_level === 'Severe' ? '35%' : '15%'}
+                         selectedAssessment.predictions.impairment_level === 'Severe' ? '35%' :
+                         selectedAssessment.predictions.impairment_level === 'Very Severe' ? '15%' : 'N/A'}
                       </span>
                       <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Objective</p>
                     </div>
@@ -1151,6 +988,14 @@ export const PatientProfile: React.FC = () => {
           </div>
         </div>
       )}
+
+      {/* Scientific Limitation & Clinical Disclaimer */}
+      <div className="p-4 bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 rounded-2xl text-xs font-medium leading-relaxed flex items-start space-x-3 mt-8">
+        <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+        <span>
+          <strong>Scientific Limitation & Clinical Disclaimer:</strong> This system provides movement analysis and machine-learning predictions for research/rehabilitation support. It does not provide a medical diagnosis. Clinical assessments must be performed and interpreted by qualified healthcare professionals.
+        </span>
+      </div>
 
     </div>
   );

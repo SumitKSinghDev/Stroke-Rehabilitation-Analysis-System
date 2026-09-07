@@ -162,6 +162,9 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
 
       {/* Floating Legend */}
       <div className="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-slate-800 text-[10px] space-y-1.5 shadow-xl text-white">
+        <div className="text-[9px] text-slate-400 font-medium mb-1 border-b border-slate-800 pb-1">
+          Landmarks reflect patient anatomical position as viewed from camera.
+        </div>
         <div className="flex items-center space-x-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#14B8A6] border border-white/20"></div>
           <span className="font-semibold text-slate-300">Healthy Side</span>
