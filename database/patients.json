@@ -1,0 +1,30 @@
+[
+    {
+        "patient_id": "PT-2026-0001",
+        "name": "Aarav Mehta",
+        "age": 58,
+        "gender": "Male",
+        "stroke_type": "Ischemic",
+        "affected_side": "Right",
+        "stroke_date": "2026-02-15",
+        "current_status": "Improving",
+        "medical_notes": "Right hemiparetic stroke with gait drop foot. Shows strong compliance in exercise regimens.",
+        "therapist_id": "0ce4f13b-8daf-439f-86ec-81170843112e",
+        "created_at": "2026-03-01T10:00:00",
+        "_id": "b793f08f-70fa-41d4-a055-4ab512363ad1"
+    },
+    {
+        "patient_id": "PT-2026-0002",
+        "name": "Priya Sharma",
+        "age": 62,
+        "gender": "Female",
+        "stroke_type": "Hemorrhagic",
+        "affected_side": "Left",
+        "stroke_date": "2026-01-10",
+        "current_status": "Stable",
+        "medical_notes": "Left-sided weakness affecting shoulder range of motion and overall walking balance. Uses walking frame.",
+        "therapist_id": "0ce4f13b-8daf-439f-86ec-81170843112e",
+        "created_at": "2026-03-05T11:30:00",
+        "_id": "5391c2d0-82be-4ef6-92ac-73290e5e02f3"
+    }
+]

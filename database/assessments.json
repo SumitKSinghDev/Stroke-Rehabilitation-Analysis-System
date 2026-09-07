@@ -1,0 +1,2616 @@
+[
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 1,
+        "assessment_date": "2026-03-05T10:30:00",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 85,
+            "bbs_score": 24,
+            "fac_score": 1,
+            "tug_score": 28.5,
+            "overall_clinical_score": 38.6
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 22.4,
+                "knee_angle_deg": 28.1,
+                "shoulder_angle_deg": 18.5,
+                "elbow_angle_deg": 105.4
+            },
+            "gait": {
+                "stride_length_m": 0.32,
+                "cadence_steps_min": 52.0,
+                "walking_speed_ms": 0.28,
+                "step_width_m": 0.3,
+                "step_symmetry_ratio": 0.54
+            },
+            "arm_swing_deg": 8.5,
+            "rom_score": 43.6,
+            "balance_stability_score": 32.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.5839,
+                    "y": 0.3999,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.4875,
+                    "y": 0.4265,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.4875,
+                    "y": 0.4265,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.4875,
+                    "y": 0.4265,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.4875,
+                    "y": 0.4265,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.44,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.5605,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.392,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.6245,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.392,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.6245,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.392,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.6245,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Severe",
+            "model_used": "Random Forest",
+            "confidence": 0.86,
+            "feature_importances": {
+                "walking_speed": 0.23,
+                "step_symmetry": 0.19,
+                "balance_stability": 0.16,
+                "knee_angle": 0.12
+            }
+        },
+        "recommendations": [
+            "Reduced Knee Flexion: Consider knee mobility exercises (heel slides) to improve swing clearance.",
+            "Low Walking Speed: Recommend body-weight supported walk pacing.",
+            "Reduced Balance Stability: Prescribe standing balance trials with rails.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "Baseline session. Patient requires significant support. Severe foot drop and elbow contracture pattern.",
+        "_id": "ad808db3-51fb-4a03-b510-84efe2d3af19",
+        "prescribed_exercises": [
+            {
+                "title": "Active-Assisted Heel Slides & Seated Quadriceps Sets",
+                "category": "Lower Limb",
+                "target_deficit": "Reduced Knee Flexion (28.1\u00b0 vs Target >55.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 2x daily",
+                "intensity": "Active-Assisted",
+                "instructions": "Lie supine or sit supported. Slowly slide the heel toward the buttocks to bend the knee, hold for 3 seconds, then slide back to full extension. Use a towel or strap around the foot if assistance is needed.",
+                "clinical_rationale": "Measured knee flexion is limited to 28.1\u00b0, causing foot drag and compensatory circumduction during the swing phase. Promotes hamstring activation and knee joint mobility."
+            },
+            {
+                "title": "Sustained Biceps Lengthening & Tabletop Reach-and-Grasp",
+                "category": "Upper Limb",
+                "target_deficit": "Upper-Limb Flexor Synergy / Elbow Angle (105.4\u00b0 vs Target >145.0\u00b0)",
+                "dosage": "3 sets \u00d7 8 reach trials (with 20s stretch holds)",
+                "intensity": "Active-Assisted",
+                "instructions": "Rest the affected arm on a smooth table. Interlock fingers with the sound hand to guide the affected arm forward into full elbow extension. Practice reaching for and grasping light foam cups.",
+                "clinical_rationale": "Significant flexor spasticity detected (elbow angle 105.4\u00b0). Sustained stretching inhibits hypertonia while active reach promotes cortical motor neuroplasticity."
+            },
+            {
+                "title": "Standing High-Knee Marching with Support & Gluteal Bridges",
+                "category": "Core & Pelvic Control",
+                "target_deficit": "Reduced Hip Mobility (22.4\u00b0 vs Target >35.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions per leg",
+                "intensity": "Active",
+                "instructions": "Stand facing a sturdy rail or counter. Lift the affected knee upward toward hip level in a controlled march, hold for 1 second, and lower slowly. Perform bridging exercises while lying supine.",
+                "clinical_rationale": "Hip range of motion was measured at 22.4\u00b0. Strengthening iliopsoas and gluteal muscles directly increases forward step stride and pelvic stability."
+            },
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (32.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 32.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.54 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome set at patient's baseline cadence (e.g. 60-70 bpm). Ensure equal stance time on both legs.",
+                "clinical_rationale": "Step symmetry ratio of 0.54 reflects prolonged stance on the healthy limb. Rhythmic auditory stimulation restores bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed (0.28 m/s vs Community Target >0.8 m/s)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet, well-lit hallway with assistive device. Focus on pushing off with the toes and lifting the affected foot cleanly.",
+                "clinical_rationale": "Walking velocity is 0.28 m/s (household ambulator range). Progressive velocity training increases cardiovascular endurance and functional independence."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (18.5\u00b0) & Gait Arm Swing (8.5\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 2,
+        "assessment_date": "2026-04-05T10:15:00",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 115,
+            "bbs_score": 32,
+            "fac_score": 2,
+            "tug_score": 22.0,
+            "overall_clinical_score": 50.1
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 26.8,
+                "knee_angle_deg": 34.5,
+                "shoulder_angle_deg": 22.0,
+                "elbow_angle_deg": 112.5
+            },
+            "gait": {
+                "stride_length_m": 0.42,
+                "cadence_steps_min": 65.0,
+                "walking_speed_ms": 0.46,
+                "step_width_m": 0.27,
+                "step_symmetry_ratio": 0.65
+            },
+            "arm_swing_deg": 12.0,
+            "rom_score": 48.9,
+            "balance_stability_score": 48.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.5846,
+                    "y": 0.3999,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.4922,
+                    "y": 0.4382,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.4922,
+                    "y": 0.4382,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.4922,
+                    "y": 0.4382,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.4922,
+                    "y": 0.4382,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.44,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.5605,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.377,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.6445,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.377,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.6445,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.377,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.6445,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Moderate",
+            "model_used": "Random Forest",
+            "confidence": 0.72,
+            "feature_importances": {
+                "walking_speed": 0.23,
+                "step_symmetry": 0.19,
+                "balance_stability": 0.16,
+                "knee_angle": 0.12
+            }
+        },
+        "recommendations": [
+            "Reduced Knee Flexion: Consider knee mobility exercises.",
+            "Low Walking Speed: Recommend paced corridor walks.",
+            "Reduced Balance Stability: Prescribe standing balance trials with rails.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "Session 2. Shows improvements in knee flexion and gait speed. Balance remains moderately impaired.",
+        "_id": "64dd4aec-4031-4520-9420-12a1df3b4ba1",
+        "prescribed_exercises": [
+            {
+                "title": "Active-Assisted Heel Slides & Seated Quadriceps Sets",
+                "category": "Lower Limb",
+                "target_deficit": "Reduced Knee Flexion (34.5\u00b0 vs Target >55.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 2x daily",
+                "intensity": "Active-Assisted",
+                "instructions": "Lie supine or sit supported. Slowly slide the heel toward the buttocks to bend the knee, hold for 3 seconds, then slide back to full extension. Use a towel or strap around the foot if assistance is needed.",
+                "clinical_rationale": "Measured knee flexion is limited to 34.5\u00b0, causing foot drag and compensatory circumduction during the swing phase. Promotes hamstring activation and knee joint mobility."
+            },
+            {
+                "title": "Sustained Biceps Lengthening & Tabletop Reach-and-Grasp",
+                "category": "Upper Limb",
+                "target_deficit": "Upper-Limb Flexor Synergy / Elbow Angle (112.5\u00b0 vs Target >145.0\u00b0)",
+                "dosage": "3 sets \u00d7 8 reach trials (with 20s stretch holds)",
+                "intensity": "Active-Assisted",
+                "instructions": "Rest the affected arm on a smooth table. Interlock fingers with the sound hand to guide the affected arm forward into full elbow extension. Practice reaching for and grasping light foam cups.",
+                "clinical_rationale": "Significant flexor spasticity detected (elbow angle 112.5\u00b0). Sustained stretching inhibits hypertonia while active reach promotes cortical motor neuroplasticity."
+            },
+            {
+                "title": "Standing High-Knee Marching with Support & Gluteal Bridges",
+                "category": "Core & Pelvic Control",
+                "target_deficit": "Reduced Hip Mobility (26.8\u00b0 vs Target >35.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions per leg",
+                "intensity": "Active",
+                "instructions": "Stand facing a sturdy rail or counter. Lift the affected knee upward toward hip level in a controlled march, hold for 1 second, and lower slowly. Perform bridging exercises while lying supine.",
+                "clinical_rationale": "Hip range of motion was measured at 26.8\u00b0. Strengthening iliopsoas and gluteal muscles directly increases forward step stride and pelvic stability."
+            },
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (48.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 48.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.65 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome set at patient's baseline cadence (e.g. 60-70 bpm). Ensure equal stance time on both legs.",
+                "clinical_rationale": "Step symmetry ratio of 0.65 reflects prolonged stance on the healthy limb. Rhythmic auditory stimulation restores bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed (0.46 m/s vs Community Target >0.8 m/s)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet, well-lit hallway with assistive device. Focus on pushing off with the toes and lifting the affected foot cleanly.",
+                "clinical_rationale": "Walking velocity is 0.46 m/s (household ambulator range). Progressive velocity training increases cardiovascular endurance and functional independence."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (22.0\u00b0) & Gait Arm Swing (12.0\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 3,
+        "assessment_date": "2026-05-05T11:00:00",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 145,
+            "bbs_score": 40,
+            "fac_score": 3,
+            "tug_score": 16.5,
+            "overall_clinical_score": 64.9
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 32.1,
+                "knee_angle_deg": 41.2,
+                "shoulder_angle_deg": 28.6,
+                "elbow_angle_deg": 125.0
+            },
+            "gait": {
+                "stride_length_m": 0.52,
+                "cadence_steps_min": 78.0,
+                "walking_speed_ms": 0.68,
+                "step_width_m": 0.23,
+                "step_symmetry_ratio": 0.78
+            },
+            "arm_swing_deg": 16.5,
+            "rom_score": 56.7,
+            "balance_stability_score": 65.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.586,
+                    "y": 0.3999,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.5041,
+                    "y": 0.4573,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.5041,
+                    "y": 0.4573,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.5041,
+                    "y": 0.4573,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.5041,
+                    "y": 0.4573,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.44,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.5605,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.362,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.6645,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.362,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.6645,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.362,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.6645,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Moderate",
+            "model_used": "Random Forest",
+            "confidence": 0.81,
+            "feature_importances": {
+                "walking_speed": 0.23,
+                "step_symmetry": 0.19,
+                "balance_stability": 0.16,
+                "knee_angle": 0.12
+            }
+        },
+        "recommendations": [
+            "Reduced Knee Flexion: Keep up knee extensions.",
+            "Gait Asymmetry: Utilize metronome-guided step timing.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "Session 3. Walks with minimal supervision. Step symmetry has improved from 0.54 to 0.78.",
+        "_id": "ce82cf3c-950c-476a-992b-1cc7fafd6198",
+        "prescribed_exercises": [
+            {
+                "title": "Active-Assisted Heel Slides & Seated Quadriceps Sets",
+                "category": "Lower Limb",
+                "target_deficit": "Reduced Knee Flexion (41.2\u00b0 vs Target >55.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 2x daily",
+                "intensity": "Active-Assisted",
+                "instructions": "Lie supine or sit supported. Slowly slide the heel toward the buttocks to bend the knee, hold for 3 seconds, then slide back to full extension. Use a towel or strap around the foot if assistance is needed.",
+                "clinical_rationale": "Measured knee flexion is limited to 41.2\u00b0, causing foot drag and compensatory circumduction during the swing phase. Promotes hamstring activation and knee joint mobility."
+            },
+            {
+                "title": "Sustained Biceps Lengthening & Tabletop Reach-and-Grasp",
+                "category": "Upper Limb",
+                "target_deficit": "Upper-Limb Flexor Synergy / Elbow Angle (125.0\u00b0 vs Target >145.0\u00b0)",
+                "dosage": "3 sets \u00d7 8 reach trials (with 20s stretch holds)",
+                "intensity": "Active-Assisted",
+                "instructions": "Rest the affected arm on a smooth table. Interlock fingers with the sound hand to guide the affected arm forward into full elbow extension. Practice reaching for and grasping light foam cups.",
+                "clinical_rationale": "Significant flexor spasticity detected (elbow angle 125.0\u00b0). Sustained stretching inhibits hypertonia while active reach promotes cortical motor neuroplasticity."
+            },
+            {
+                "title": "Single-Leg Stance & Foam Pad Balance Trials",
+                "category": "Balance & Stability",
+                "target_deficit": "Mild Dynamic Balance Asymmetry (65.0%)",
+                "dosage": "3 sets \u00d7 20 seconds per side",
+                "intensity": "Active",
+                "instructions": "Stand on a firm surface or balance pad. Lift the healthy foot slightly off the ground, balancing on the affected limb while lightly touching a rail for safety.",
+                "clinical_rationale": "Enhances proprioceptive feedback and ankle stabilizer muscle activation."
+            },
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.78 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome set at patient's baseline cadence (e.g. 60-70 bpm). Ensure equal stance time on both legs.",
+                "clinical_rationale": "Step symmetry ratio of 0.78 reflects prolonged stance on the healthy limb. Rhythmic auditory stimulation restores bilateral temporal symmetry."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (28.6\u00b0) & Gait Arm Swing (16.5\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 4,
+        "assessment_date": "2026-06-05T09:45:00",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 182,
+            "bbs_score": 48,
+            "fac_score": 4,
+            "tug_score": 11.2,
+            "overall_clinical_score": 81.3
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 41.5,
+                "knee_angle_deg": 52.3,
+                "shoulder_angle_deg": 38.0,
+                "elbow_angle_deg": 142.1
+            },
+            "gait": {
+                "stride_length_m": 0.65,
+                "cadence_steps_min": 92.0,
+                "walking_speed_ms": 0.88,
+                "step_width_m": 0.18,
+                "step_symmetry_ratio": 0.88
+            },
+            "arm_swing_deg": 22.0,
+            "rom_score": 68.4,
+            "balance_stability_score": 82.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.588,
+                    "y": 0.3997,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.5266,
+                    "y": 0.4786,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.5266,
+                    "y": 0.4786,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.5266,
+                    "y": 0.4786,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.5266,
+                    "y": 0.4786,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.44,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.5605,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.3425,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.6905,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.3425,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.6905,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.3425,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.6905,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Mild",
+            "model_used": "Random Forest",
+            "confidence": 0.89,
+            "feature_importances": {
+                "walking_speed": 0.23,
+                "step_symmetry": 0.19,
+                "balance_stability": 0.16,
+                "knee_angle": 0.12
+            }
+        },
+        "recommendations": [
+            "Gait Asymmetry: Maintain symmetric cadence exercises.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "Session 4. Excellent progress. Independent ambulation achieved. Slight asymmetry remains, but range of motion is near normal.",
+        "_id": "e56b1083-fd07-4ab8-8295-eaf30ba10af5",
+        "prescribed_exercises": [
+            {
+                "title": "Seated Active Terminal Knee Extensions with TheraBand",
+                "category": "Lower Limb",
+                "target_deficit": "Mild Knee Flexion Deficit (52.3\u00b0)",
+                "dosage": "3 sets \u00d7 12 repetitions, 1x daily",
+                "intensity": "Active",
+                "instructions": "Sit upright on a stable chair with a resistance band around the ankle. Straighten the affected leg fully against resistance, hold for 2 seconds at peak extension, and lower slowly.",
+                "clinical_rationale": "Strengthens vastus medialis and quadriceps to stabilize the knee during initial contact and early stance."
+            },
+            {
+                "title": "Bilateral Symmetrical Arm Reach with Lightweight Ball",
+                "category": "Upper Limb",
+                "target_deficit": "Submaximal Elbow Extension (142.1\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 1x daily",
+                "intensity": "Active",
+                "instructions": "Hold a lightweight ball with both hands in front of the chest. Push the ball forward and upward at a 45-degree angle, focusing on equal arm extension, then return slowly.",
+                "clinical_rationale": "Encourages bimanual coordination and voluntary extension through bilateral movement reinforcement."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0002",
+        "session_number": 1,
+        "assessment_date": "2026-03-10T11:45:00",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 98,
+            "bbs_score": 18,
+            "fac_score": 1,
+            "tug_score": 32.0,
+            "overall_clinical_score": 34.8
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 18.2,
+                "knee_angle_deg": 24.1,
+                "shoulder_angle_deg": 12.5,
+                "elbow_angle_deg": 92.4
+            },
+            "gait": {
+                "stride_length_m": 0.25,
+                "cadence_steps_min": 42.0,
+                "walking_speed_ms": 0.18,
+                "step_width_m": 0.35,
+                "step_symmetry_ratio": 0.48
+            },
+            "arm_swing_deg": 4.5,
+            "rom_score": 32.6,
+            "balance_stability_score": 28.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4174,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.6,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.5173,
+                    "y": 0.4042,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.62,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.5173,
+                    "y": 0.4042,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.62,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.5173,
+                    "y": 0.4042,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.62,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.5173,
+                    "y": 0.4042,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.62,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.4395,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.56,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.3895,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.5975,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.3895,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.5975,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.3895,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.5975,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Very Severe",
+            "model_used": "Random Forest",
+            "confidence": 0.92,
+            "feature_importances": {
+                "walking_speed": 0.23,
+                "step_symmetry": 0.19,
+                "balance_stability": 0.16,
+                "knee_angle": 0.12
+            }
+        },
+        "recommendations": [
+            "Reduced Knee Flexion: Consider knee mobility exercises.",
+            "Low Walking Speed: Speed-oriented frame pacing.",
+            "Reduced Balance Stability: Safe seated balance movements.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "Baseline session. Patient requires physical assistance from therapist + frame. Severe hemiplegia on the left.",
+        "_id": "c0b9278a-6841-437b-91a1-5ebc08a6062e",
+        "prescribed_exercises": [
+            {
+                "title": "Active-Assisted Heel Slides & Seated Quadriceps Sets",
+                "category": "Lower Limb",
+                "target_deficit": "Reduced Knee Flexion (24.1\u00b0 vs Target >55.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 2x daily",
+                "intensity": "Active-Assisted",
+                "instructions": "Lie supine or sit supported. Slowly slide the heel toward the buttocks to bend the knee, hold for 3 seconds, then slide back to full extension. Use a towel or strap around the foot if assistance is needed.",
+                "clinical_rationale": "Measured knee flexion is limited to 24.1\u00b0, causing foot drag and compensatory circumduction during the swing phase. Promotes hamstring activation and knee joint mobility."
+            },
+            {
+                "title": "Sustained Biceps Lengthening & Tabletop Reach-and-Grasp",
+                "category": "Upper Limb",
+                "target_deficit": "Upper-Limb Flexor Synergy / Elbow Angle (92.4\u00b0 vs Target >145.0\u00b0)",
+                "dosage": "3 sets \u00d7 8 reach trials (with 20s stretch holds)",
+                "intensity": "Active-Assisted",
+                "instructions": "Rest the affected arm on a smooth table. Interlock fingers with the sound hand to guide the affected arm forward into full elbow extension. Practice reaching for and grasping light foam cups.",
+                "clinical_rationale": "Significant flexor spasticity detected (elbow angle 92.4\u00b0). Sustained stretching inhibits hypertonia while active reach promotes cortical motor neuroplasticity."
+            },
+            {
+                "title": "Standing High-Knee Marching with Support & Gluteal Bridges",
+                "category": "Core & Pelvic Control",
+                "target_deficit": "Reduced Hip Mobility (18.2\u00b0 vs Target >35.0\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions per leg",
+                "intensity": "Active",
+                "instructions": "Stand facing a sturdy rail or counter. Lift the affected knee upward toward hip level in a controlled march, hold for 1 second, and lower slowly. Perform bridging exercises while lying supine.",
+                "clinical_rationale": "Hip range of motion was measured at 18.2\u00b0. Strengthening iliopsoas and gluteal muscles directly increases forward step stride and pelvic stability."
+            },
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (28.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 28.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.48 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome set at patient's baseline cadence (e.g. 60-70 bpm). Ensure equal stance time on both legs.",
+                "clinical_rationale": "Step symmetry ratio of 0.48 reflects prolonged stance on the healthy limb. Rhythmic auditory stimulation restores bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed (0.18 m/s vs Community Target >0.8 m/s)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet, well-lit hallway with assistive device. Focus on pushing off with the toes and lifting the affected foot cleanly.",
+                "clinical_rationale": "Walking velocity is 0.18 m/s (household ambulator range). Progressive velocity training increases cardiovascular endurance and functional independence."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (12.5\u00b0) & Gait Arm Swing (4.5\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 5,
+        "assessment_date": "2026-08-04T23:46:02.519118",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 120,
+            "bbs_score": 38,
+            "fac_score": 3,
+            "tug_score": 14.2,
+            "overall_clinical_score": 54.9
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 173.78,
+                "knee_angle_deg": 174.29,
+                "shoulder_angle_deg": 12.55,
+                "elbow_angle_deg": 160.42
+            },
+            "gait": {
+                "stride_length_m": 0.6,
+                "cadence_steps_min": 109.1,
+                "walking_speed_ms": 0.55,
+                "step_width_m": 0.23,
+                "step_symmetry_ratio": 0.98
+            },
+            "arm_swing_deg": 38.95,
+            "rom_score": 52.84,
+            "balance_stability_score": 30.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.5,
+                    "y": 0.18,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 1,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 2,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 3,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 4,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 5,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 6,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 7,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 8,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 9,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 10,
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 11,
+                    "x": 0.42,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 12,
+                    "x": 0.58,
+                    "y": 0.28,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 13,
+                    "x": 0.4,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 14,
+                    "x": 0.5826,
+                    "y": 0.4,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 15,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 16,
+                    "x": 0.5491,
+                    "y": 0.4942,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 17,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 18,
+                    "x": 0.5491,
+                    "y": 0.4942,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 19,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 20,
+                    "x": 0.5491,
+                    "y": 0.4942,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 21,
+                    "x": 0.38,
+                    "y": 0.5,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 22,
+                    "x": 0.5491,
+                    "y": 0.4942,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 23,
+                    "x": 0.45,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 24,
+                    "x": 0.55,
+                    "y": 0.52,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 25,
+                    "x": 0.44,
+                    "y": 0.72,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 26,
+                    "x": 0.5605,
+                    "y": 0.7197,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 27,
+                    "x": 0.35,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 28,
+                    "x": 0.6805,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 29,
+                    "x": 0.35,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 30,
+                    "x": 0.6805,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 31,
+                    "x": 0.35,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                },
+                {
+                    "id": 32,
+                    "x": 0.6805,
+                    "y": 0.9,
+                    "z": 0.0,
+                    "visibility": 0.98
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal",
+            "model_used": "Random Forest",
+            "confidence": 0.52,
+            "feature_importances": {
+                "walking_speed": 0.203,
+                "step_symmetry": 0.202,
+                "rom_score": 0.107,
+                "cadence": 0.103,
+                "balance_stability": 0.097,
+                "elbow_angle": 0.096,
+                "knee_angle": 0.072,
+                "stride_length": 0.037,
+                "shoulder_angle": 0.032,
+                "hip_angle": 0.029,
+                "arm_swing": 0.02,
+                "step_width": 0.001
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Range of Motion: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Reduced Balance Stability: Prescribe standing balance trials (single-leg stand, tandem gait, weight transfer) with safety railings.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "",
+        "_id": "eea79878-f6e8-437a-86bf-3a72457f6719",
+        "prescribed_exercises": [
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (30.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 30.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed (0.55 m/s vs Community Target >0.8 m/s)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet, well-lit hallway with assistive device. Focus on pushing off with the toes and lifting the affected foot cleanly.",
+                "clinical_rationale": "Walking velocity is 0.55 m/s (household ambulator range). Progressive velocity training increases cardiovascular endurance and functional independence."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (12.6\u00b0) & Gait Arm Swing (39.0\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 6,
+        "assessment_date": "2026-08-05T00:04:59.631599",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 120,
+            "bbs_score": 38,
+            "fac_score": 3,
+            "tug_score": 14.2,
+            "overall_clinical_score": 54.9
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 173.76,
+                "knee_angle_deg": 174.11,
+                "shoulder_angle_deg": 11.46,
+                "elbow_angle_deg": 161.16
+            },
+            "gait": {
+                "stride_length_m": 0.6,
+                "cadence_steps_min": 120.0,
+                "walking_speed_ms": 0.6,
+                "step_width_m": 0.22,
+                "step_symmetry_ratio": 0.98
+            },
+            "arm_swing_deg": 28.17,
+            "rom_score": 48.16,
+            "balance_stability_score": 30.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.30532875657081604,
+                    "y": 0.08198609948158264,
+                    "z": -0.181448832154274,
+                    "visibility": 0.99993896484375
+                },
+                {
+                    "id": 1,
+                    "x": 0.3022500276565552,
+                    "y": 0.06341788172721863,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9998300075531006
+                },
+                {
+                    "id": 2,
+                    "x": 0.3022100627422333,
+                    "y": 0.06367573142051697,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9997658133506775
+                },
+                {
+                    "id": 3,
+                    "x": 0.30191028118133545,
+                    "y": 0.06398755311965942,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9998044371604919
+                },
+                {
+                    "id": 4,
+                    "x": 0.29814356565475464,
+                    "y": 0.062115397304296494,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.999913215637207
+                },
+                {
+                    "id": 5,
+                    "x": 0.2954595983028412,
+                    "y": 0.0616377629339695,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.9999083280563354
+                },
+                {
+                    "id": 6,
+                    "x": 0.2923959195613861,
+                    "y": 0.0613422729074955,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.9999251365661621
+                },
+                {
+                    "id": 7,
+                    "x": 0.2889029085636139,
+                    "y": 0.07422363758087158,
+                    "z": -0.05875720456242561,
+                    "visibility": 0.9993588328361511
+                },
+                {
+                    "id": 8,
+                    "x": 0.275558739900589,
+                    "y": 0.06990733742713928,
+                    "z": -0.21152594685554504,
+                    "visibility": 0.9999103546142578
+                },
+                {
+                    "id": 9,
+                    "x": 0.3024655282497406,
+                    "y": 0.10547715425491333,
+                    "z": -0.13846978545188904,
+                    "visibility": 0.9999239444732666
+                },
+                {
+                    "id": 10,
+                    "x": 0.2977832555770874,
+                    "y": 0.10360652208328247,
+                    "z": -0.18243496119976044,
+                    "visibility": 0.9999722242355347
+                },
+                {
+                    "id": 11,
+                    "x": 0.28644225001335144,
+                    "y": 0.19962000846862793,
+                    "z": 0.07034429162740707,
+                    "visibility": 0.9997197985649109
+                },
+                {
+                    "id": 12,
+                    "x": 0.23629233241081238,
+                    "y": 0.17204752564430237,
+                    "z": -0.25294363498687744,
+                    "visibility": 0.9999899864196777
+                },
+                {
+                    "id": 13,
+                    "x": 0.2990726828575134,
+                    "y": 0.3373067080974579,
+                    "z": 0.1385519653558731,
+                    "visibility": 0.35734322667121887
+                },
+                {
+                    "id": 14,
+                    "x": 0.21420888602733612,
+                    "y": 0.32223182916641235,
+                    "z": -0.30866023898124695,
+                    "visibility": 0.996249258518219
+                },
+                {
+                    "id": 15,
+                    "x": 0.34192439913749695,
+                    "y": 0.4193326234817505,
+                    "z": 0.05744235962629318,
+                    "visibility": 0.6886778473854065
+                },
+                {
+                    "id": 16,
+                    "x": 0.24279837310314178,
+                    "y": 0.4662047028541565,
+                    "z": -0.34843435883522034,
+                    "visibility": 0.9844563603401184
+                },
+                {
+                    "id": 17,
+                    "x": 0.3522282540798187,
+                    "y": 0.4462858736515045,
+                    "z": 0.04708794504404068,
+                    "visibility": 0.6599532961845398
+                },
+                {
+                    "id": 18,
+                    "x": 0.24132689833641052,
+                    "y": 0.5082717537879944,
+                    "z": -0.38820844888687134,
+                    "visibility": 0.9680808186531067
+                },
+                {
+                    "id": 19,
+                    "x": 0.35555440187454224,
+                    "y": 0.43914493918418884,
+                    "z": 0.011320007033646107,
+                    "visibility": 0.6794977784156799
+                },
+                {
+                    "id": 20,
+                    "x": 0.25213944911956787,
+                    "y": 0.5083013772964478,
+                    "z": -0.3908381462097168,
+                    "visibility": 0.9664738178253174
+                },
+                {
+                    "id": 21,
+                    "x": 0.3498639464378357,
+                    "y": 0.43144309520721436,
+                    "z": 0.039322130382061005,
+                    "visibility": 0.6474639177322388
+                },
+                {
+                    "id": 22,
+                    "x": 0.2540656626224518,
+                    "y": 0.4963410794734955,
+                    "z": -0.34876304864883423,
+                    "visibility": 0.9491063356399536
+                },
+                {
+                    "id": 23,
+                    "x": 0.29288992285728455,
+                    "y": 0.4831870198249817,
+                    "z": 0.10420159250497818,
+                    "visibility": 0.9978342652320862
+                },
+                {
+                    "id": 24,
+                    "x": 0.26579514145851135,
+                    "y": 0.4843566119670868,
+                    "z": -0.10420159250497818,
+                    "visibility": 0.999322772026062
+                },
+                {
+                    "id": 25,
+                    "x": 0.2624867558479309,
+                    "y": 0.6759105920791626,
+                    "z": 0.24604065716266632,
+                    "visibility": 0.7570766806602478
+                },
+                {
+                    "id": 26,
+                    "x": 0.2827673554420471,
+                    "y": 0.6935979723930359,
+                    "z": -0.04934783652424812,
+                    "visibility": 0.9779256582260132
+                },
+                {
+                    "id": 27,
+                    "x": 0.21541135013103485,
+                    "y": 0.8204807043075562,
+                    "z": 0.41088956594467163,
+                    "visibility": 0.9008791446685791
+                },
+                {
+                    "id": 28,
+                    "x": 0.2902950346469879,
+                    "y": 0.8899922966957092,
+                    "z": 0.047745365649461746,
+                    "visibility": 0.9849852323532104
+                },
+                {
+                    "id": 29,
+                    "x": 0.19395825266838074,
+                    "y": 0.8389579057693481,
+                    "z": 0.4230518937110901,
+                    "visibility": 0.9017477631568909
+                },
+                {
+                    "id": 30,
+                    "x": 0.2774500846862793,
+                    "y": 0.9255216717720032,
+                    "z": 0.051155753433704376,
+                    "visibility": 0.9592307209968567
+                },
+                {
+                    "id": 31,
+                    "x": 0.2412519007921219,
+                    "y": 0.8855656385421753,
+                    "z": 0.3648699223995209,
+                    "visibility": 0.9365176558494568
+                },
+                {
+                    "id": 32,
+                    "x": 0.3426968455314636,
+                    "y": 0.9275295734405518,
+                    "z": -0.057072557508945465,
+                    "visibility": 0.9773707389831543
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Moderate",
+            "model_used": "SVM",
+            "confidence": 0.23,
+            "feature_importances": {
+                "walking_speed": 0.22,
+                "step_symmetry": 0.18,
+                "balance_stability": 0.15,
+                "knee_angle": 0.11,
+                "rom_score": 0.1,
+                "stride_length": 0.08,
+                "hip_angle": 0.06,
+                "arm_swing": 0.04,
+                "cadence": 0.03,
+                "shoulder_angle": 0.01,
+                "elbow_angle": 0.01,
+                "step_width": 0.01
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Range of Motion: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Reduced Balance Stability: Prescribe standing balance trials (single-leg stand, tandem gait, weight transfer) with safety railings.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "",
+        "_id": "09cfb730-089c-4882-aa96-08d3942c95a6",
+        "prescribed_exercises": [
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (30.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 30.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (11.5\u00b0) & Gait Arm Swing (28.2\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 7,
+        "assessment_date": "2026-08-05T00:08:36.055997",
+        "video_path": null,
+        "clinical_scores": {
+            "fma_score": 120,
+            "bbs_score": 38,
+            "fac_score": 3,
+            "tug_score": 14.2,
+            "overall_clinical_score": 54.9
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 173.75,
+                "knee_angle_deg": 174.14,
+                "shoulder_angle_deg": 11.41,
+                "elbow_angle_deg": 161.14
+            },
+            "gait": {
+                "stride_length_m": 0.6,
+                "cadence_steps_min": 120.0,
+                "walking_speed_ms": 0.6,
+                "step_width_m": 0.23,
+                "step_symmetry_ratio": 0.98
+            },
+            "arm_swing_deg": 23.65,
+            "rom_score": 47.11,
+            "balance_stability_score": 30.0,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.30532875657081604,
+                    "y": 0.08198609948158264,
+                    "z": -0.181448832154274,
+                    "visibility": 0.99993896484375
+                },
+                {
+                    "id": 1,
+                    "x": 0.3022500276565552,
+                    "y": 0.06341788172721863,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9998300075531006
+                },
+                {
+                    "id": 2,
+                    "x": 0.3022100627422333,
+                    "y": 0.06367573142051697,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9997658133506775
+                },
+                {
+                    "id": 3,
+                    "x": 0.30191028118133545,
+                    "y": 0.06398755311965942,
+                    "z": -0.16345186531543732,
+                    "visibility": 0.9998044371604919
+                },
+                {
+                    "id": 4,
+                    "x": 0.29814356565475464,
+                    "y": 0.062115397304296494,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.999913215637207
+                },
+                {
+                    "id": 5,
+                    "x": 0.2954595983028412,
+                    "y": 0.0616377629339695,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.9999083280563354
+                },
+                {
+                    "id": 6,
+                    "x": 0.2923959195613861,
+                    "y": 0.0613422729074955,
+                    "z": -0.19673392176628113,
+                    "visibility": 0.9999251365661621
+                },
+                {
+                    "id": 7,
+                    "x": 0.2889029085636139,
+                    "y": 0.07422363758087158,
+                    "z": -0.05875720456242561,
+                    "visibility": 0.9993588328361511
+                },
+                {
+                    "id": 8,
+                    "x": 0.275558739900589,
+                    "y": 0.06990733742713928,
+                    "z": -0.21152594685554504,
+                    "visibility": 0.9999103546142578
+                },
+                {
+                    "id": 9,
+                    "x": 0.3024655282497406,
+                    "y": 0.10547715425491333,
+                    "z": -0.13846978545188904,
+                    "visibility": 0.9999239444732666
+                },
+                {
+                    "id": 10,
+                    "x": 0.2977832555770874,
+                    "y": 0.10360652208328247,
+                    "z": -0.18243496119976044,
+                    "visibility": 0.9999722242355347
+                },
+                {
+                    "id": 11,
+                    "x": 0.28644225001335144,
+                    "y": 0.19962000846862793,
+                    "z": 0.07034429162740707,
+                    "visibility": 0.9997197985649109
+                },
+                {
+                    "id": 12,
+                    "x": 0.23629233241081238,
+                    "y": 0.17204752564430237,
+                    "z": -0.25294363498687744,
+                    "visibility": 0.9999899864196777
+                },
+                {
+                    "id": 13,
+                    "x": 0.2990726828575134,
+                    "y": 0.3373067080974579,
+                    "z": 0.1385519653558731,
+                    "visibility": 0.35734322667121887
+                },
+                {
+                    "id": 14,
+                    "x": 0.21420888602733612,
+                    "y": 0.32223182916641235,
+                    "z": -0.30866023898124695,
+                    "visibility": 0.996249258518219
+                },
+                {
+                    "id": 15,
+                    "x": 0.34192439913749695,
+                    "y": 0.4193326234817505,
+                    "z": 0.05744235962629318,
+                    "visibility": 0.6886778473854065
+                },
+                {
+                    "id": 16,
+                    "x": 0.24279837310314178,
+                    "y": 0.4662047028541565,
+                    "z": -0.34843435883522034,
+                    "visibility": 0.9844563603401184
+                },
+                {
+                    "id": 17,
+                    "x": 0.3522282540798187,
+                    "y": 0.4462858736515045,
+                    "z": 0.04708794504404068,
+                    "visibility": 0.6599532961845398
+                },
+                {
+                    "id": 18,
+                    "x": 0.24132689833641052,
+                    "y": 0.5082717537879944,
+                    "z": -0.38820844888687134,
+                    "visibility": 0.9680808186531067
+                },
+                {
+                    "id": 19,
+                    "x": 0.35555440187454224,
+                    "y": 0.43914493918418884,
+                    "z": 0.011320007033646107,
+                    "visibility": 0.6794977784156799
+                },
+                {
+                    "id": 20,
+                    "x": 0.25213944911956787,
+                    "y": 0.5083013772964478,
+                    "z": -0.3908381462097168,
+                    "visibility": 0.9664738178253174
+                },
+                {
+                    "id": 21,
+                    "x": 0.3498639464378357,
+                    "y": 0.43144309520721436,
+                    "z": 0.039322130382061005,
+                    "visibility": 0.6474639177322388
+                },
+                {
+                    "id": 22,
+                    "x": 0.2540656626224518,
+                    "y": 0.4963410794734955,
+                    "z": -0.34876304864883423,
+                    "visibility": 0.9491063356399536
+                },
+                {
+                    "id": 23,
+                    "x": 0.29288992285728455,
+                    "y": 0.4831870198249817,
+                    "z": 0.10420159250497818,
+                    "visibility": 0.9978342652320862
+                },
+                {
+                    "id": 24,
+                    "x": 0.26579514145851135,
+                    "y": 0.4843566119670868,
+                    "z": -0.10420159250497818,
+                    "visibility": 0.999322772026062
+                },
+                {
+                    "id": 25,
+                    "x": 0.2624867558479309,
+                    "y": 0.6759105920791626,
+                    "z": 0.24604065716266632,
+                    "visibility": 0.7570766806602478
+                },
+                {
+                    "id": 26,
+                    "x": 0.2827673554420471,
+                    "y": 0.6935979723930359,
+                    "z": -0.04934783652424812,
+                    "visibility": 0.9779256582260132
+                },
+                {
+                    "id": 27,
+                    "x": 0.21541135013103485,
+                    "y": 0.8204807043075562,
+                    "z": 0.41088956594467163,
+                    "visibility": 0.9008791446685791
+                },
+                {
+                    "id": 28,
+                    "x": 0.2902950346469879,
+                    "y": 0.8899922966957092,
+                    "z": 0.047745365649461746,
+                    "visibility": 0.9849852323532104
+                },
+                {
+                    "id": 29,
+                    "x": 0.19395825266838074,
+                    "y": 0.8389579057693481,
+                    "z": 0.4230518937110901,
+                    "visibility": 0.9017477631568909
+                },
+                {
+                    "id": 30,
+                    "x": 0.2774500846862793,
+                    "y": 0.9255216717720032,
+                    "z": 0.051155753433704376,
+                    "visibility": 0.9592307209968567
+                },
+                {
+                    "id": 31,
+                    "x": 0.2412519007921219,
+                    "y": 0.8855656385421753,
+                    "z": 0.3648699223995209,
+                    "visibility": 0.9365176558494568
+                },
+                {
+                    "id": 32,
+                    "x": 0.3426968455314636,
+                    "y": 0.9275295734405518,
+                    "z": -0.057072557508945465,
+                    "visibility": 0.9773707389831543
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal",
+            "model_used": "XGBoost",
+            "confidence": 0.99,
+            "feature_importances": {
+                "step_symmetry": 0.453,
+                "walking_speed": 0.272,
+                "knee_angle": 0.11,
+                "elbow_angle": 0.076,
+                "balance_stability": 0.042,
+                "cadence": 0.027,
+                "step_width": 0.008,
+                "hip_angle": 0.005,
+                "shoulder_angle": 0.002,
+                "stride_length": 0.002,
+                "arm_swing": 0.001,
+                "rom_score": 0.0
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Range of Motion: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Reduced Balance Stability: Prescribe standing balance trials (single-leg stand, tandem gait, weight transfer) with safety railings.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "therapist_notes": "",
+        "_id": "9aab0ea9-3bf5-4edf-8052-809ae8c5985b",
+        "prescribed_exercises": [
+            {
+                "title": "Tandem Stance & Weight-Shifting Protocol with Safety Railings",
+                "category": "Balance & Stability",
+                "target_deficit": "Elevated Lateral Trunk Sway / Balance Score (30.0%)",
+                "dosage": "3 sets \u00d7 30-second holds",
+                "intensity": "Active-Assisted",
+                "instructions": "Stand with one foot directly in front of the other (heel-to-toe) near a counter. Maintain balance for 30 seconds without leaning. Practice slow side-to-side weight shifting.",
+                "clinical_rationale": "Trunk balance stability is 30.0%, indicating elevated fall risk. Static and dynamic balance retraining improves vestibular-somatosensory integration."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (11.4\u00b0) & Gait Arm Swing (23.6\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ]
+    }
+]

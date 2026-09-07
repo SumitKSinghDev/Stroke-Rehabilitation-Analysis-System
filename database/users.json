@@ -1,0 +1,26 @@
+[
+    {
+        "username": "admin",
+        "email": "admin@rehabshield.org",
+        "full_name": "System Administrator",
+        "role": "Admin",
+        "password_hash": "$2b$12$bRB3N0VTqfAJekXoTMVEi.DkegqYRf4HAxi.VynT9P9010k3cRQra",
+        "_id": "01815062-b37a-4bf8-83bb-7968098b26e5"
+    },
+    {
+        "username": "therapist",
+        "email": "therapist@rehabshield.org",
+        "full_name": "Dr. Ramesh Kumar (PT)",
+        "role": "Physiotherapist",
+        "password_hash": "$2b$12$DbgsTYUj5T9p90ufiEgkCuMCpKwhl59MgiZLPzHF6nsp.vGTa3etm",
+        "_id": "0ce4f13b-8daf-439f-86ec-81170843112e"
+    },
+    {
+        "username": "doctor",
+        "email": "doctor@rehabshield.org",
+        "full_name": "Dr. Ananya Iyer (MD, Neurologist)",
+        "role": "Doctor",
+        "password_hash": "$2b$12$LGOv60SJeMxuBoGG6c4xNOK/9duwfGjUAT8XsVtY0q/Jv3bZfmZ0O",
+        "_id": "d588f453-487f-4caa-878a-a609a64ce9ff"
+    }
+]

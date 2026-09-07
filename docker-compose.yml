@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  rehabshield:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    volumes:
+      - ./uploads:/app/uploads
+      - ./reports:/app/reports
+      - ./database:/app/database
+    restart: unless-stopped
