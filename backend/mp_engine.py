@@ -38,12 +38,20 @@ def ensure_model_asset() -> str:
     if not MODEL_PATH.exists() or MODEL_PATH.stat().st_size < 1000000:
         logger.info(f"Downloading MediaPipe PoseLandmarker model asset from {MODEL_URL}...")
         try:
-            urllib.request.urlretrieve(MODEL_URL, str(MODEL_PATH))
+            req = urllib.request.Request(
+                MODEL_URL,
+                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+            )
+            import ssl
+            context = ssl._create_unverified_context()
+            with urllib.request.urlopen(req, context=context) as response, open(MODEL_PATH, "wb") as out_file:
+                out_file.write(response.read())
             logger.info(f"Model asset downloaded successfully to {MODEL_PATH} ({MODEL_PATH.stat().st_size} bytes)")
         except Exception as e:
             logger.error(f"Failed to download MediaPipe model asset: {e}")
             raise RuntimeError(f"Pose model asset could not be downloaded/initialized: {e}")
     return str(MODEL_PATH)
+
 
 
 def calculate_angle(a: Tuple[float, float], b: Tuple[float, float], c: Tuple[float, float]) -> float:
@@ -105,7 +113,6 @@ def process_video_real(video_path: str) -> dict:
     
     use_tasks_api = False
     landmarker = None
-    mp_pose_legacy = None
 
     try:
         from mediapipe.tasks import python
@@ -125,21 +132,8 @@ def process_video_real(video_path: str) -> dict:
         use_tasks_api = True
         logger.info("MediaPipe Tasks PoseLandmarker initialized successfully!")
     except Exception as e:
-        logger.warning(f"MediaPipe Tasks API initialization failed: {e}. Attempting legacy mp.solutions fallback...")
-        try:
-            if hasattr(mp, 'solutions') and hasattr(mp.solutions, 'pose'):
-                mp_pose_legacy = mp.solutions.pose.Pose(
-                    static_image_mode=False,
-                    model_complexity=1,
-                    min_detection_confidence=0.3,
-                    min_tracking_confidence=0.3
-                )
-                logger.info("Legacy mp.solutions.pose initialized successfully!")
-            else:
-                raise RuntimeError("Legacy mp.solutions.pose is not available in installed MediaPipe package.")
-        except Exception as fallback_err:
-            logger.error(f"Pose model could not be initialized: {fallback_err}")
-            raise RuntimeError(f"Pose model could not be initialized: {fallback_err}")
+        logger.error(f"MediaPipe Tasks API initialization failed: {e}")
+        raise RuntimeError(f"Pose model could not be initialized: {e}")
 
     logger.info("==================================================")
     logger.info("STAGE 3: FRAME-BY-FRAME POSE EXTRACTION")
@@ -185,19 +179,6 @@ def process_video_real(video_path: str) -> dict:
                         }
                         for idx, lm in enumerate(raw_lms[:33])
                     ]
-        elif mp_pose_legacy:
-            results = mp_pose_legacy.process(rgb_frame)
-            if results.pose_landmarks and len(results.pose_landmarks.landmark) >= 33:
-                landmarks_33 = [
-                    {
-                        "id": idx,
-                        "x": round(lm.x, 4),
-                        "y": round(lm.y, 4),
-                        "z": round(lm.z, 4),
-                        "visibility": round(getattr(lm, 'visibility', 0.99), 3)
-                    }
-                    for idx, lm in enumerate(results.pose_landmarks.landmark[:33])
-                ]
 
         if landmarks_33:
             valid_pose_frames += 1
@@ -263,8 +244,11 @@ def process_video_real(video_path: str) -> dict:
             invalid_pose_frames += 1
 
     cap.release()
-    if mp_pose_legacy:
-        mp_pose_legacy.close()
+    if hasattr(landmarker, "close"):
+        try:
+            landmarker.close()
+        except Exception:
+            pass
 
     detection_rate_pct = round((valid_pose_frames / max(1, frame_count)) * 100, 2)
 
