@@ -7,6 +7,8 @@ interface SkeletonViewerProps {
 }
 
 export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affectedSide = 'Right' }) => {
+  const [viewPerspective, setViewPerspective] = React.useState<'raw' | 'enhanced'>('enhanced');
+
   if (!landmarks || landmarks.length === 0) {
     return (
       <div className="w-full h-80 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center text-slate-500 font-medium">
@@ -28,6 +30,23 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
     [28, 30], [30, 32], [28, 32], // right foot
   ];
 
+  // Helper to adjust X/Y for side-profile perspective separation
+  const getAdjustedPoint = (lm: Landmark) => {
+    if (viewPerspective === 'raw') return { x: lm.x, y: lm.y };
+    
+    // Check if left vs right shoulder distance is small (indicates side view)
+    const shL = landmarks.find(p => p.id === 11);
+    const shR = landmarks.find(p => p.id === 12);
+    const isSideView = shL && shR && Math.abs(shL.x - shR.x) < 0.08;
+
+    if (!isSideView) return { x: lm.x, y: lm.y };
+
+    // Apply minor lateral offset for side view clarity
+    const isLeft = [11, 13, 15, 23, 25, 27, 29, 31].includes(lm.id);
+    const offset = isLeft ? -0.015 : 0.015;
+    return { x: lm.x + offset, y: lm.y };
+  };
+
   // Helper to determine line color based on affected side
   const getLineColor = (idA: number, idB: number) => {
     const isLeftLimb = [11, 13, 15, 23, 25, 27, 29, 31].includes(idA) && [11, 13, 15, 23, 25, 27, 29, 31].includes(idB);
@@ -47,17 +66,35 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
       {/* Background medical grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-[size:4%_6%] opacity-40"></div>
       
+      {/* Perspective view mode toggle */}
+      <div className="absolute top-4 right-4 z-10 flex bg-slate-900/90 backdrop-blur-md border border-slate-800 p-1 rounded-xl text-[10px] font-bold text-slate-300">
+        <button
+          onClick={() => setViewPerspective('enhanced')}
+          className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'enhanced' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
+        >
+          Side-Profile Separation
+        </button>
+        <button
+          onClick={() => setViewPerspective('raw')}
+          className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'raw' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
+        >
+          Raw 2D Overlay
+        </button>
+      </div>
+
       <svg 
         viewBox="0 0 1 1" 
         className="w-full h-full absolute"
       >
         {/* Draw connections */}
         {connections.map(([idA, idB], index) => {
-          const ptA = landmarks.find(lm => lm.id === idA);
-          const ptB = landmarks.find(lm => lm.id === idB);
+          const rawA = landmarks.find(lm => lm.id === idA);
+          const rawB = landmarks.find(lm => lm.id === idB);
           
-          if (!ptA || !ptB) return null;
+          if (!rawA || !rawB) return null;
           
+          const ptA = getAdjustedPoint(rawA);
+          const ptB = getAdjustedPoint(rawB);
           const strokeColor = getLineColor(idA, idB);
           
           return (
@@ -72,7 +109,7 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
               className="skeleton-line"
               style={{
                 filter: `drop-shadow(0 0 4px ${strokeColor})`,
-                opacity: (ptA.visibility > 0.4 && ptB.visibility > 0.4) ? 0.9 : 0.2
+                opacity: (rawA.visibility > 0.3 && rawB.visibility > 0.3) ? 0.9 : 0.2
               }}
             />
           );
@@ -80,6 +117,7 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
 
         {/* Draw joints */}
         {landmarks.map((lm) => {
+          const pt = getAdjustedPoint(lm);
           const isLeft = [11, 13, 15, 23, 25, 27, 29, 31].includes(lm.id);
           const isRight = [12, 14, 16, 24, 26, 28, 30, 32].includes(lm.id);
           
@@ -94,15 +132,15 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
           return (
             <circle
               key={`joint-${lm.id}`}
-              cx={lm.x}
-              cy={lm.y}
+              cx={pt.x}
+              cy={pt.y}
               r={lm.id === 0 ? "0.012" : "0.008"} // Head is slightly larger
               fill={color}
               stroke="#FFF"
               strokeWidth="0.002"
               style={{
                 filter: `drop-shadow(0 0 3px ${color})`,
-                opacity: lm.visibility > 0.4 ? 1 : 0.1
+                opacity: lm.visibility > 0.3 ? 1 : 0.1
               }}
             />
           );

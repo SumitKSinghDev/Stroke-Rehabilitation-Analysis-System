@@ -187,13 +187,29 @@ export const PatientProfile: React.FC = () => {
       balanceStability = Math.min(99.0, Math.max(30.0, 100.0 - (variance * 12000)));
     }
 
-    const sampleLandmarks = history[0] ? history[0].map((lm: any, idx: number) => ({
+    // Pick the optimal mid-stride frame with maximum leg motion spread for skeleton display
+    let bestFrameIdx = Math.floor(history.length / 2);
+    let maxSpread = 0;
+
+    history.forEach((frame, fIdx) => {
+      if (frame && frame[27] && frame[28]) {
+        const dist = Math.abs(frame[27].x - frame[28].x) + Math.abs(frame[25].y - frame[26].y);
+        if (dist > maxSpread) {
+          maxSpread = dist;
+          bestFrameIdx = fIdx;
+        }
+      }
+    });
+
+    const bestFrame = history[bestFrameIdx] || history[0] || [];
+
+    const sampleLandmarks = bestFrame.map((lm: any, idx: number) => ({
       id: idx,
       x: lm.x,
       y: lm.y,
       z: lm.z || 0,
       visibility: lm.visibility || 0.95
-    })) : [];
+    }));
 
     return {
       angles: {
@@ -405,24 +421,24 @@ export const PatientProfile: React.FC = () => {
     const landmarks = [];
     for (let i = 0; i < 33; i++) {
       let x = 0.5, y = 0.5;
-      if (i === 0) { x = 0.5; y = 0.18; }
-      else if (i === 11) { x = 0.42; y = 0.28; }
-      else if (i === 12) { x = 0.58; y = 0.28; }
-      else if (i === 13) { x = leftSide ? 0.40 : 0.38; y = leftSide ? 0.38 : 0.42; }
-      else if (i === 14) { x = leftSide ? 0.62 : 0.60; y = leftSide ? 0.42 : 0.38; }
-      else if (i === 15) { x = leftSide ? 0.43 : 0.36; y = leftSide ? 0.45 : 0.52; }
-      else if (i === 16) { x = leftSide ? 0.64 : 0.57; y = leftSide ? 0.52 : 0.45; }
-      else if (i === 23) { x = 0.45; y = 0.52; }
-      else if (i === 24) { x = 0.55; y = 0.52; }
-      else if (i === 25) { x = 0.44; y = 0.72; }
-      else if (i === 26) { x = 0.56; y = 0.72; }
-      else if (i === 27) { x = 0.43; y = 0.90; }
-      else if (i === 28) { x = 0.57; y = 0.90; }
+      if (i === 0) { x = 0.48; y = 0.16; }
+      else if (i === 11) { x = leftSide ? 0.46 : 0.48; y = 0.28; }
+      else if (i === 12) { x = leftSide ? 0.48 : 0.52; y = 0.28; }
+      else if (i === 13) { x = leftSide ? 0.41 : 0.45; y = leftSide ? 0.36 : 0.40; }
+      else if (i === 14) { x = leftSide ? 0.51 : 0.55; y = leftSide ? 0.40 : 0.36; }
+      else if (i === 15) { x = leftSide ? 0.44 : 0.48; y = leftSide ? 0.44 : 0.48; }
+      else if (i === 16) { x = leftSide ? 0.54 : 0.58; y = leftSide ? 0.48 : 0.44; }
+      else if (i === 23) { x = leftSide ? 0.46 : 0.48; y = 0.52; }
+      else if (i === 24) { x = leftSide ? 0.48 : 0.52; y = 0.52; }
+      else if (i === 25) { x = leftSide ? 0.36 : 0.44; y = 0.70; }
+      else if (i === 26) { x = leftSide ? 0.52 : 0.58; y = 0.71; }
+      else if (i === 27) { x = leftSide ? 0.31 : 0.40; y = 0.88; }
+      else if (i === 28) { x = leftSide ? 0.56 : 0.64; y = 0.88; }
       
       landmarks.push({
         id: i,
-        x: x + (Math.random() - 0.5) * 0.006,
-        y: y + (Math.random() - 0.5) * 0.006,
+        x: x + (Math.random() - 0.5) * 0.004,
+        y: y + (Math.random() - 0.5) * 0.004,
         z: 0.0,
         visibility: 0.98
       });
