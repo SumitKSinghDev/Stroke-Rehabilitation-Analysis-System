@@ -8,17 +8,8 @@ from typing import Dict, List, Tuple, Any
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("mp_engine")
 
-try:
-    import cv2
-    OPENCV_AVAILABLE = True
-except ImportError:
-    OPENCV_AVAILABLE = False
-
-try:
-    import mediapipe as mp
-    MEDIAPIPE_AVAILABLE = True
-except ImportError:
-    MEDIAPIPE_AVAILABLE = False
+import cv2
+import mediapipe as mp
 
 # Path to local MediaPipe Tasks model asset
 MODEL_DIR = Path(__file__).parent / "models"
@@ -70,10 +61,6 @@ def process_video_real(video_path: str) -> dict:
 
     file_size = os.path.getsize(video_path)
     logger.info(f"Video file verified on disk. Size: {file_size} bytes")
-
-    if not OPENCV_AVAILABLE or not MEDIAPIPE_AVAILABLE:
-        logger.error("OpenCV or MediaPipe Python packages are missing.")
-        raise RuntimeError("OpenCV or MediaPipe Python dependencies are not installed on the server.")
 
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
