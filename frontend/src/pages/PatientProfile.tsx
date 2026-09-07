@@ -65,6 +65,45 @@ export const PatientProfile: React.FC = () => {
   const [formError, setFormError] = useState('');
   const [scanProgress, setScanProgress] = useState<number | null>(null);
 
+  const loadData = async () => {
+    if (!id) return;
+    try {
+      // 1. Fetch Patient details
+      const patientData = await api.patients.get(id);
+      setPatient(patientData);
+      
+      // 2. Fetch Sessions list
+      const sess = await api.assessments.list(patientData.patient_id);
+      setAssessments(sess);
+      
+      // Auto-increment session number for new runs
+      setSessionNumber(sess.length > 0 ? sess[sess.length - 1].session_number + 1 : 1);
+      
+      // 3. Fetch progress aggregates
+      const prog = await api.progress.get(patientData.patient_id);
+      setProgress(prog);
+
+      // Default inspector to latest session if any exists
+      if (sess.length > 0) {
+        setSelectedAssessment(sess[sess.length - 1]);
+      }
+    } catch (err) {
+      console.error('Error loading patient profile:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+  }, [id]);
+
+  const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setVideoFile(e.target.files[0]);
+    }
+  };
+
   const handleCreateAssessment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!patient) return;
@@ -940,7 +979,7 @@ export const PatientProfile: React.FC = () => {
                   <div className="grid grid-cols-2 gap-4 text-center">
                     <div className="p-3 bg-blue-500/5 dark:bg-blue-500/10 rounded-xl border border-blue-500/10">
                       <span className="text-lg font-black text-blue-600 dark:text-blue-400">
-                        {selectedAssessment.clinical_scores.overall_clinical_score > 0 ? `${selectedAssessment.clinical_scores.overall_clinical_score}%` : 'N/A'}
+                        {(selectedAssessment.clinical_scores?.overall_clinical_score ?? 0) > 0 ? `${selectedAssessment.clinical_scores.overall_clinical_score}%` : 'N/A'}
                       </span>
                       <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Validation</p>
                     </div>
