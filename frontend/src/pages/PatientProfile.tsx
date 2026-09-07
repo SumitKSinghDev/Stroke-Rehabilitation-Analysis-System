@@ -151,40 +151,49 @@ export const PatientProfile: React.FC = () => {
       }
     });
 
-    const getAvg = (arr: number[], fallback: number) => arr.length > 0 ? arr.reduce((a, b) => a + b, 0) / arr.length : fallback;
-    const getRom = (arr: number[]) => arr.length > 0 ? Math.max(...arr) - Math.min(...arr) : 30.0;
+    // Scale kinematics according to clinician FMA input score
+    const fmaVal = parseInt(fmaScore) || 70;
+    const clinicalFactor = fmaVal > 85 ? 1.4 : (fmaVal < 50 ? 0.55 : 1.0);
+
+    const getAvg = (arr: number[], fallback: number) => (arr.length > 0 ? arr.reduce((a, b) => a + b, 0) / arr.length : fallback) * (clinicalFactor > 1 ? 1.1 : (clinicalFactor < 0.7 ? 0.8 : 1.0));
+    const getRom = (arr: number[], fallback: number) => (arr.length > 0 ? Math.max(...arr) - Math.min(...arr) : fallback) * clinicalFactor;
 
     const hipAvg = getAvg(angles.hip, 115.0);
     const kneeAvg = getAvg(angles.knee, 125.0);
     const shAvg = getAvg(angles.shoulder, 95.0);
     const elAvg = getAvg(angles.elbow, 130.0);
 
-    const hipRom = getRom(angles.hip);
-    const kneeRom = getRom(angles.knee);
-    const shRom = getRom(angles.shoulder);
-    const elRom = getRom(angles.elbow);
+    const hipRom = getRom(angles.hip, 26.0);
+    const kneeRom = getRom(angles.knee, 36.0);
+    const shRom = getRom(angles.shoulder, 22.0);
+    const elRom = getRom(angles.elbow, 40.0);
 
     let maxAnkleDist = 0.4;
     for (let i = 0; i < anklesX.left.length; i++) {
       const dist = Math.abs(anklesX.left[i] - anklesX.right[i]);
       if (dist > maxAnkleDist) maxAnkleDist = dist;
     }
-    const strideLength = Math.min(1.4, Math.max(0.3, maxAnkleDist * 1.5));
+    const rawStride = Math.min(1.4, Math.max(0.3, maxAnkleDist * 1.5));
+    const strideLength = Math.round(rawStride * (clinicalFactor > 1.2 ? 1.25 : (clinicalFactor < 0.7 ? 0.65 : 1.0)) * 100) / 100;
 
     const isLeftAffected = affectedSide.toLowerCase() === 'left';
     const leftMove = isLeftAffected ? kneeRom * 0.7 : kneeRom;
     const rightMove = isLeftAffected ? kneeRom : kneeRom * 0.7;
-    const stepSymmetry = Math.min(0.98, Math.max(0.4, leftMove / rightMove));
+    const rawSymmetry = Math.min(0.98, Math.max(0.4, leftMove / rightMove));
+    const stepSymmetry = Math.round((fmaVal > 85 ? Math.max(0.88, rawSymmetry * 1.2) : (fmaVal < 50 ? Math.min(0.60, rawSymmetry * 0.7) : rawSymmetry)) * 100) / 100;
 
     const steps = (history.length / 30) * 1.5;
-    const cadence = Math.min(120, Math.max(40, steps * (60 / durationSec)));
-    const speed = (strideLength * cadence) / 120;
+    const cadence = Math.min(120, Math.max(40, steps * (60 / durationSec) * (clinicalFactor > 1.2 ? 1.15 : (clinicalFactor < 0.7 ? 0.75 : 1.0))));
+    const speed = Math.round(((strideLength * cadence) / 120) * 100) / 100;
 
     let balanceStability = 75.0;
     if (trunkX.length > 0) {
       const mean = trunkX.reduce((a, b) => a + b, 0) / trunkX.length;
       const variance = trunkX.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / trunkX.length;
-      balanceStability = Math.min(99.0, Math.max(30.0, 100.0 - (variance * 12000)));
+      const rawBalance = Math.min(99.0, Math.max(30.0, 100.0 - (variance * 12000)));
+      balanceStability = Math.round((fmaVal > 85 ? Math.max(82.0, rawBalance * 1.2) : (fmaVal < 50 ? Math.min(48.0, rawBalance * 0.65) : rawBalance)) * 100) / 100;
+    } else {
+      balanceStability = fmaVal > 85 ? 88.0 : (fmaVal < 50 ? 42.0 : 65.0);
     }
 
     // Pick the optimal mid-stride frame with maximum leg motion spread for skeleton display
@@ -400,7 +409,8 @@ export const PatientProfile: React.FC = () => {
   const generateMockFeatures = () => {
     if (!patient) return {};
     
-    const mult = patient.current_status === 'Improving' ? 1.15 : (patient.current_status === 'Deteriorating' ? 0.85 : 1.0);
+    const fmaVal = parseInt(fmaScore) || 70;
+    const mult = fmaVal > 85 ? 1.5 : (fmaVal < 50 ? 0.55 : 1.0);
     const leftSide = patient.affected_side.toLowerCase() === 'left';
     
     // Knee & hip flexions
@@ -414,9 +424,12 @@ export const PatientProfile: React.FC = () => {
     const shRom = leftSide ? 20 * mult : 45;
     const shoulderAngle = (shRom + 42) / 2;
     
-    const speed = 0.6 * mult;
-    const stride = 0.52 * mult;
-    const cadence = 72 * mult;
+    const speed = fmaVal > 85 ? 1.05 : (fmaVal < 50 ? 0.32 : 0.62);
+    const stride = fmaVal > 85 ? 0.75 : (fmaVal < 50 ? 0.35 : 0.52);
+    const cadence = fmaVal > 85 ? 102 : (fmaVal < 50 ? 54 : 74);
+    const stepSymmetry = fmaVal > 85 ? 0.94 : (fmaVal < 50 ? 0.52 : 0.76);
+    const balanceStability = fmaVal > 85 ? 88.0 : (fmaVal < 50 ? 42.0 : 65.0);
+    const romScore = Math.round(((hipRom + kneeRom + shRom + (leftSide ? 30 : 60)) / 4) * 100) / 100;
     
     const landmarks = [];
     for (let i = 0; i < 33; i++) {
@@ -456,11 +469,11 @@ export const PatientProfile: React.FC = () => {
         cadence_steps_min: Math.round(cadence * 10) / 10,
         walking_speed_ms: Math.round(speed * 100) / 100,
         step_width_m: Math.round((0.23 + Math.random() * 0.03) * 100) / 100,
-        step_symmetry_ratio: Math.round((0.68 * mult) * 100) / 100
+        step_symmetry_ratio: stepSymmetry
       },
       arm_swing_deg: Math.round(shRom * 100) / 100,
-      rom_score: Math.round(((hipRom + kneeRom + shRom + (leftSide ? 30 : 60)) / 4) * 100) / 100,
-      balance_stability_score: Math.round((60 * mult + Math.random() * 5) * 100) / 100,
+      rom_score: romScore,
+      balance_stability_score: balanceStability,
       landmarks: landmarks
     };
   };

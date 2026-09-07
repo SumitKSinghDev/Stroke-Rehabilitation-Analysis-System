@@ -228,21 +228,21 @@ class MLEngine:
         severity += max(0, 90 - balance) * 0.25    # Up to 22.5 points
         severity += max(0, 70 - rom) * 0.2         # Up to 14 points
 
-        if severity < 15:
+        if severity < 18:
             level = "Normal"
             confidence = 0.95 - (severity * 0.01)
-        elif severity < 35:
+        elif severity < 38:
             level = "Mild"
-            confidence = 0.85 - ((severity - 15) * 0.01)
-        elif severity < 60:
+            confidence = 0.88 - ((severity - 18) * 0.008)
+        elif severity < 62:
             level = "Moderate"
-            confidence = 0.80 - ((severity - 35) * 0.008)
-        elif severity < 82:
+            confidence = 0.84 - ((severity - 38) * 0.006)
+        elif severity < 78:
             level = "Severe"
-            confidence = 0.85 - ((severity - 60) * 0.005)
+            confidence = 0.89 - ((severity - 62) * 0.005)
         else:
             level = "Very Severe"
-            confidence = 0.90 - ((severity - 82) * 0.004)
+            confidence = 0.92 - ((severity - 78) * 0.004)
 
         # Standard gait feature importance coefficients
         static_importance = {
