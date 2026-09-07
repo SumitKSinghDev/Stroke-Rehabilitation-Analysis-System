@@ -8,6 +8,7 @@ interface SkeletonViewerProps {
 
 export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affectedSide = 'Right' }) => {
   const [viewPerspective, setViewPerspective] = React.useState<'raw' | 'enhanced'>('enhanced');
+  const [isFlipped, setIsFlipped] = React.useState<boolean>(false);
 
   if (!landmarks || landmarks.length === 0) {
     return (
@@ -30,21 +31,24 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
     [28, 30], [30, 32], [28, 32], // right foot
   ];
 
-  // Helper to adjust X/Y for side-profile perspective separation
+  // Helper to adjust X/Y for side-profile perspective separation and mirroring
   const getAdjustedPoint = (lm: Landmark) => {
-    if (viewPerspective === 'raw') return { x: lm.x, y: lm.y };
+    let x = isFlipped ? 1.0 - lm.x : lm.x;
+    let y = lm.y;
+
+    if (viewPerspective === 'raw') return { x, y };
     
     // Check if left vs right shoulder distance is small (indicates side view)
     const shL = landmarks.find(p => p.id === 11);
     const shR = landmarks.find(p => p.id === 12);
     const isSideView = shL && shR && Math.abs(shL.x - shR.x) < 0.08;
 
-    if (!isSideView) return { x: lm.x, y: lm.y };
+    if (!isSideView) return { x, y };
 
     // Apply minor lateral offset for side view clarity
     const isLeft = [11, 13, 15, 23, 25, 27, 29, 31].includes(lm.id);
-    const offset = isLeft ? -0.015 : 0.015;
-    return { x: lm.x + offset, y: lm.y };
+    const offset = isLeft ? (isFlipped ? 0.015 : -0.015) : (isFlipped ? -0.015 : 0.015);
+    return { x: x + offset, y };
   };
 
   // Helper to determine line color based on affected side
@@ -67,19 +71,28 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#020617_1px,transparent_1px),linear-gradient(to_bottom,#020617_1px,transparent_1px)] bg-[size:4%_6%] opacity-40"></div>
       
       {/* Perspective view mode toggle */}
-      <div className="absolute top-4 right-4 z-10 flex bg-slate-900/90 backdrop-blur-md border border-slate-800 p-1 rounded-xl text-[10px] font-bold text-slate-300">
+      <div className="absolute top-4 right-4 z-10 flex gap-2">
         <button
-          onClick={() => setViewPerspective('enhanced')}
-          className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'enhanced' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
+          onClick={() => setIsFlipped(!isFlipped)}
+          className={`px-3 py-1.5 rounded-xl border border-slate-800 backdrop-blur-md text-[10px] font-bold transition-all ${isFlipped ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'bg-slate-900/90 text-slate-300 hover:text-white'}`}
         >
-          Side-Profile Separation
+          {isFlipped ? 'Mirrored (Flipped)' : 'Normal View'}
         </button>
-        <button
-          onClick={() => setViewPerspective('raw')}
-          className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'raw' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
-        >
-          Raw 2D Overlay
-        </button>
+
+        <div className="flex bg-slate-900/90 backdrop-blur-md border border-slate-800 p-1 rounded-xl text-[10px] font-bold text-slate-300">
+          <button
+            onClick={() => setViewPerspective('enhanced')}
+            className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'enhanced' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
+          >
+            Side-Profile Separation
+          </button>
+          <button
+            onClick={() => setViewPerspective('raw')}
+            className={`px-3 py-1.5 rounded-lg transition-all ${viewPerspective === 'raw' ? 'bg-primary text-white shadow-sm' : 'hover:text-white'}`}
+          >
+            Raw 2D Overlay
+          </button>
+        </div>
       </div>
 
       <svg 

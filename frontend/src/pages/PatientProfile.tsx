@@ -411,7 +411,8 @@ export const PatientProfile: React.FC = () => {
     
     const fmaVal = parseInt(fmaScore) || 70;
     const mult = fmaVal > 85 ? 1.5 : (fmaVal < 50 ? 0.55 : 1.0);
-    const leftSide = patient.affected_side.toLowerCase() === 'left';
+    const isRight = patient.affected_side.toLowerCase() === 'right';
+    const isLeft = patient.affected_side.toLowerCase() === 'left';
     
     // Knee & hip flexions
     const kneeRom = 36 * mult;
@@ -419,9 +420,9 @@ export const PatientProfile: React.FC = () => {
     const hipRom = 26 * mult;
     const hipAngle = (hipRom + 40) / 2;
     
-    // Elbow flexed hemiplegic posture
-    const elbowAngle = leftSide ? 108 / mult : 148;
-    const shRom = leftSide ? 20 * mult : 45;
+    // Elbow flexed hemiplegic posture on affected side
+    const elbowAngle = isRight ? (108 / mult) : (isLeft ? 108 / mult : 140);
+    const shRom = isRight ? (20 * mult) : (isLeft ? 20 * mult : 40);
     const shoulderAngle = (shRom + 42) / 2;
     
     const speed = fmaVal > 85 ? 1.05 : (fmaVal < 50 ? 0.32 : 0.62);
@@ -429,24 +430,34 @@ export const PatientProfile: React.FC = () => {
     const cadence = fmaVal > 85 ? 102 : (fmaVal < 50 ? 54 : 74);
     const stepSymmetry = fmaVal > 85 ? 0.94 : (fmaVal < 50 ? 0.52 : 0.76);
     const balanceStability = fmaVal > 85 ? 88.0 : (fmaVal < 50 ? 42.0 : 65.0);
-    const romScore = Math.round(((hipRom + kneeRom + shRom + (leftSide ? 30 : 60)) / 4) * 100) / 100;
+    const romScore = Math.round(((hipRom + kneeRom + shRom + 45) / 4) * 100) / 100;
     
     const landmarks = [];
     for (let i = 0; i < 33; i++) {
       let x = 0.5, y = 0.5;
-      if (i === 0) { x = 0.48; y = 0.16; }
-      else if (i === 11) { x = leftSide ? 0.46 : 0.48; y = 0.28; }
-      else if (i === 12) { x = leftSide ? 0.48 : 0.52; y = 0.28; }
-      else if (i === 13) { x = leftSide ? 0.41 : 0.45; y = leftSide ? 0.36 : 0.40; }
-      else if (i === 14) { x = leftSide ? 0.51 : 0.55; y = leftSide ? 0.40 : 0.36; }
-      else if (i === 15) { x = leftSide ? 0.44 : 0.48; y = leftSide ? 0.44 : 0.48; }
-      else if (i === 16) { x = leftSide ? 0.54 : 0.58; y = leftSide ? 0.48 : 0.44; }
-      else if (i === 23) { x = leftSide ? 0.46 : 0.48; y = 0.52; }
-      else if (i === 24) { x = leftSide ? 0.48 : 0.52; y = 0.52; }
-      else if (i === 25) { x = leftSide ? 0.36 : 0.44; y = 0.70; }
-      else if (i === 26) { x = leftSide ? 0.52 : 0.58; y = 0.71; }
-      else if (i === 27) { x = leftSide ? 0.31 : 0.40; y = 0.88; }
-      else if (i === 28) { x = leftSide ? 0.56 : 0.64; y = 0.88; }
+      if (i === 0) { x = 0.5; y = 0.16; }
+      else if (i === 11) { x = 0.42; y = 0.28; } // L Shoulder
+      else if (i === 12) { x = 0.58; y = 0.28; } // R Shoulder
+      
+      // L Elbow (13) & R Elbow (14)
+      else if (i === 13) { x = 0.38; y = isLeft ? 0.42 : 0.36; } // Left elbow flexed if Left is affected
+      else if (i === 14) { x = 0.62; y = isRight ? 0.42 : 0.36; } // Right elbow flexed if Right is affected
+      
+      // L Wrist (15) & R Wrist (16)
+      else if (i === 15) { x = 0.36; y = isLeft ? 0.50 : 0.44; }
+      else if (i === 16) { x = 0.64; y = isRight ? 0.50 : 0.44; }
+      
+      // L Hip (23) & R Hip (24)
+      else if (i === 23) { x = 0.44; y = 0.52; }
+      else if (i === 24) { x = 0.56; y = 0.52; }
+      
+      // L Knee (25) & R Knee (26)
+      else if (i === 25) { x = 0.42; y = isLeft ? 0.74 : 0.70; }
+      else if (i === 26) { x = 0.58; y = isRight ? 0.74 : 0.70; }
+      
+      // L Ankle (27) & R Ankle (28)
+      else if (i === 27) { x = 0.40; y = isLeft ? 0.90 : 0.86; }
+      else if (i === 28) { x = 0.60; y = isRight ? 0.90 : 0.86; }
       
       landmarks.push({
         id: i,
