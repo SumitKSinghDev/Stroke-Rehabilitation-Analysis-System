@@ -231,7 +231,7 @@ export const PatientProfile: React.FC = () => {
         stride_length_m: Math.round(strideLength * 100) / 100,
         cadence_steps_min: Math.round(cadence * 10) / 10,
         walking_speed_ms: Math.round(speed * 100) / 100,
-        step_width_m: Math.round((0.21 + Math.random() * 0.04) * 100) / 100,
+        step_width_m: Math.round(maxAnkleDist * 0.5 * 100) / 100,
         step_symmetry_ratio: Math.round(stepSymmetry * 100) / 100
       },
       arm_swing_deg: Math.round(shRom * 100) / 100,
@@ -244,6 +244,11 @@ export const PatientProfile: React.FC = () => {
   const handleCreateAssessment = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!patient) return;
+
+    if (!videoFile) {
+      setFormError("Upload a walking video to begin analysis.");
+      return;
+    }
 
     setAnalyzing(true);
     setFormError('');
@@ -306,187 +311,97 @@ export const PatientProfile: React.FC = () => {
       });
     };
 
-    if (videoFile) {
-      const loaded = await ensureMediaPipeLoaded();
-      if (!loaded) {
-        setFormError("Failed to initialize client-side MediaPipe Pose engine. Please check your network connection.");
-        setAnalyzing(false);
-        setScanProgress(null);
-        return;
-      }
+    const loaded = await ensureMediaPipeLoaded();
+    if (!loaded) {
+      setFormError("Failed to initialize client-side MediaPipe Pose engine. Please check your network connection.");
+      setAnalyzing(false);
+      setScanProgress(null);
+      return;
+    }
 
-      try {
-        const videoEl = document.createElement('video');
-        videoEl.src = URL.createObjectURL(videoFile);
-        videoEl.muted = true;
-        videoEl.playsInline = true;
+    try {
+      const videoEl = document.createElement('video');
+      videoEl.src = URL.createObjectURL(videoFile);
+      videoEl.muted = true;
+      videoEl.playsInline = true;
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
 
-        videoEl.onloadeddata = () => {
-          canvas.width = videoEl.videoWidth || 640;
-          canvas.height = videoEl.videoHeight || 480;
+      videoEl.onloadeddata = () => {
+        canvas.width = videoEl.videoWidth || 640;
+        canvas.height = videoEl.videoHeight || 480;
 
-          const pose = new (window as any).Pose({
-            locateFile: (file: string) => `/mediapipe/${file}`
-          });
+        const pose = new (window as any).Pose({
+          locateFile: (file: string) => `/mediapipe/${file}`
+        });
 
-          pose.setOptions({
-            modelComplexity: 1,
-            smoothLandmarks: true,
-            minDetectionConfidence: 0.3,
-            minTrackingConfidence: 0.3
-          });
+        pose.setOptions({
+          modelComplexity: 1,
+          smoothLandmarks: true,
+          minDetectionConfidence: 0.3,
+          minTrackingConfidence: 0.3
+        });
 
-          const keypointsHistory: any[] = [];
+        const keypointsHistory: any[] = [];
 
-          pose.onResults((results: any) => {
-            if (results.poseLandmarks) {
-              keypointsHistory.push(results.poseLandmarks);
-            }
-          });
+        pose.onResults((results: any) => {
+          if (results.poseLandmarks) {
+            keypointsHistory.push(results.poseLandmarks);
+          }
+        });
 
-          videoEl.pause();
-          
-          const processVideoFrames = async () => {
-            const duration = videoEl.duration && !isNaN(videoEl.duration) ? videoEl.duration : 5.0;
-            const step = 0.2; // sample 5 frames per second
-            let currentTime = 0;
+        videoEl.pause();
+        
+        const processVideoFrames = async () => {
+          const duration = videoEl.duration && !isNaN(videoEl.duration) ? videoEl.duration : 5.0;
+          const step = 0.2; // sample 5 frames per second
+          let currentTime = 0;
 
-            while (currentTime <= duration) {
-              videoEl.currentTime = currentTime;
-              await new Promise((res) => {
-                const onSeeked = () => {
-                  videoEl.removeEventListener('seeked', onSeeked);
-                  res(true);
-                };
-                videoEl.addEventListener('seeked', onSeeked);
-                setTimeout(onSeeked, 120);
-              });
+          while (currentTime <= duration) {
+            videoEl.currentTime = currentTime;
+            await new Promise((res) => {
+              const onSeeked = () => {
+                videoEl.removeEventListener('seeked', onSeeked);
+                res(true);
+              };
+              videoEl.addEventListener('seeked', onSeeked);
+              setTimeout(onSeeked, 120);
+            });
 
-              if (ctx) {
-                ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
-                try {
-                  await pose.send({ image: canvas });
-                } catch (e) {
-                  console.error("Frame send error:", e);
-                }
+            if (ctx) {
+              ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+              try {
+                await pose.send({ image: canvas });
+              } catch (e) {
+                console.error("Frame send error:", e);
               }
-
-              const currentProgress = Math.min(100, Math.round((currentTime / duration) * 100));
-              setScanProgress(currentProgress);
-              currentTime += step;
             }
 
-            if (keypointsHistory.length === 0) {
-              console.warn("No pose landmarks detected in video stream. Using simulated gait analysis fallback.");
-              const fallbackFeats = generateMockFeatures();
-              await directSubmit(fallbackFeats);
-            } else {
-              const calculatedFeatures = calculateFeaturesFromHistory(keypointsHistory, patient.affected_side, duration);
-              await directSubmit(calculatedFeatures);
-            }
-          };
+            const currentProgress = Math.min(100, Math.round((currentTime / duration) * 100));
+            setScanProgress(currentProgress);
+            currentTime += step;
+          }
 
-          processVideoFrames();
+          if (keypointsHistory.length === 0) {
+            setFormError("No valid pose detected in the uploaded video.");
+            setAnalyzing(false);
+            setScanProgress(null);
+            return;
+          } else {
+            const calculatedFeatures = calculateFeaturesFromHistory(keypointsHistory, patient.affected_side, duration);
+            await directSubmit(calculatedFeatures);
+          }
         };
-      } catch (err: any) {
-        console.error("MediaPipe initialization error:", err);
-        const fallbackFeats = generateMockFeatures();
-        await directSubmit(fallbackFeats);
-      }
-    } else {
-      // Fallback: Generate scientifically-grounded simulated paretic metrics aligned with patient details
-      setTimeout(async () => {
-        const fallbackFeats = generateMockFeatures();
-        await directSubmit(fallbackFeats);
-      }, 1500);
-    }
-  };
 
-  // Helper generator for simulated clinical metrics matching patient status
-  const generateMockFeatures = () => {
-    if (!patient) return {};
-    
-    const fmaVal = parseInt(fmaScore) || 70;
-    const mult = fmaVal > 85 ? 1.5 : (fmaVal < 50 ? 0.55 : 1.0);
-    const isRight = patient.affected_side.toLowerCase() === 'right';
-    const isLeft = patient.affected_side.toLowerCase() === 'left';
-    
-    // Knee & hip flexions
-    const kneeRom = 36 * mult;
-    const kneeAngle = (kneeRom + 60) / 2;
-    const hipRom = 26 * mult;
-    const hipAngle = (hipRom + 40) / 2;
-    
-    // Elbow flexed hemiplegic posture on affected side
-    const elbowAngle = isRight ? (108 / mult) : (isLeft ? 108 / mult : 140);
-    const shRom = isRight ? (20 * mult) : (isLeft ? 20 * mult : 40);
-    const shoulderAngle = (shRom + 42) / 2;
-    
-    const speed = fmaVal > 85 ? 1.05 : (fmaVal < 50 ? 0.32 : 0.62);
-    const stride = fmaVal > 85 ? 0.75 : (fmaVal < 50 ? 0.35 : 0.52);
-    const cadence = fmaVal > 85 ? 102 : (fmaVal < 50 ? 54 : 74);
-    const stepSymmetry = fmaVal > 85 ? 0.94 : (fmaVal < 50 ? 0.52 : 0.76);
-    const balanceStability = fmaVal > 85 ? 88.0 : (fmaVal < 50 ? 42.0 : 65.0);
-    const romScore = Math.round(((hipRom + kneeRom + shRom + 45) / 4) * 100) / 100;
-    
-    const landmarks = [];
-    for (let i = 0; i < 33; i++) {
-      let x = 0.5, y = 0.5;
-      if (i === 0) { x = 0.5; y = 0.16; }
-      else if (i === 11) { x = 0.42; y = 0.28; } // L Shoulder
-      else if (i === 12) { x = 0.58; y = 0.28; } // R Shoulder
-      
-      // L Elbow (13) & R Elbow (14)
-      else if (i === 13) { x = 0.38; y = isLeft ? 0.42 : 0.36; } // Left elbow flexed if Left is affected
-      else if (i === 14) { x = 0.62; y = isRight ? 0.42 : 0.36; } // Right elbow flexed if Right is affected
-      
-      // L Wrist (15) & R Wrist (16)
-      else if (i === 15) { x = 0.36; y = isLeft ? 0.50 : 0.44; }
-      else if (i === 16) { x = 0.64; y = isRight ? 0.50 : 0.44; }
-      
-      // L Hip (23) & R Hip (24)
-      else if (i === 23) { x = 0.44; y = 0.52; }
-      else if (i === 24) { x = 0.56; y = 0.52; }
-      
-      // L Knee (25) & R Knee (26)
-      else if (i === 25) { x = 0.42; y = isLeft ? 0.74 : 0.70; }
-      else if (i === 26) { x = 0.58; y = isRight ? 0.74 : 0.70; }
-      
-      // L Ankle (27) & R Ankle (28)
-      else if (i === 27) { x = 0.40; y = isLeft ? 0.90 : 0.86; }
-      else if (i === 28) { x = 0.60; y = isRight ? 0.90 : 0.86; }
-      
-      landmarks.push({
-        id: i,
-        x: x + (Math.random() - 0.5) * 0.004,
-        y: y + (Math.random() - 0.5) * 0.004,
-        z: 0.0,
-        visibility: 0.98
-      });
+        processVideoFrames();
+      };
+    } catch (err: any) {
+      console.error("MediaPipe initialization error:", err);
+      setFormError("No valid pose detected in the uploaded video.");
+      setAnalyzing(false);
+      setScanProgress(null);
     }
-
-    return {
-      angles: {
-        hip_angle_deg: Math.round(hipAngle * 100) / 100,
-        knee_angle_deg: Math.round(kneeAngle * 100) / 100,
-        shoulder_angle_deg: Math.round(shoulderAngle * 100) / 100,
-        elbow_angle_deg: Math.round(elbowAngle * 100) / 100
-      },
-      gait: {
-        stride_length_m: Math.round(stride * 100) / 100,
-        cadence_steps_min: Math.round(cadence * 10) / 10,
-        walking_speed_ms: Math.round(speed * 100) / 100,
-        step_width_m: Math.round((0.23 + Math.random() * 0.03) * 100) / 100,
-        step_symmetry_ratio: stepSymmetry
-      },
-      arm_swing_deg: Math.round(shRom * 100) / 100,
-      rom_score: romScore,
-      balance_stability_score: balanceStability,
-      landmarks: landmarks
-    };
   };
 
   const handleDeletePatient = async () => {
@@ -533,7 +448,7 @@ export const PatientProfile: React.FC = () => {
   const tabs = [
     { id: 'sessions', label: 'Diagnostics Log', icon: FileText },
     { id: 'trends', label: 'Recovery Trends', icon: TrendingUp },
-    { id: 'new_run', label: 'New AI Diagnosis', icon: Plus },
+    { id: 'new_run', label: 'New Movement Analysis', icon: Plus },
   ];
 
   if (assessments.length > 0) {
@@ -580,7 +495,7 @@ export const PatientProfile: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1.5 mt-3 text-xs text-slate-500 dark:text-slate-400 font-semibold">
               <div>Age/Sex: <span className="text-slate-800 dark:text-slate-200">{patient.age} yrs / {patient.gender}</span></div>
               <div>Stroke Classification: <span className="text-slate-800 dark:text-slate-200">{patient.stroke_type}</span></div>
-              <div>Affected Hemiparetic Side: <span className="text-red-500">{patient.affected_side}</span></div>
+              <div>Observed Asymmetry Side: <span className="text-red-500">{patient.affected_side}</span></div>
               <div>Onset Date: <span className="text-slate-800 dark:text-slate-200">{patient.stroke_date}</span></div>
             </div>
           </div>
@@ -615,7 +530,10 @@ export const PatientProfile: React.FC = () => {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => {
+                setActiveTab(tab.id as any);
+                setFormError('');
+              }}
               className={`pb-4 px-1 flex items-center space-x-2 transition-colors relative cursor-pointer ${
                 activeTab === tab.id 
                   ? 'text-primary' 
@@ -654,7 +572,7 @@ export const PatientProfile: React.FC = () => {
                   <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 dark:text-slate-500 uppercase tracking-widest font-extrabold">
                     <th className="pb-3 pl-2">Session</th>
                     <th className="pb-3">Date</th>
-                    <th className="pb-3 text-center">AI Predicted Level</th>
+                    <th className="pb-3 text-center">Model Classification</th>
                     <th className="pb-3 text-center">FMA Score</th>
                     <th className="pb-3 text-center">BBS Score</th>
                     <th className="pb-3 text-center">TUG Time</th>
@@ -786,7 +704,7 @@ export const PatientProfile: React.FC = () => {
                         <YAxis stroke="#94A3B8" fontSize={10} />
                         <Tooltip />
                         <Legend wrapperStyle={{ fontSize: '10px' }} />
-                        <Line type="monotone" dataKey="walking_speed" name="Speed (m/s)" stroke="#2563EB" strokeWidth={2.5} activeDot={{ r: 6 }} />
+                        <Line type="monotone" dataKey="walking_speed" name="Speed Index" stroke="#2563EB" strokeWidth={2.5} activeDot={{ r: 6 }} />
                         <Line type="monotone" dataKey="balance" name="Balance Score (%)" stroke="#14B8A6" strokeWidth={2.5} />
                       </LineChart>
                     </ResponsiveContainer>
@@ -826,12 +744,12 @@ export const PatientProfile: React.FC = () => {
         </div>
       )}
 
-      {/* 3. NEW AI DIAGNOSIS TAB (VIDEO UPLOAD & CV ANALYSIS RUN) */}
+      {/* 3. NEW MOVEMENT ANALYSIS TAB (VIDEO UPLOAD & CV ANALYSIS RUN) */}
       {activeTab === 'new_run' && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-6">
           <div>
-            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">New AI Diagnostic Session</h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Upload patient exercise videos and log clinical validation scales.</p>
+            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">New Movement Analysis Session</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Upload patient movement videos and log clinical validation scales.</p>
           </div>
 
           <form onSubmit={handleCreateAssessment} className="space-y-6">
@@ -847,7 +765,7 @@ export const PatientProfile: React.FC = () => {
               {/* Left Column: Form Scores */}
               <div className="space-y-4 md:col-span-2">
                 <h4 className="font-extrabold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest pl-0.5">
-                  Clinical Validation Metrics
+                  Clinical Assessment Metrics
                 </h4>
                 
                 <div className="grid grid-cols-2 gap-4">
@@ -930,7 +848,7 @@ export const PatientProfile: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Classifier Classifier</label>
+                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Classifier Model</label>
                     <select
                       value={modelUsed}
                       onChange={(e) => setModelUsed(e.target.value)}
@@ -948,7 +866,7 @@ export const PatientProfile: React.FC = () => {
                   <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Physiotherapist Notes</label>
                   <textarea
                     rows={3}
-                    placeholder="Specific step discrepancies, hand tremor observations during TUG test..."
+                    placeholder="Specific step discrepancies, arm swing observations..."
                     value={therapistNotes}
                     onChange={(e) => setTherapistNotes(e.target.value)}
                     className="w-full px-4 py-2.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-white focus:outline-none focus:border-primary resize-none"
@@ -960,7 +878,7 @@ export const PatientProfile: React.FC = () => {
               {/* Right Column: Video Upload */}
               <div className="space-y-4">
                 <h4 className="font-extrabold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest pl-0.5">
-                  Pose Assessment Video
+                  Pose Assessment Video *
                 </h4>
                 
                 <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-center hover:border-primary hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-all flex flex-col justify-center items-center h-64 relative cursor-pointer">
@@ -980,7 +898,10 @@ export const PatientProfile: React.FC = () => {
                       <span className="text-[10px] text-slate-400 block">{(videoFile.size / (1024 * 1024)).toFixed(2)} MB</span>
                       <button
                         type="button"
-                        onClick={() => setVideoFile(null)}
+                        onClick={() => {
+                          setVideoFile(null);
+                          setFormError('');
+                        }}
                         className="text-red-500 font-semibold text-[10px] uppercase tracking-wider mt-1 hover:underline"
                       >
                         Remove file
@@ -998,7 +919,7 @@ export const PatientProfile: React.FC = () => {
                 </div>
 
                 <div className="p-3 bg-blue-500/5 rounded-xl text-[9px] text-blue-600 dark:text-blue-400 font-semibold">
-                  Note: If no video is selected, a biomechanical walking simulation aligned with the patient's impairment profile is generated to ensure B.Tech project presentation works out-of-the-box.
+                  Note: Upload a clear full-body video of the patient walking under good lighting for MediaPipe 33-landmark feature extraction and movement analysis.
                 </div>
               </div>
 
@@ -1069,8 +990,8 @@ export const PatientProfile: React.FC = () => {
                 
                 <div className="space-y-3.5 text-xs">
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Walking Speed</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.walking_speed_ms} m/s</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Relative Walking Speed</span>
+                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.walking_speed_ms} Index</span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                     <span className="text-slate-500 dark:text-slate-400 font-semibold">Stride Length</span>
@@ -1224,7 +1145,7 @@ export const PatientProfile: React.FC = () => {
             {/* ML prediction card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-5">
               <div>
-                <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">AI Impairment Rating</h4>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">AI Movement Analysis</h4>
                 <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">Machine Learning classifier decision</p>
               </div>
 
@@ -1240,37 +1161,45 @@ export const PatientProfile: React.FC = () => {
                   {selectedAssessment.predictions.impairment_level}
                 </span>
                 
-                <div className="flex items-center justify-center space-x-1.5 mt-3 text-[10px] text-slate-500">
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Confidence: <span className="font-bold">{Math.round(selectedAssessment.predictions.confidence * 100)}%</span></span>
-                </div>
+                {selectedAssessment.predictions.confidence !== undefined && (
+                  <div className="flex items-center justify-center space-x-1.5 mt-3 text-[10px] text-slate-500">
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
+                    <span>Confidence: <span className="font-bold">{Math.round(selectedAssessment.predictions.confidence * 100)}%</span></span>
+                  </div>
+                )}
               </div>
 
               {/* Feature importance weights */}
               <div className="space-y-2">
                 <h5 className="font-bold text-[10px] text-slate-400 uppercase tracking-wider pl-0.5">Feature Importance Weights</h5>
-                <div className="space-y-2">
-                  {Object.entries(selectedAssessment.predictions.feature_importances).slice(0, 4).map(([name, val]) => (
-                    <div key={name} className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-semibold text-slate-600 dark:text-slate-400 capitalize">
-                        <span>{name.replace('_', ' ')}</span>
-                        <span>{Math.round(val * 100)}%</span>
+                {selectedAssessment.predictions.feature_importances ? (
+                  <div className="space-y-2">
+                    {Object.entries(selectedAssessment.predictions.feature_importances).slice(0, 4).map(([name, val]) => (
+                      <div key={name} className="space-y-1">
+                        <div className="flex justify-between text-[10px] font-semibold text-slate-600 dark:text-slate-400 capitalize">
+                          <span>{name.replace('_', ' ')}</span>
+                          <span>{Math.round(val * 100)}%</span>
+                        </div>
+                        <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-primary rounded-full"
+                            style={{ width: `${val * 100}%` }}
+                          ></div>
+                        </div>
                       </div>
-                      <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-primary rounded-full"
-                          style={{ width: `${val * 100}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-[10px] text-slate-400 font-medium italic p-2 bg-slate-50 dark:bg-slate-800/30 rounded-lg">
+                    Feature importances are not available for non-tree models (e.g., SVM).
+                  </p>
+                )}
               </div>
             </div>
 
             {/* Clinical scores comparison card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
-              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Clinical Scales vs AI</h4>
+              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Clinical Scales vs Model</h4>
               
               <div className="space-y-3.5 text-xs">
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">

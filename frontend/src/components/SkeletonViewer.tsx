@@ -13,7 +13,7 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
   if (!landmarks || landmarks.length === 0) {
     return (
       <div className="w-full h-80 bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center text-slate-500 font-medium">
-        No skeleton landmarks loaded
+        Upload a walking video to view skeleton overlay.
       </div>
     );
   }
@@ -168,7 +168,7 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444] border border-white/20"></div>
-          <span className="font-semibold text-slate-300">Hemiparetic Affected Side ({affectedSide})</span>
+          <span className="font-semibold text-slate-300">Observed Asymmetry Side ({affectedSide})</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#2563EB] border border-white/20"></div>

@@ -271,7 +271,7 @@ export const Dashboard: React.FC = () => {
         {/* AI Prediction Distribution (PieChart) */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Impairment Severity Range</h3>
+            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Movement Classification Distribution</h3>
             <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Severity distribution of all runs</p>
           </div>
 
@@ -333,7 +333,7 @@ export const Dashboard: React.FC = () => {
         <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm lg:col-span-2 overflow-hidden">
           <div className="flex items-center justify-between mb-5">
             <div>
-              <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Latest Pose Diagnoses</h3>
+              <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Latest Movement Analyses</h3>
               <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Recently compiled motor reports</p>
             </div>
           </div>
@@ -346,8 +346,8 @@ export const Dashboard: React.FC = () => {
                     <th className="pb-3 pl-2">Patient</th>
                     <th className="pb-3">Session</th>
                     <th className="pb-3">Analysis Date</th>
-                    <th className="pb-3 text-center">AI Rating</th>
-                    <th className="pb-3 text-right pr-2">Gait Speed</th>
+                    <th className="pb-3 text-center">Model Level</th>
+                    <th className="pb-3 text-right pr-2">Relative Speed Index</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -377,7 +377,7 @@ export const Dashboard: React.FC = () => {
                           </span>
                         </td>
                         <td className="py-3.5 text-right font-bold text-slate-700 dark:text-slate-300 pr-2">
-                          {act.speed} m/s
+                          {act.speed}
                         </td>
                       </tr>
                     );

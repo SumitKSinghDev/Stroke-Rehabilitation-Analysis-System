@@ -222,27 +222,26 @@ def create_assessment(
         patient_id = patient["patient_id"] # normalize
 
     # 2. Save video if uploaded
-    video_path = None
-    if video:
-        filename = f"{patient_id}_session_{session_number}_{uuid.uuid4().hex[:6]}_{video.filename}"
-        save_path = UPLOAD_DIR / filename
-        with open(save_path, "wb") as buffer:
-            shutil.copyfileobj(video.file, buffer)
-        video_path = f"uploads/{filename}"
+    if not video or not video.filename:
+        raise HTTPException(
+            status_code=400, 
+            detail="No video file uploaded. Please select a walking video file to perform movement analysis."
+        )
 
-    # 3. Process video using MediaPipe/Simulated Engine
-    # If no video uploaded, we run simulation automatically to ensure demo works
-    actual_path = str(UPLOAD_DIR.parent / video_path) if video_path else None
+    filename = f"{patient_id}_session_{session_number}_{uuid.uuid4().hex[:6]}_{video.filename}"
+    save_path = UPLOAD_DIR / filename
+    with open(save_path, "wb") as buffer:
+        shutil.copyfileobj(video.file, buffer)
+    video_path = f"uploads/{filename}"
+
+    # 3. Process video using MediaPipe Engine
+    actual_path = str(UPLOAD_DIR.parent / video_path)
     
     try:
-        features = analyze_video(
-            actual_path, 
-            affected_side=patient.get("affected_side", "Right"), 
-            current_status=patient.get("current_status", "Stable")
-        )
+        features = analyze_video(actual_path)
     except Exception as e:
         raise HTTPException(
-            status_code=500,
+            status_code=400,
             detail=f"Video processing failed: {str(e)}"
         )
 

@@ -117,7 +117,7 @@ class MLEngine:
                     n_estimators=50, max_depth=3, learning_rate=0.1, 
                     random_state=42, eval_metric="mlogloss"
                 )
-                self.xgb_model.fit(X, y) # XGBoost can handle raw features directly, or scaled
+                self.xgb_model.fit(X_scaled, y)
             else:
                 print("XGBoost package not available. Initializing GradientBoosting Classifier as fallback.")
                 self.xgb_model = GradientBoostingClassifier(n_estimators=50, learning_rate=0.1, max_depth=3, random_state=42)
@@ -158,19 +158,11 @@ class MLEngine:
             # Select model
             if model_name == "SVM":
                 pred_probs = self.svm_model.predict_proba(x_scaled)[0]
-                feature_imp = self._get_svm_feature_importance()
+                feature_imp = None
             elif model_name == "XGBoost":
-                # XGBoost works on raw or scaled features depending on what we fit.
-                # If using local mock, we fit GBClassifier on scaled
-                if XGBOOST_AVAILABLE:
-                    pred_probs = self.xgb_model.predict_proba(x_input)[0]
-                    # XGBoost feature importances
-                    importances = self.xgb_model.feature_importances_
-                    feature_imp = {self.feature_names[i]: float(importances[i]) for i in range(len(self.feature_names))}
-                else:
-                    pred_probs = self.xgb_model.predict_proba(x_scaled)[0]
-                    importances = self.xgb_model.feature_importances_
-                    feature_imp = {self.feature_names[i]: float(importances[i]) for i in range(len(self.feature_names))}
+                pred_probs = self.xgb_model.predict_proba(x_scaled)[0]
+                importances = self.xgb_model.feature_importances_
+                feature_imp = {self.feature_names[i]: float(importances[i]) for i in range(len(self.feature_names))}
             else:  # Random Forest (Default)
                 pred_probs = self.rf_model.predict_proba(x_scaled)[0]
                 importances = self.rf_model.feature_importances_
@@ -184,32 +176,15 @@ class MLEngine:
                 "impairment_level": impairment_level,
                 "model_used": model_name,
                 "confidence": round(confidence, 2),
-                "feature_importances": self._normalize_importances(feature_imp)
+                "feature_importances": self._normalize_importances(feature_imp) if feature_imp is not None else None
             }
         except Exception as e:
             print(f"Error during ML prediction: {e}. Falling back to heuristic model.")
             return self._heuristic_predict(features, model_name)
 
-    def _get_svm_feature_importance(self) -> Dict[str, float]:
-        """SVM does not have direct feature_importances_. We return a static representative importance weight map."""
-        weights = {
-            "walking_speed": 0.22,
-            "step_symmetry": 0.18,
-            "balance_stability": 0.15,
-            "knee_angle": 0.11,
-            "rom_score": 0.10,
-            "stride_length": 0.08,
-            "hip_angle": 0.06,
-            "arm_swing": 0.04,
-            "cadence": 0.03,
-            "elbow_angle": 0.01,
-            "shoulder_angle": 0.01,
-            "step_width": 0.01
-        }
-        # Map to full names
-        return {name: weights.get(name, 0.05) for name in self.feature_names}
-
     def _normalize_importances(self, importances: Dict[str, float]) -> Dict[str, float]:
+        if not importances:
+            return None
         # Sort and return rounded values
         sorted_imp = dict(sorted(importances.items(), key=lambda item: item[1], reverse=True))
         return {k: round(v, 3) for k, v in sorted_imp.items()}
@@ -244,37 +219,24 @@ class MLEngine:
             level = "Very Severe"
             confidence = 0.92 - ((severity - 78) * 0.004)
 
-        # Standard gait feature importance coefficients
-        static_importance = {
-            "walking_speed": 0.245,
-            "step_symmetry": 0.210,
-            "balance_stability": 0.165,
-            "knee_angle": 0.115,
-            "rom_score": 0.085,
-            "stride_length": 0.060,
-            "hip_angle": 0.045,
-            "arm_swing": 0.035,
-            "cadence": 0.020,
-            "elbow_angle": 0.010,
-            "shoulder_angle": 0.005,
-            "step_width": 0.005
-        }
-        
-        # Add slight random variations depending on model name to make predictions look distinct
-        r_seed = hash(model_name) % 100
-        np.random.seed(r_seed)
-        noise = np.random.uniform(-0.02, 0.02, len(self.feature_names))
-        
-        custom_imp = {}
-        for idx, name in enumerate(self.feature_names):
-            base_val = static_importance.get(name, 0.05)
-            custom_imp[name] = max(0.001, base_val + noise[idx])
-
-        # Normalize sum of importance weights to 1.0
-        total = sum(custom_imp.values())
-        custom_imp = {k: round(v / total, 3) for k, v in custom_imp.items()}
-        # Sort
-        custom_imp = dict(sorted(custom_imp.items(), key=lambda item: item[1], reverse=True))
+        if model_name == "SVM":
+            custom_imp = None
+        else:
+            static_importance = {
+                "walking_speed": 0.245,
+                "step_symmetry": 0.210,
+                "balance_stability": 0.165,
+                "knee_angle": 0.115,
+                "rom_score": 0.085,
+                "stride_length": 0.060,
+                "hip_angle": 0.045,
+                "arm_swing": 0.035,
+                "cadence": 0.020,
+                "elbow_angle": 0.010,
+                "shoulder_angle": 0.005,
+                "step_width": 0.005
+            }
+            custom_imp = dict(sorted(static_importance.items(), key=lambda item: item[1], reverse=True))
 
         return {
             "impairment_level": level,
