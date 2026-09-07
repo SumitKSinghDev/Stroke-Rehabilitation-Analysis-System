@@ -13,6 +13,7 @@ WORKDIR /app
 # Install system dependencies for OpenCV, MediaPipe, and image processing
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libegl1 \
+    libgles2 \
     libgl1 \
     libglib2.0-0 \
     libsm6 \
