@@ -1,0 +1,356 @@
+subject_id,trial_id,cohort,impairment_status,activity,functional_primitive,video_path,dataset_source
+P01,P01_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P01_Combing_Hair_t1.mp4,StrokeRehab
+P01,P01_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P01_Drinking_t2.mp4,StrokeRehab
+P01,P01_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P01_Object_Reaching_t3.mp4,StrokeRehab
+P01,P01_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P01_Feeding_t4.mp4,StrokeRehab
+P01,P01_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P01_Brushing_Teeth_t5.mp4,StrokeRehab
+P02,P02_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P02_Drinking_t1.mp4,StrokeRehab
+P02,P02_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P02_Object_Reaching_t2.mp4,StrokeRehab
+P02,P02_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P02_Feeding_t3.mp4,StrokeRehab
+P02,P02_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P02_Brushing_Teeth_t4.mp4,StrokeRehab
+P02,P02_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P02_Combing_Hair_t5.mp4,StrokeRehab
+P03,P03_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P03_Object_Reaching_t1.mp4,StrokeRehab
+P03,P03_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P03_Feeding_t2.mp4,StrokeRehab
+P03,P03_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P03_Brushing_Teeth_t3.mp4,StrokeRehab
+P03,P03_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P03_Combing_Hair_t4.mp4,StrokeRehab
+P03,P03_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P03_Drinking_t5.mp4,StrokeRehab
+P04,P04_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P04_Feeding_t1.mp4,StrokeRehab
+P04,P04_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P04_Brushing_Teeth_t2.mp4,StrokeRehab
+P04,P04_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P04_Combing_Hair_t3.mp4,StrokeRehab
+P04,P04_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P04_Drinking_t4.mp4,StrokeRehab
+P04,P04_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P04_Object_Reaching_t5.mp4,StrokeRehab
+P05,P05_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P05_Brushing_Teeth_t1.mp4,StrokeRehab
+P05,P05_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P05_Combing_Hair_t2.mp4,StrokeRehab
+P05,P05_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P05_Drinking_t3.mp4,StrokeRehab
+P05,P05_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P05_Object_Reaching_t4.mp4,StrokeRehab
+P05,P05_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P05_Feeding_t5.mp4,StrokeRehab
+P06,P06_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P06_Combing_Hair_t1.mp4,StrokeRehab
+P06,P06_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P06_Drinking_t2.mp4,StrokeRehab
+P06,P06_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P06_Object_Reaching_t3.mp4,StrokeRehab
+P06,P06_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P06_Feeding_t4.mp4,StrokeRehab
+P06,P06_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P06_Brushing_Teeth_t5.mp4,StrokeRehab
+P07,P07_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P07_Drinking_t1.mp4,StrokeRehab
+P07,P07_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P07_Object_Reaching_t2.mp4,StrokeRehab
+P07,P07_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P07_Feeding_t3.mp4,StrokeRehab
+P07,P07_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P07_Brushing_Teeth_t4.mp4,StrokeRehab
+P07,P07_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P07_Combing_Hair_t5.mp4,StrokeRehab
+P08,P08_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P08_Object_Reaching_t1.mp4,StrokeRehab
+P08,P08_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P08_Feeding_t2.mp4,StrokeRehab
+P08,P08_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P08_Brushing_Teeth_t3.mp4,StrokeRehab
+P08,P08_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P08_Combing_Hair_t4.mp4,StrokeRehab
+P08,P08_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P08_Drinking_t5.mp4,StrokeRehab
+P09,P09_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P09_Feeding_t1.mp4,StrokeRehab
+P09,P09_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P09_Brushing_Teeth_t2.mp4,StrokeRehab
+P09,P09_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P09_Combing_Hair_t3.mp4,StrokeRehab
+P09,P09_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P09_Drinking_t4.mp4,StrokeRehab
+P09,P09_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P09_Object_Reaching_t5.mp4,StrokeRehab
+P10,P10_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P10_Brushing_Teeth_t1.mp4,StrokeRehab
+P10,P10_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P10_Combing_Hair_t2.mp4,StrokeRehab
+P10,P10_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P10_Drinking_t3.mp4,StrokeRehab
+P10,P10_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P10_Object_Reaching_t4.mp4,StrokeRehab
+P10,P10_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P10_Feeding_t5.mp4,StrokeRehab
+P11,P11_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P11_Combing_Hair_t1.mp4,StrokeRehab
+P11,P11_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P11_Drinking_t2.mp4,StrokeRehab
+P11,P11_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P11_Object_Reaching_t3.mp4,StrokeRehab
+P11,P11_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P11_Feeding_t4.mp4,StrokeRehab
+P11,P11_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P11_Brushing_Teeth_t5.mp4,StrokeRehab
+P12,P12_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P12_Drinking_t1.mp4,StrokeRehab
+P12,P12_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P12_Object_Reaching_t2.mp4,StrokeRehab
+P12,P12_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P12_Feeding_t3.mp4,StrokeRehab
+P12,P12_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P12_Brushing_Teeth_t4.mp4,StrokeRehab
+P12,P12_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P12_Combing_Hair_t5.mp4,StrokeRehab
+P13,P13_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P13_Object_Reaching_t1.mp4,StrokeRehab
+P13,P13_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P13_Feeding_t2.mp4,StrokeRehab
+P13,P13_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P13_Brushing_Teeth_t3.mp4,StrokeRehab
+P13,P13_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P13_Combing_Hair_t4.mp4,StrokeRehab
+P13,P13_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P13_Drinking_t5.mp4,StrokeRehab
+P14,P14_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P14_Feeding_t1.mp4,StrokeRehab
+P14,P14_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P14_Brushing_Teeth_t2.mp4,StrokeRehab
+P14,P14_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P14_Combing_Hair_t3.mp4,StrokeRehab
+P14,P14_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P14_Drinking_t4.mp4,StrokeRehab
+P14,P14_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P14_Object_Reaching_t5.mp4,StrokeRehab
+P15,P15_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P15_Brushing_Teeth_t1.mp4,StrokeRehab
+P15,P15_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P15_Combing_Hair_t2.mp4,StrokeRehab
+P15,P15_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P15_Drinking_t3.mp4,StrokeRehab
+P15,P15_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P15_Object_Reaching_t4.mp4,StrokeRehab
+P15,P15_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P15_Feeding_t5.mp4,StrokeRehab
+P16,P16_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P16_Combing_Hair_t1.mp4,StrokeRehab
+P16,P16_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P16_Drinking_t2.mp4,StrokeRehab
+P16,P16_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P16_Object_Reaching_t3.mp4,StrokeRehab
+P16,P16_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P16_Feeding_t4.mp4,StrokeRehab
+P16,P16_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P16_Brushing_Teeth_t5.mp4,StrokeRehab
+P17,P17_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P17_Drinking_t1.mp4,StrokeRehab
+P17,P17_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P17_Object_Reaching_t2.mp4,StrokeRehab
+P17,P17_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P17_Feeding_t3.mp4,StrokeRehab
+P17,P17_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P17_Brushing_Teeth_t4.mp4,StrokeRehab
+P17,P17_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P17_Combing_Hair_t5.mp4,StrokeRehab
+P18,P18_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P18_Object_Reaching_t1.mp4,StrokeRehab
+P18,P18_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P18_Feeding_t2.mp4,StrokeRehab
+P18,P18_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P18_Brushing_Teeth_t3.mp4,StrokeRehab
+P18,P18_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P18_Combing_Hair_t4.mp4,StrokeRehab
+P18,P18_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P18_Drinking_t5.mp4,StrokeRehab
+P19,P19_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P19_Feeding_t1.mp4,StrokeRehab
+P19,P19_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P19_Brushing_Teeth_t2.mp4,StrokeRehab
+P19,P19_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P19_Combing_Hair_t3.mp4,StrokeRehab
+P19,P19_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P19_Drinking_t4.mp4,StrokeRehab
+P19,P19_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P19_Object_Reaching_t5.mp4,StrokeRehab
+P20,P20_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P20_Brushing_Teeth_t1.mp4,StrokeRehab
+P20,P20_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P20_Combing_Hair_t2.mp4,StrokeRehab
+P20,P20_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P20_Drinking_t3.mp4,StrokeRehab
+P20,P20_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P20_Object_Reaching_t4.mp4,StrokeRehab
+P20,P20_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P20_Feeding_t5.mp4,StrokeRehab
+P21,P21_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P21_Combing_Hair_t1.mp4,StrokeRehab
+P21,P21_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P21_Drinking_t2.mp4,StrokeRehab
+P21,P21_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P21_Object_Reaching_t3.mp4,StrokeRehab
+P21,P21_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P21_Feeding_t4.mp4,StrokeRehab
+P21,P21_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P21_Brushing_Teeth_t5.mp4,StrokeRehab
+P22,P22_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P22_Drinking_t1.mp4,StrokeRehab
+P22,P22_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P22_Object_Reaching_t2.mp4,StrokeRehab
+P22,P22_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P22_Feeding_t3.mp4,StrokeRehab
+P22,P22_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P22_Brushing_Teeth_t4.mp4,StrokeRehab
+P22,P22_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P22_Combing_Hair_t5.mp4,StrokeRehab
+P23,P23_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P23_Object_Reaching_t1.mp4,StrokeRehab
+P23,P23_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P23_Feeding_t2.mp4,StrokeRehab
+P23,P23_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P23_Brushing_Teeth_t3.mp4,StrokeRehab
+P23,P23_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P23_Combing_Hair_t4.mp4,StrokeRehab
+P23,P23_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P23_Drinking_t5.mp4,StrokeRehab
+P24,P24_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P24_Feeding_t1.mp4,StrokeRehab
+P24,P24_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P24_Brushing_Teeth_t2.mp4,StrokeRehab
+P24,P24_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P24_Combing_Hair_t3.mp4,StrokeRehab
+P24,P24_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P24_Drinking_t4.mp4,StrokeRehab
+P24,P24_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P24_Object_Reaching_t5.mp4,StrokeRehab
+P25,P25_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P25_Brushing_Teeth_t1.mp4,StrokeRehab
+P25,P25_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P25_Combing_Hair_t2.mp4,StrokeRehab
+P25,P25_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P25_Drinking_t3.mp4,StrokeRehab
+P25,P25_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P25_Object_Reaching_t4.mp4,StrokeRehab
+P25,P25_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P25_Feeding_t5.mp4,StrokeRehab
+P26,P26_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P26_Combing_Hair_t1.mp4,StrokeRehab
+P26,P26_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P26_Drinking_t2.mp4,StrokeRehab
+P26,P26_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P26_Object_Reaching_t3.mp4,StrokeRehab
+P26,P26_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P26_Feeding_t4.mp4,StrokeRehab
+P26,P26_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P26_Brushing_Teeth_t5.mp4,StrokeRehab
+P27,P27_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P27_Drinking_t1.mp4,StrokeRehab
+P27,P27_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P27_Object_Reaching_t2.mp4,StrokeRehab
+P27,P27_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P27_Feeding_t3.mp4,StrokeRehab
+P27,P27_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P27_Brushing_Teeth_t4.mp4,StrokeRehab
+P27,P27_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P27_Combing_Hair_t5.mp4,StrokeRehab
+P28,P28_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P28_Object_Reaching_t1.mp4,StrokeRehab
+P28,P28_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P28_Feeding_t2.mp4,StrokeRehab
+P28,P28_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P28_Brushing_Teeth_t3.mp4,StrokeRehab
+P28,P28_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P28_Combing_Hair_t4.mp4,StrokeRehab
+P28,P28_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P28_Drinking_t5.mp4,StrokeRehab
+P29,P29_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P29_Feeding_t1.mp4,StrokeRehab
+P29,P29_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P29_Brushing_Teeth_t2.mp4,StrokeRehab
+P29,P29_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P29_Combing_Hair_t3.mp4,StrokeRehab
+P29,P29_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P29_Drinking_t4.mp4,StrokeRehab
+P29,P29_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P29_Object_Reaching_t5.mp4,StrokeRehab
+P30,P30_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P30_Brushing_Teeth_t1.mp4,StrokeRehab
+P30,P30_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P30_Combing_Hair_t2.mp4,StrokeRehab
+P30,P30_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P30_Drinking_t3.mp4,StrokeRehab
+P30,P30_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P30_Object_Reaching_t4.mp4,StrokeRehab
+P30,P30_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P30_Feeding_t5.mp4,StrokeRehab
+P31,P31_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P31_Combing_Hair_t1.mp4,StrokeRehab
+P31,P31_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P31_Drinking_t2.mp4,StrokeRehab
+P31,P31_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P31_Object_Reaching_t3.mp4,StrokeRehab
+P31,P31_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P31_Feeding_t4.mp4,StrokeRehab
+P31,P31_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P31_Brushing_Teeth_t5.mp4,StrokeRehab
+P32,P32_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P32_Drinking_t1.mp4,StrokeRehab
+P32,P32_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P32_Object_Reaching_t2.mp4,StrokeRehab
+P32,P32_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P32_Feeding_t3.mp4,StrokeRehab
+P32,P32_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P32_Brushing_Teeth_t4.mp4,StrokeRehab
+P32,P32_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P32_Combing_Hair_t5.mp4,StrokeRehab
+P33,P33_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P33_Object_Reaching_t1.mp4,StrokeRehab
+P33,P33_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P33_Feeding_t2.mp4,StrokeRehab
+P33,P33_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P33_Brushing_Teeth_t3.mp4,StrokeRehab
+P33,P33_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P33_Combing_Hair_t4.mp4,StrokeRehab
+P33,P33_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P33_Drinking_t5.mp4,StrokeRehab
+P34,P34_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P34_Feeding_t1.mp4,StrokeRehab
+P34,P34_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P34_Brushing_Teeth_t2.mp4,StrokeRehab
+P34,P34_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P34_Combing_Hair_t3.mp4,StrokeRehab
+P34,P34_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P34_Drinking_t4.mp4,StrokeRehab
+P34,P34_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P34_Object_Reaching_t5.mp4,StrokeRehab
+P35,P35_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P35_Brushing_Teeth_t1.mp4,StrokeRehab
+P35,P35_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P35_Combing_Hair_t2.mp4,StrokeRehab
+P35,P35_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P35_Drinking_t3.mp4,StrokeRehab
+P35,P35_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P35_Object_Reaching_t4.mp4,StrokeRehab
+P35,P35_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P35_Feeding_t5.mp4,StrokeRehab
+P36,P36_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P36_Combing_Hair_t1.mp4,StrokeRehab
+P36,P36_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P36_Drinking_t2.mp4,StrokeRehab
+P36,P36_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P36_Object_Reaching_t3.mp4,StrokeRehab
+P36,P36_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P36_Feeding_t4.mp4,StrokeRehab
+P36,P36_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P36_Brushing_Teeth_t5.mp4,StrokeRehab
+P37,P37_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P37_Drinking_t1.mp4,StrokeRehab
+P37,P37_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P37_Object_Reaching_t2.mp4,StrokeRehab
+P37,P37_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P37_Feeding_t3.mp4,StrokeRehab
+P37,P37_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P37_Brushing_Teeth_t4.mp4,StrokeRehab
+P37,P37_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P37_Combing_Hair_t5.mp4,StrokeRehab
+P38,P38_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P38_Object_Reaching_t1.mp4,StrokeRehab
+P38,P38_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P38_Feeding_t2.mp4,StrokeRehab
+P38,P38_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P38_Brushing_Teeth_t3.mp4,StrokeRehab
+P38,P38_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P38_Combing_Hair_t4.mp4,StrokeRehab
+P38,P38_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P38_Drinking_t5.mp4,StrokeRehab
+P39,P39_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P39_Feeding_t1.mp4,StrokeRehab
+P39,P39_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P39_Brushing_Teeth_t2.mp4,StrokeRehab
+P39,P39_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P39_Combing_Hair_t3.mp4,StrokeRehab
+P39,P39_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P39_Drinking_t4.mp4,StrokeRehab
+P39,P39_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P39_Object_Reaching_t5.mp4,StrokeRehab
+P40,P40_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P40_Brushing_Teeth_t1.mp4,StrokeRehab
+P40,P40_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P40_Combing_Hair_t2.mp4,StrokeRehab
+P40,P40_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P40_Drinking_t3.mp4,StrokeRehab
+P40,P40_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P40_Object_Reaching_t4.mp4,StrokeRehab
+P40,P40_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P40_Feeding_t5.mp4,StrokeRehab
+P41,P41_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P41_Combing_Hair_t1.mp4,StrokeRehab
+P41,P41_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P41_Drinking_t2.mp4,StrokeRehab
+P41,P41_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P41_Object_Reaching_t3.mp4,StrokeRehab
+P41,P41_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P41_Feeding_t4.mp4,StrokeRehab
+P41,P41_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P41_Brushing_Teeth_t5.mp4,StrokeRehab
+P42,P42_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P42_Drinking_t1.mp4,StrokeRehab
+P42,P42_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P42_Object_Reaching_t2.mp4,StrokeRehab
+P42,P42_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P42_Feeding_t3.mp4,StrokeRehab
+P42,P42_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P42_Brushing_Teeth_t4.mp4,StrokeRehab
+P42,P42_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P42_Combing_Hair_t5.mp4,StrokeRehab
+P43,P43_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P43_Object_Reaching_t1.mp4,StrokeRehab
+P43,P43_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P43_Feeding_t2.mp4,StrokeRehab
+P43,P43_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P43_Brushing_Teeth_t3.mp4,StrokeRehab
+P43,P43_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P43_Combing_Hair_t4.mp4,StrokeRehab
+P43,P43_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P43_Drinking_t5.mp4,StrokeRehab
+P44,P44_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P44_Feeding_t1.mp4,StrokeRehab
+P44,P44_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P44_Brushing_Teeth_t2.mp4,StrokeRehab
+P44,P44_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P44_Combing_Hair_t3.mp4,StrokeRehab
+P44,P44_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P44_Drinking_t4.mp4,StrokeRehab
+P44,P44_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P44_Object_Reaching_t5.mp4,StrokeRehab
+P45,P45_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P45_Brushing_Teeth_t1.mp4,StrokeRehab
+P45,P45_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P45_Combing_Hair_t2.mp4,StrokeRehab
+P45,P45_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P45_Drinking_t3.mp4,StrokeRehab
+P45,P45_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P45_Object_Reaching_t4.mp4,StrokeRehab
+P45,P45_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P45_Feeding_t5.mp4,StrokeRehab
+P46,P46_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P46_Combing_Hair_t1.mp4,StrokeRehab
+P46,P46_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P46_Drinking_t2.mp4,StrokeRehab
+P46,P46_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P46_Object_Reaching_t3.mp4,StrokeRehab
+P46,P46_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P46_Feeding_t4.mp4,StrokeRehab
+P46,P46_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P46_Brushing_Teeth_t5.mp4,StrokeRehab
+P47,P47_trial_01,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P47_Drinking_t1.mp4,StrokeRehab
+P47,P47_trial_02,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P47_Object_Reaching_t2.mp4,StrokeRehab
+P47,P47_trial_03,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P47_Feeding_t3.mp4,StrokeRehab
+P47,P47_trial_04,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P47_Brushing_Teeth_t4.mp4,StrokeRehab
+P47,P47_trial_05,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P47_Combing_Hair_t5.mp4,StrokeRehab
+P48,P48_trial_01,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P48_Object_Reaching_t1.mp4,StrokeRehab
+P48,P48_trial_02,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P48_Feeding_t2.mp4,StrokeRehab
+P48,P48_trial_03,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P48_Brushing_Teeth_t3.mp4,StrokeRehab
+P48,P48_trial_04,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P48_Combing_Hair_t4.mp4,StrokeRehab
+P48,P48_trial_05,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P48_Drinking_t5.mp4,StrokeRehab
+P49,P49_trial_01,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P49_Feeding_t1.mp4,StrokeRehab
+P49,P49_trial_02,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P49_Brushing_Teeth_t2.mp4,StrokeRehab
+P49,P49_trial_03,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P49_Combing_Hair_t3.mp4,StrokeRehab
+P49,P49_trial_04,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P49_Drinking_t4.mp4,StrokeRehab
+P49,P49_trial_05,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P49_Object_Reaching_t5.mp4,StrokeRehab
+P50,P50_trial_01,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P50_Brushing_Teeth_t1.mp4,StrokeRehab
+P50,P50_trial_02,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P50_Combing_Hair_t2.mp4,StrokeRehab
+P50,P50_trial_03,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P50_Drinking_t3.mp4,StrokeRehab
+P50,P50_trial_04,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P50_Object_Reaching_t4.mp4,StrokeRehab
+P50,P50_trial_05,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P50_Feeding_t5.mp4,StrokeRehab
+P51,P51_trial_01,Stroke-Impaired,Stroke Motor Deficit,Combing Hair,Reposition,data/strokerehab_videos/P51_Combing_Hair_t1.mp4,StrokeRehab
+P51,P51_trial_02,Stroke-Impaired,Stroke Motor Deficit,Drinking,Stabilize,data/strokerehab_videos/P51_Drinking_t2.mp4,StrokeRehab
+P51,P51_trial_03,Stroke-Impaired,Stroke Motor Deficit,Object Reaching,Idle,data/strokerehab_videos/P51_Object_Reaching_t3.mp4,StrokeRehab
+P51,P51_trial_04,Stroke-Impaired,Stroke Motor Deficit,Feeding,Reach,data/strokerehab_videos/P51_Feeding_t4.mp4,StrokeRehab
+P51,P51_trial_05,Stroke-Impaired,Stroke Motor Deficit,Brushing Teeth,Transport,data/strokerehab_videos/P51_Brushing_Teeth_t5.mp4,StrokeRehab
+H01,H01_trial_01,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H01_Drinking_t1.mp4,StrokeRehab
+H01,H01_trial_02,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H01_Object_Reaching_t2.mp4,StrokeRehab
+H01,H01_trial_03,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H01_Feeding_t3.mp4,StrokeRehab
+H01,H01_trial_04,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H01_Brushing_Teeth_t4.mp4,StrokeRehab
+H01,H01_trial_05,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H01_Combing_Hair_t5.mp4,StrokeRehab
+H02,H02_trial_01,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H02_Object_Reaching_t1.mp4,StrokeRehab
+H02,H02_trial_02,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H02_Feeding_t2.mp4,StrokeRehab
+H02,H02_trial_03,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H02_Brushing_Teeth_t3.mp4,StrokeRehab
+H02,H02_trial_04,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H02_Combing_Hair_t4.mp4,StrokeRehab
+H02,H02_trial_05,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H02_Drinking_t5.mp4,StrokeRehab
+H03,H03_trial_01,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H03_Feeding_t1.mp4,StrokeRehab
+H03,H03_trial_02,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H03_Brushing_Teeth_t2.mp4,StrokeRehab
+H03,H03_trial_03,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H03_Combing_Hair_t3.mp4,StrokeRehab
+H03,H03_trial_04,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H03_Drinking_t4.mp4,StrokeRehab
+H03,H03_trial_05,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H03_Object_Reaching_t5.mp4,StrokeRehab
+H04,H04_trial_01,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H04_Brushing_Teeth_t1.mp4,StrokeRehab
+H04,H04_trial_02,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H04_Combing_Hair_t2.mp4,StrokeRehab
+H04,H04_trial_03,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H04_Drinking_t3.mp4,StrokeRehab
+H04,H04_trial_04,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H04_Object_Reaching_t4.mp4,StrokeRehab
+H04,H04_trial_05,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H04_Feeding_t5.mp4,StrokeRehab
+H05,H05_trial_01,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H05_Combing_Hair_t1.mp4,StrokeRehab
+H05,H05_trial_02,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H05_Drinking_t2.mp4,StrokeRehab
+H05,H05_trial_03,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H05_Object_Reaching_t3.mp4,StrokeRehab
+H05,H05_trial_04,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H05_Feeding_t4.mp4,StrokeRehab
+H05,H05_trial_05,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H05_Brushing_Teeth_t5.mp4,StrokeRehab
+H06,H06_trial_01,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H06_Drinking_t1.mp4,StrokeRehab
+H06,H06_trial_02,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H06_Object_Reaching_t2.mp4,StrokeRehab
+H06,H06_trial_03,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H06_Feeding_t3.mp4,StrokeRehab
+H06,H06_trial_04,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H06_Brushing_Teeth_t4.mp4,StrokeRehab
+H06,H06_trial_05,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H06_Combing_Hair_t5.mp4,StrokeRehab
+H07,H07_trial_01,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H07_Object_Reaching_t1.mp4,StrokeRehab
+H07,H07_trial_02,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H07_Feeding_t2.mp4,StrokeRehab
+H07,H07_trial_03,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H07_Brushing_Teeth_t3.mp4,StrokeRehab
+H07,H07_trial_04,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H07_Combing_Hair_t4.mp4,StrokeRehab
+H07,H07_trial_05,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H07_Drinking_t5.mp4,StrokeRehab
+H08,H08_trial_01,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H08_Feeding_t1.mp4,StrokeRehab
+H08,H08_trial_02,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H08_Brushing_Teeth_t2.mp4,StrokeRehab
+H08,H08_trial_03,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H08_Combing_Hair_t3.mp4,StrokeRehab
+H08,H08_trial_04,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H08_Drinking_t4.mp4,StrokeRehab
+H08,H08_trial_05,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H08_Object_Reaching_t5.mp4,StrokeRehab
+H09,H09_trial_01,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H09_Brushing_Teeth_t1.mp4,StrokeRehab
+H09,H09_trial_02,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H09_Combing_Hair_t2.mp4,StrokeRehab
+H09,H09_trial_03,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H09_Drinking_t3.mp4,StrokeRehab
+H09,H09_trial_04,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H09_Object_Reaching_t4.mp4,StrokeRehab
+H09,H09_trial_05,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H09_Feeding_t5.mp4,StrokeRehab
+H10,H10_trial_01,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H10_Combing_Hair_t1.mp4,StrokeRehab
+H10,H10_trial_02,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H10_Drinking_t2.mp4,StrokeRehab
+H10,H10_trial_03,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H10_Object_Reaching_t3.mp4,StrokeRehab
+H10,H10_trial_04,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H10_Feeding_t4.mp4,StrokeRehab
+H10,H10_trial_05,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H10_Brushing_Teeth_t5.mp4,StrokeRehab
+H11,H11_trial_01,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H11_Drinking_t1.mp4,StrokeRehab
+H11,H11_trial_02,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H11_Object_Reaching_t2.mp4,StrokeRehab
+H11,H11_trial_03,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H11_Feeding_t3.mp4,StrokeRehab
+H11,H11_trial_04,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H11_Brushing_Teeth_t4.mp4,StrokeRehab
+H11,H11_trial_05,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H11_Combing_Hair_t5.mp4,StrokeRehab
+H12,H12_trial_01,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H12_Object_Reaching_t1.mp4,StrokeRehab
+H12,H12_trial_02,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H12_Feeding_t2.mp4,StrokeRehab
+H12,H12_trial_03,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H12_Brushing_Teeth_t3.mp4,StrokeRehab
+H12,H12_trial_04,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H12_Combing_Hair_t4.mp4,StrokeRehab
+H12,H12_trial_05,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H12_Drinking_t5.mp4,StrokeRehab
+H13,H13_trial_01,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H13_Feeding_t1.mp4,StrokeRehab
+H13,H13_trial_02,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H13_Brushing_Teeth_t2.mp4,StrokeRehab
+H13,H13_trial_03,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H13_Combing_Hair_t3.mp4,StrokeRehab
+H13,H13_trial_04,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H13_Drinking_t4.mp4,StrokeRehab
+H13,H13_trial_05,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H13_Object_Reaching_t5.mp4,StrokeRehab
+H14,H14_trial_01,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H14_Brushing_Teeth_t1.mp4,StrokeRehab
+H14,H14_trial_02,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H14_Combing_Hair_t2.mp4,StrokeRehab
+H14,H14_trial_03,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H14_Drinking_t3.mp4,StrokeRehab
+H14,H14_trial_04,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H14_Object_Reaching_t4.mp4,StrokeRehab
+H14,H14_trial_05,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H14_Feeding_t5.mp4,StrokeRehab
+H15,H15_trial_01,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H15_Combing_Hair_t1.mp4,StrokeRehab
+H15,H15_trial_02,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H15_Drinking_t2.mp4,StrokeRehab
+H15,H15_trial_03,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H15_Object_Reaching_t3.mp4,StrokeRehab
+H15,H15_trial_04,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H15_Feeding_t4.mp4,StrokeRehab
+H15,H15_trial_05,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H15_Brushing_Teeth_t5.mp4,StrokeRehab
+H16,H16_trial_01,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H16_Drinking_t1.mp4,StrokeRehab
+H16,H16_trial_02,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H16_Object_Reaching_t2.mp4,StrokeRehab
+H16,H16_trial_03,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H16_Feeding_t3.mp4,StrokeRehab
+H16,H16_trial_04,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H16_Brushing_Teeth_t4.mp4,StrokeRehab
+H16,H16_trial_05,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H16_Combing_Hair_t5.mp4,StrokeRehab
+H17,H17_trial_01,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H17_Object_Reaching_t1.mp4,StrokeRehab
+H17,H17_trial_02,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H17_Feeding_t2.mp4,StrokeRehab
+H17,H17_trial_03,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H17_Brushing_Teeth_t3.mp4,StrokeRehab
+H17,H17_trial_04,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H17_Combing_Hair_t4.mp4,StrokeRehab
+H17,H17_trial_05,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H17_Drinking_t5.mp4,StrokeRehab
+H18,H18_trial_01,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H18_Feeding_t1.mp4,StrokeRehab
+H18,H18_trial_02,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H18_Brushing_Teeth_t2.mp4,StrokeRehab
+H18,H18_trial_03,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H18_Combing_Hair_t3.mp4,StrokeRehab
+H18,H18_trial_04,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H18_Drinking_t4.mp4,StrokeRehab
+H18,H18_trial_05,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H18_Object_Reaching_t5.mp4,StrokeRehab
+H19,H19_trial_01,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H19_Brushing_Teeth_t1.mp4,StrokeRehab
+H19,H19_trial_02,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H19_Combing_Hair_t2.mp4,StrokeRehab
+H19,H19_trial_03,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H19_Drinking_t3.mp4,StrokeRehab
+H19,H19_trial_04,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H19_Object_Reaching_t4.mp4,StrokeRehab
+H19,H19_trial_05,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H19_Feeding_t5.mp4,StrokeRehab
+H20,H20_trial_01,Healthy Control,Unimpaired Normal,Combing Hair,Reposition,data/strokerehab_videos/H20_Combing_Hair_t1.mp4,StrokeRehab
+H20,H20_trial_02,Healthy Control,Unimpaired Normal,Drinking,Stabilize,data/strokerehab_videos/H20_Drinking_t2.mp4,StrokeRehab
+H20,H20_trial_03,Healthy Control,Unimpaired Normal,Object Reaching,Idle,data/strokerehab_videos/H20_Object_Reaching_t3.mp4,StrokeRehab
+H20,H20_trial_04,Healthy Control,Unimpaired Normal,Feeding,Reach,data/strokerehab_videos/H20_Feeding_t4.mp4,StrokeRehab
+H20,H20_trial_05,Healthy Control,Unimpaired Normal,Brushing Teeth,Transport,data/strokerehab_videos/H20_Brushing_Teeth_t5.mp4,StrokeRehab

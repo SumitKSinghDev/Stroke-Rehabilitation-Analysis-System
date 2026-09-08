@@ -1,6 +1,6 @@
 // API Client for Stroke Rehab Decision Support System
 
-const BASE_URL = ''; // Proxied via Vite config to http://localhost:8000
+const BASE_URL = ''; // Proxied via Vite config to http://localhost:8080
 
 export interface User {
   _id: string;
@@ -29,18 +29,21 @@ export interface Patient {
 }
 
 export interface JointAngles {
-  hip_angle_deg: number;
-  knee_angle_deg: number;
-  shoulder_angle_deg: number;
-  elbow_angle_deg: number;
+  hip_angle_deg?: number | null;
+  knee_angle_deg?: number | null;
+  shoulder_angle_deg?: number | null;
+  elbow_angle_deg?: number | null;
 }
 
 export interface GaitParameters {
-  stride_length_m: number;
-  cadence_steps_min: number;
-  walking_speed_ms: number;
-  step_width_m: number;
-  step_symmetry_ratio: number;
+  stride_length_m?: number | null;
+  stride_length_index?: number | null;
+  cadence_steps_min?: number | null;
+  walking_speed_ms?: number | null;
+  walking_speed_index?: number | null;
+  step_width_m?: number | null;
+  step_width_index?: number | null;
+  step_symmetry_ratio?: number | null;
 }
 
 export interface Landmark {
@@ -52,19 +55,22 @@ export interface Landmark {
 }
 
 export interface MovementFeatures {
-  angles: JointAngles;
-  gait: GaitParameters;
-  arm_swing_deg: number;
-  rom_score: number;
-  balance_stability_score: number;
-  landmarks: Landmark[];
+  angles?: JointAngles | null;
+  gait?: GaitParameters | null;
+  arm_swing_deg?: number | null;
+  rom_score?: number | null;
+  balance_stability_score?: number | null;
+  landmarks?: Landmark[];
+  feature_vector?: (number | null)[];
 }
 
 export interface MLPrediction {
-  impairment_level: 'Normal' | 'Mild' | 'Moderate' | 'Severe' | 'Very Severe';
+  impairment_level: string;
   model_used: string;
-  confidence: number;
-  feature_importances: Record<string, number>;
+  confidence?: number | null;
+  feature_importances?: Record<string, number> | null;
+  prediction_probabilities?: Record<string, number> | null;
+  compatibility_note?: string | null;
 }
 
 export interface ClinicalScores {
@@ -85,6 +91,33 @@ export interface PrescribedExercise {
   clinical_rationale: string;
 }
 
+export interface VideoDebugInfo {
+  video_filename: string;
+  frame_count: number;
+  fps: number;
+  duration_seconds: number;
+  valid_pose_frames: number;
+  invalid_pose_frames: number;
+  pose_detection_rate: number;
+  detected_steps?: number;
+  left_step_events?: number[];
+  right_step_events?: number[];
+  knee_flexion_peak_deg?: number;
+  hip_extension_deg?: number;
+  asymmetry_observed?: string;
+  debug_image_path?: string | null;
+}
+
+export interface VideoQualityInfo {
+  category: 'Excellent' | 'Good' | 'Fair' | 'Poor / Insufficient' | string;
+  score: number;
+  fps: number;
+  total_frames: number;
+  tracked_frames: number;
+  resolution: string;
+  reasons: string[];
+}
+
 export interface Assessment {
   _id: string;
   patient_id: string;
@@ -92,11 +125,13 @@ export interface Assessment {
   assessment_date: string;
   video_path?: string;
   clinical_scores: ClinicalScores;
-  extracted_features: MovementFeatures;
-  predictions: MLPrediction;
+  extracted_features?: MovementFeatures;
+  predictions?: MLPrediction;
   recommendations: string[];
   prescribed_exercises?: PrescribedExercise[];
   therapist_notes?: string;
+  video_debug?: VideoDebugInfo;
+  video_quality?: VideoQualityInfo;
 }
 
 export interface ProgressTrendPoint {
@@ -205,7 +240,6 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
 export const api = {
   auth: {
     login: async (username: string, password: string): Promise<any> => {
-      // Use OAuth2 Password request format
       const formData = new URLSearchParams();
       formData.append('username', username);
       formData.append('password', password);
@@ -224,7 +258,6 @@ export const api = {
       const data = await res.json();
       setAuthToken(data.access_token);
       
-      // Fetch user profile
       const user = await request<User>('/api/auth/me');
       setStoredUser(user);
       return { token: data.access_token, user };
@@ -302,7 +335,6 @@ export const api = {
     },
     
     create: async (formData: FormData): Promise<Assessment> => {
-      // Must not set Content-Type header manually for FormData so the browser sets the boundary correctly
       return request<Assessment>('/api/assessments', {
         method: 'POST',
         body: formData

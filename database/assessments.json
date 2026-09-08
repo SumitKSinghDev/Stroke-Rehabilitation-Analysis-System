@@ -2612,5 +2612,4070 @@
                 "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
             }
         ]
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 8,
+        "assessment_date": "2026-09-08T01:21:24.109329",
+        "video_path": "uploads/PT-2026-0001_session_8_8f6a16_vidssave.com Circumduction Gait 360P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "total_frames": 570,
+                "fps": 30.0,
+                "duration_sec": 19.02,
+                "valid_pose_frames": 521,
+                "invalid_pose_frames": 49,
+                "detection_rate_pct": 91.4,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "angles": {
+                "hip_angle_deg": 168.98,
+                "knee_angle_deg": 174.84,
+                "shoulder_angle_deg": 23.64,
+                "elbow_angle_deg": 141.28
+            },
+            "gait": {
+                "stride_length_m": 0.26,
+                "cadence_steps_min": 140.0,
+                "walking_speed_ms": 0.61,
+                "step_width_m": 0.104,
+                "step_symmetry_ratio": 1.0
+            },
+            "arm_swing_deg": 169.44,
+            "rom_score": 169.62,
+            "balance_stability_score": 81.8,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4514,
+                    "y": 0.0922,
+                    "z": 0.5426,
+                    "visibility": 0.304
+                },
+                {
+                    "id": 1,
+                    "x": 0.4456,
+                    "y": 0.0913,
+                    "z": 0.5404,
+                    "visibility": 0.245
+                },
+                {
+                    "id": 2,
+                    "x": 0.4423,
+                    "y": 0.0918,
+                    "z": 0.5405,
+                    "visibility": 0.284
+                },
+                {
+                    "id": 3,
+                    "x": 0.439,
+                    "y": 0.0923,
+                    "z": 0.5405,
+                    "visibility": 0.339
+                },
+                {
+                    "id": 4,
+                    "x": 0.4538,
+                    "y": 0.0889,
+                    "z": 0.5322,
+                    "visibility": 0.239
+                },
+                {
+                    "id": 5,
+                    "x": 0.456,
+                    "y": 0.0877,
+                    "z": 0.5323,
+                    "visibility": 0.26
+                },
+                {
+                    "id": 6,
+                    "x": 0.4581,
+                    "y": 0.0864,
+                    "z": 0.5321,
+                    "visibility": 0.242
+                },
+                {
+                    "id": 7,
+                    "x": 0.4289,
+                    "y": 0.0947,
+                    "z": 0.4788,
+                    "visibility": 0.41
+                },
+                {
+                    "id": 8,
+                    "x": 0.4564,
+                    "y": 0.0876,
+                    "z": 0.4374,
+                    "visibility": 0.157
+                },
+                {
+                    "id": 9,
+                    "x": 0.4443,
+                    "y": 0.0957,
+                    "z": 0.5182,
+                    "visibility": 0.37
+                },
+                {
+                    "id": 10,
+                    "x": 0.4525,
+                    "y": 0.093,
+                    "z": 0.5056,
+                    "visibility": 0.221
+                },
+                {
+                    "id": 11,
+                    "x": 0.4012,
+                    "y": 0.1207,
+                    "z": 0.3588,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 12,
+                    "x": 0.4746,
+                    "y": 0.0918,
+                    "z": 0.3595,
+                    "visibility": 0.924
+                },
+                {
+                    "id": 13,
+                    "x": 0.4127,
+                    "y": 0.2154,
+                    "z": 0.416,
+                    "visibility": 0.027
+                },
+                {
+                    "id": 14,
+                    "x": 0.4977,
+                    "y": 0.1403,
+                    "z": 0.3157,
+                    "visibility": 0.003
+                },
+                {
+                    "id": 15,
+                    "x": 0.4275,
+                    "y": 0.2914,
+                    "z": 0.4914,
+                    "visibility": 0.047
+                },
+                {
+                    "id": 16,
+                    "x": 0.454,
+                    "y": 0.0617,
+                    "z": 0.348,
+                    "visibility": 0.038
+                },
+                {
+                    "id": 17,
+                    "x": 0.4271,
+                    "y": 0.3162,
+                    "z": 0.4969,
+                    "visibility": 0.056
+                },
+                {
+                    "id": 18,
+                    "x": 0.4585,
+                    "y": 0.0728,
+                    "z": 0.3662,
+                    "visibility": 0.047
+                },
+                {
+                    "id": 19,
+                    "x": 0.4324,
+                    "y": 0.3072,
+                    "z": 0.5167,
+                    "visibility": 0.054
+                },
+                {
+                    "id": 20,
+                    "x": 0.4372,
+                    "y": 0.0722,
+                    "z": 0.3699,
+                    "visibility": 0.041
+                },
+                {
+                    "id": 21,
+                    "x": 0.4346,
+                    "y": 0.2941,
+                    "z": 0.4999,
+                    "visibility": 0.062
+                },
+                {
+                    "id": 22,
+                    "x": 0.437,
+                    "y": 0.0762,
+                    "z": 0.3512,
+                    "visibility": 0.046
+                },
+                {
+                    "id": 23,
+                    "x": 0.4268,
+                    "y": 0.2078,
+                    "z": 0.0004,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 24,
+                    "x": 0.4775,
+                    "y": 0.1927,
+                    "z": -0.0009,
+                    "visibility": 0.998
+                },
+                {
+                    "id": 25,
+                    "x": 0.4336,
+                    "y": 0.4303,
+                    "z": -0.0695,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 26,
+                    "x": 0.5022,
+                    "y": 0.3961,
+                    "z": -0.0176,
+                    "visibility": 0.842
+                },
+                {
+                    "id": 27,
+                    "x": 0.437,
+                    "y": 0.6405,
+                    "z": -0.1605,
+                    "visibility": 0.967
+                },
+                {
+                    "id": 28,
+                    "x": 0.521,
+                    "y": 0.5844,
+                    "z": -0.044,
+                    "visibility": 0.728
+                },
+                {
+                    "id": 29,
+                    "x": 0.4402,
+                    "y": 0.6653,
+                    "z": -0.174,
+                    "visibility": 0.953
+                },
+                {
+                    "id": 30,
+                    "x": 0.5252,
+                    "y": 0.6077,
+                    "z": -0.0521,
+                    "visibility": 0.689
+                },
+                {
+                    "id": 31,
+                    "x": 0.4265,
+                    "y": 0.6705,
+                    "z": -0.2254,
+                    "visibility": 0.741
+                },
+                {
+                    "id": 32,
+                    "x": 0.5193,
+                    "y": 0.5994,
+                    "z": -0.1078,
+                    "visibility": 0.292
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal",
+            "model_used": "Random Forest",
+            "confidence": 0.55,
+            "feature_importances": {
+                "step_symmetry": 0.185,
+                "walking_speed": 0.183,
+                "cadence": 0.136,
+                "rom_score": 0.119,
+                "balance_stability": 0.103,
+                "elbow_angle": 0.063,
+                "knee_angle": 0.062,
+                "stride_length": 0.06,
+                "hip_angle": 0.052,
+                "shoulder_angle": 0.027,
+                "arm_swing": 0.007,
+                "step_width": 0.002
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Range of Motion: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Bilateral Symmetrical Arm Reach with Lightweight Ball",
+                "category": "Upper Limb",
+                "target_deficit": "Submaximal Elbow Extension (141.3\u00b0)",
+                "dosage": "3 sets \u00d7 10 repetitions, 1x daily",
+                "intensity": "Active",
+                "instructions": "Hold a lightweight ball with both hands in front of the chest. Push the ball forward and upward at a 45-degree angle, focusing on equal arm extension, then return slowly.",
+                "clinical_rationale": "Encourages bimanual coordination and voluntary extension through bilateral movement reinforcement."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (23.6\u00b0) & Gait Arm Swing (169.4\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ],
+        "therapist_notes": "",
+        "_id": "3d3a53cc-bba8-4422-af3f-e3a8863e2a0f"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 9,
+        "assessment_date": "2026-09-08T01:23:34.565794",
+        "video_path": "uploads/PT-2026-0001_session_9_14e971_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "total_frames": 598,
+                "fps": 24.0,
+                "duration_sec": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "detection_rate_pct": 75.42,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 176.49,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "cadence_steps_min": 140.0,
+                "walking_speed_ms": 0.22,
+                "step_width_m": 0.038,
+                "step_symmetry_ratio": 1.0
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal",
+            "model_used": "Random Forest",
+            "confidence": 0.64,
+            "feature_importances": {
+                "step_symmetry": 0.185,
+                "walking_speed": 0.183,
+                "cadence": 0.136,
+                "rom_score": 0.119,
+                "balance_stability": 0.103,
+                "elbow_angle": 0.063,
+                "knee_angle": 0.062,
+                "stride_length": 0.06,
+                "hip_angle": 0.052,
+                "shoulder_angle": 0.027,
+                "arm_swing": 0.007,
+                "step_width": 0.002
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Range of Motion: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Final treatment decisions should be made by qualified healthcare professionals."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed (0.22 m/s vs Community Target >0.8 m/s)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet, well-lit hallway with assistive device. Focus on pushing off with the toes and lifting the affected foot cleanly.",
+                "clinical_rationale": "Walking velocity is 0.22 m/s (household ambulator range). Progressive velocity training increases cardiovascular endurance and functional independence."
+            },
+            {
+                "title": "Active-Assisted Shoulder Pulley & Reciprocal Arm Swing",
+                "category": "Upper Limb",
+                "target_deficit": "Reduced Shoulder Swing (20.1\u00b0) & Gait Arm Swing (153.2\u00b0)",
+                "dosage": "3 sets \u00d7 12 elevations",
+                "intensity": "Active-Assisted",
+                "instructions": "Use an overhead door pulley or cane. Use the sound hand to pull downward, gently elevating the affected arm upward into flexion without causing pain. Practice swinging arms while marching.",
+                "clinical_rationale": "Prevents glenohumeral capsular stiffness (frozen shoulder) and restores natural trunk-pelvic counter-rotation during walking."
+            }
+        ],
+        "therapist_notes": "",
+        "_id": "b7b9f0b8-d644-4cfe-af66-54414be43918"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 10,
+        "assessment_date": "2026-09-08T01:32:49.802210",
+        "video_path": "uploads/PT-2026-0001_session_10_8d1489_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "step_width_m": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal",
+            "model_used": "Random Forest",
+            "confidence": 0.36,
+            "feature_importances": {
+                "step_symmetry": 0.185,
+                "walking_speed": 0.183,
+                "cadence": 0.136,
+                "rom_score": 0.119,
+                "balance_stability": 0.103,
+                "elbow_angle": 0.063,
+                "knee_angle": 0.062,
+                "stride_length": 0.06,
+                "hip_angle": 0.052,
+                "shoulder_angle": 0.027,
+                "arm_swing": 0.007,
+                "step_width": 0.002
+            },
+            "prediction_probabilities": {
+                "Normal": 0.36,
+                "Mild": 0.24,
+                "Moderate": 0.18,
+                "Severe": 0.12,
+                "Very Severe": 0.1
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_10_8d1489_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "_id": "f04a8de0-9a6d-44fe-a40f-a981b70657b0"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 11,
+        "assessment_date": "2026-09-08T01:35:39.570208",
+        "video_path": "uploads/PT-2026-0001_session_11_7f3b89_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "step_width_m": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Moderate",
+            "model_used": "SVM",
+            "confidence": 0.23,
+            "feature_importances": null,
+            "prediction_probabilities": {
+                "Normal": 0.212,
+                "Mild": 0.178,
+                "Moderate": 0.23,
+                "Severe": 0.159,
+                "Very Severe": 0.22
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_11_7f3b89_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "_id": "c27884e2-8b94-4a60-b604-d3dc70bbede2"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 12,
+        "assessment_date": "2026-09-08T12:26:36.401853",
+        "video_path": "uploads/PT-2026-0001_session_12_719313_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_12_719313_vidssave.com Ataxic Gait 720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Asymmetric Gait",
+            "model_used": "Random Forest",
+            "confidence": 42.0,
+            "feature_importances": {
+                "balance_stability": 16.1,
+                "walking_speed": 14.0,
+                "rom_score": 12.6,
+                "arm_swing": 10.3,
+                "step_symmetry": 9.7,
+                "shoulder_angle": 9.3,
+                "elbow_angle": 8.4,
+                "knee_angle": 6.6,
+                "cadence": 6.1,
+                "stride_length": 4.3,
+                "hip_angle": 2.1,
+                "step_width": 0.5
+            },
+            "prediction_probabilities": {
+                "Asymmetric Gait": 42.0,
+                "Normal Gait": 26.0,
+                "Restricted Upper-Limb Gait": 19.0,
+                "Unstable Gait": 13.0
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_12_719313_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "cb32ff29-46ce-4f3c-946c-7d19bdb1f54b"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 13,
+        "assessment_date": "2026-09-08T12:28:00.027519",
+        "video_path": "uploads/PT-2026-0001_session_13_3b73ff_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_13_3b73ff_vidssave.com Ataxic Gait 720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Restricted Upper-Limb Gait",
+            "model_used": "SVM",
+            "confidence": 40.7,
+            "feature_importances": null,
+            "prediction_probabilities": {
+                "Asymmetric Gait": 18.5,
+                "Normal Gait": 21.9,
+                "Restricted Upper-Limb Gait": 40.7,
+                "Unstable Gait": 18.9
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_13_3b73ff_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "6b0f5215-2636-4705-b148-e11dac5b1860"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 14,
+        "assessment_date": "2026-09-08T12:29:12.551888",
+        "video_path": "uploads/PT-2026-0001_session_14_5489e0_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_14_5489e0_vidssave.com Ataxic Gait 720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Asymmetric Gait",
+            "model_used": "Logistic Regression",
+            "confidence": 100.0,
+            "feature_importances": {
+                "elbow_angle": 12.3,
+                "step_symmetry": 11.1,
+                "shoulder_angle": 10.7,
+                "balance_stability": 9.5,
+                "walking_speed": 8.4,
+                "arm_swing": 7.6,
+                "cadence": 7.4,
+                "rom_score": 7.1,
+                "stride_length": 7.0,
+                "hip_angle": 6.8,
+                "knee_angle": 6.7,
+                "step_width": 5.5
+            },
+            "prediction_probabilities": {
+                "Asymmetric Gait": 100.0,
+                "Normal Gait": 0.0,
+                "Restricted Upper-Limb Gait": 0.0,
+                "Unstable Gait": 0.0
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_14_5489e0_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "315ce2c3-b362-48ce-a2fd-d4ab6d1ea643"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 15,
+        "assessment_date": "2026-09-08T12:30:18.888508",
+        "video_path": "uploads/PT-2026-0001_session_15_0c3465_vidssave.com Ataxic Gait 720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_15_0c3465_vidssave.com Ataxic Gait 720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Normal Gait",
+            "model_used": "XGBoost",
+            "confidence": 49.9,
+            "feature_importances": {
+                "balance_stability": 35.5,
+                "rom_score": 24.8,
+                "step_symmetry": 13.5,
+                "elbow_angle": 12.1,
+                "shoulder_angle": 10.7,
+                "arm_swing": 1.4,
+                "walking_speed": 1.0,
+                "knee_angle": 0.7,
+                "step_width": 0.1,
+                "stride_length": 0.1,
+                "hip_angle": 0.1,
+                "cadence": 0.0
+            },
+            "prediction_probabilities": {
+                "Asymmetric Gait": 49.9,
+                "Normal Gait": 49.9,
+                "Restricted Upper-Limb Gait": 0.0,
+                "Unstable Gait": 0.1
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "10-15 minutes continuous paced walk",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "2 intervals of 10 minutes (rest as needed)",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_15_0c3465_vidssave.com Ataxic Gait 720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "4d5f9f91-b496-4e1d-a3b8-0a6f63e3e4ec"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 16,
+        "assessment_date": "2026-09-08T14:49:18.000009",
+        "video_path": "uploads/PT-2026-0001_session_16_a9fd65_vidssave.com_Ataxic_Gait_720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_16_a9fd65_vidssave.com_Ataxic_Gait_720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Healthy Control Gait & Movement",
+            "model_used": "Random Forest",
+            "confidence": 40.0,
+            "feature_importances": {
+                "balance_stability_score": 17.4,
+                "shoulder_mobility_deg": 17.0,
+                "walking_speed_index": 16.0,
+                "elbow_flexion_deg": 10.3,
+                "stride_length_index": 8.7,
+                "arm_swing_deg": 8.5,
+                "cadence_steps_min": 5.7,
+                "step_symmetry_ratio": 4.4,
+                "step_width_index": 3.6,
+                "rom_score": 3.5,
+                "hip_angle_deg": 2.8,
+                "peak_knee_flexion_deg": 2.1
+            },
+            "prediction_probabilities": {
+                "Healthy Control Gait & Movement": 40.0,
+                "Stroke Motor Impairment (Restricted Upper-Limb & Asymmetric)": 31.0,
+                "Stroke Motor Impairment (Unstable Gait & Stance)": 29.0
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "Clinician Discretion \u2014 Discuss pacing duration with treating physiotherapist.",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "Clinician Discretion \u2014 Discuss walking interval durations with treating physiotherapist.",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_16_a9fd65_vidssave.com_Ataxic_Gait_720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "b9c68481-61f6-4b65-a2fc-4bf83cd08e4a"
+    },
+    {
+        "patient_id": "PT-2026-0001",
+        "session_number": 17,
+        "assessment_date": "2026-09-08T15:25:06.106478",
+        "video_path": "uploads/PT-2026-0001_session_17_55d8e0_vidssave.com_Ataxic_Gait_720P.mp4",
+        "clinical_scores": {
+            "fma_score": 0,
+            "bbs_score": 0,
+            "fac_score": 0,
+            "tug_score": 0.0,
+            "overall_clinical_score": 0.0
+        },
+        "extracted_features": {
+            "video_debug": {
+                "video_filename": "PT-2026-0001_session_17_55d8e0_vidssave.com_Ataxic_Gait_720P.mp4",
+                "frame_count": 598,
+                "fps": 24.0,
+                "duration_seconds": 24.94,
+                "valid_pose_frames": 451,
+                "invalid_pose_frames": 147,
+                "pose_detection_rate": 75.42,
+                "video_quality_status": "Good",
+                "video_quality_warning": null,
+                "detected_steps": 36,
+                "left_step_events": [
+                    203,
+                    213,
+                    227,
+                    236,
+                    246,
+                    272,
+                    291,
+                    302,
+                    312,
+                    356,
+                    365,
+                    379,
+                    392,
+                    409,
+                    419,
+                    429,
+                    440,
+                    448
+                ],
+                "right_step_events": [
+                    214,
+                    225,
+                    234,
+                    246,
+                    257,
+                    266,
+                    289,
+                    298,
+                    311,
+                    356,
+                    365,
+                    376,
+                    392,
+                    401,
+                    413,
+                    425,
+                    438,
+                    448
+                ],
+                "knee_flexion_peak_deg": 164.18,
+                "hip_extension_deg": 175.4,
+                "asymmetry_observed": "Symmetric movement pattern",
+                "asymmetry_pct": 34.8,
+                "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+            },
+            "video_quality": {
+                "category": "Good",
+                "score": 75.4,
+                "fps": 24.0,
+                "total_frames": 598,
+                "tracked_frames": 451,
+                "resolution": "1280x720",
+                "reasons": []
+            },
+            "angles": {
+                "hip_angle_deg": 172.77,
+                "knee_angle_deg": 164.18,
+                "shoulder_angle_deg": 20.07,
+                "elbow_angle_deg": 172.54
+            },
+            "gait": {
+                "stride_length_m": 0.096,
+                "stride_length_index": 0.096,
+                "cadence_steps_min": 86.6,
+                "walking_speed_ms": 0.14,
+                "walking_speed_index": 0.14,
+                "step_width_m": 0.038,
+                "step_width_index": 0.038,
+                "step_symmetry_ratio": 0.7
+            },
+            "arm_swing_deg": 153.15,
+            "rom_score": 160.89,
+            "balance_stability_score": 93.9,
+            "landmarks": [
+                {
+                    "id": 0,
+                    "x": 0.4854,
+                    "y": 0.3128,
+                    "z": -0.247,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 1,
+                    "x": 0.4878,
+                    "y": 0.3032,
+                    "z": -0.2512,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 2,
+                    "x": 0.4903,
+                    "y": 0.3011,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 3,
+                    "x": 0.4928,
+                    "y": 0.2987,
+                    "z": -0.2511,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 4,
+                    "x": 0.4813,
+                    "y": 0.3053,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 5,
+                    "x": 0.4796,
+                    "y": 0.3047,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 6,
+                    "x": 0.478,
+                    "y": 0.3039,
+                    "z": -0.2486,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 7,
+                    "x": 0.4968,
+                    "y": 0.2882,
+                    "z": -0.205,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 8,
+                    "x": 0.4761,
+                    "y": 0.2953,
+                    "z": -0.1917,
+                    "visibility": 0.999
+                },
+                {
+                    "id": 9,
+                    "x": 0.4919,
+                    "y": 0.317,
+                    "z": -0.2232,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 10,
+                    "x": 0.4838,
+                    "y": 0.3184,
+                    "z": -0.2194,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 11,
+                    "x": 0.5235,
+                    "y": 0.3191,
+                    "z": -0.1331,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 12,
+                    "x": 0.4628,
+                    "y": 0.3295,
+                    "z": -0.1155,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 13,
+                    "x": 0.5415,
+                    "y": 0.3863,
+                    "z": -0.0702,
+                    "visibility": 0.997
+                },
+                {
+                    "id": 14,
+                    "x": 0.4445,
+                    "y": 0.4048,
+                    "z": -0.0494,
+                    "visibility": 0.995
+                },
+                {
+                    "id": 15,
+                    "x": 0.551,
+                    "y": 0.442,
+                    "z": -0.0704,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 16,
+                    "x": 0.4294,
+                    "y": 0.473,
+                    "z": -0.0505,
+                    "visibility": 0.996
+                },
+                {
+                    "id": 17,
+                    "x": 0.5549,
+                    "y": 0.4608,
+                    "z": -0.0714,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 18,
+                    "x": 0.4247,
+                    "y": 0.498,
+                    "z": -0.0507,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 19,
+                    "x": 0.5503,
+                    "y": 0.4609,
+                    "z": -0.0875,
+                    "visibility": 0.99
+                },
+                {
+                    "id": 20,
+                    "x": 0.4273,
+                    "y": 0.4978,
+                    "z": -0.0689,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 21,
+                    "x": 0.5471,
+                    "y": 0.4552,
+                    "z": -0.0753,
+                    "visibility": 0.989
+                },
+                {
+                    "id": 22,
+                    "x": 0.43,
+                    "y": 0.4895,
+                    "z": -0.057,
+                    "visibility": 0.988
+                },
+                {
+                    "id": 23,
+                    "x": 0.5166,
+                    "y": 0.4668,
+                    "z": -0.0075,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 24,
+                    "x": 0.4797,
+                    "y": 0.4748,
+                    "z": 0.0073,
+                    "visibility": 1.0
+                },
+                {
+                    "id": 25,
+                    "x": 0.5306,
+                    "y": 0.5777,
+                    "z": -0.0281,
+                    "visibility": 0.972
+                },
+                {
+                    "id": 26,
+                    "x": 0.4759,
+                    "y": 0.5884,
+                    "z": 0.0135,
+                    "visibility": 0.969
+                },
+                {
+                    "id": 27,
+                    "x": 0.539,
+                    "y": 0.6942,
+                    "z": 0.0058,
+                    "visibility": 0.984
+                },
+                {
+                    "id": 28,
+                    "x": 0.4715,
+                    "y": 0.6865,
+                    "z": 0.0883,
+                    "visibility": 0.966
+                },
+                {
+                    "id": 29,
+                    "x": 0.5367,
+                    "y": 0.7124,
+                    "z": 0.0062,
+                    "visibility": 0.824
+                },
+                {
+                    "id": 30,
+                    "x": 0.4739,
+                    "y": 0.696,
+                    "z": 0.0936,
+                    "visibility": 0.78
+                },
+                {
+                    "id": 31,
+                    "x": 0.5484,
+                    "y": 0.7344,
+                    "z": -0.0602,
+                    "visibility": 0.979
+                },
+                {
+                    "id": 32,
+                    "x": 0.4657,
+                    "y": 0.727,
+                    "z": 0.0422,
+                    "visibility": 0.966
+                }
+            ]
+        },
+        "predictions": {
+            "impairment_level": "Healthy-like movement pattern",
+            "model_used": "Random Forest",
+            "confidence": 40.0,
+            "feature_importances": {
+                "balance_stability_score": 17.4,
+                "shoulder_mobility_deg": 17.0,
+                "walking_speed_index": 16.0,
+                "elbow_flexion_deg": 10.3,
+                "stride_length_index": 8.7,
+                "arm_swing_deg": 8.5,
+                "cadence_steps_min": 5.7,
+                "step_symmetry_ratio": 4.4,
+                "step_width_index": 3.6,
+                "rom_score": 3.5,
+                "hip_angle_deg": 2.8,
+                "peak_knee_flexion_deg": 2.1
+            },
+            "prediction_probabilities": {
+                "Healthy-like movement pattern": 40.0,
+                "Restricted / asymmetric movement pattern": 31.0,
+                "Unstable gait / stance pattern": 29.0
+            }
+        },
+        "recommendations": [
+            "Reduced Shoulder Mobility: Integrate active-assisted arm elevations, pulley exercises, and wall-climbing exercises.",
+            "Low Walking Speed Index: Recommend body-weight supported treadmill training (BWSTT) and cadence-paced walking trials.",
+            "Gait Asymmetry Detected: Utilize metronome-guided step timing (rhythmic auditory stimulation) and weight-shifting practice.",
+            "Research prototype suggestions \u2014 clinician review required."
+        ],
+        "prescribed_exercises": [
+            {
+                "title": "Rhythmic Auditory Cued Step Synchronization (Metronome Walk)",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Marked Step Asymmetry Ratio (0.70 vs Ideal 1.0)",
+                "dosage": "Clinician Discretion \u2014 Discuss pacing duration with treating physiotherapist.",
+                "intensity": "Progressive Resistance",
+                "instructions": "Walk along a designated straight corridor while synchronizing foot strikes to an auditory metronome.",
+                "clinical_rationale": "Step symmetry ratio of 0.70 reflects asymmetrical step distribution. Rhythmic auditory stimulation promotes bilateral temporal symmetry."
+            },
+            {
+                "title": "Body-Weight Supported Paced Interval Walking",
+                "category": "Gait & Symmetry",
+                "target_deficit": "Reduced Walking Speed Index (0.14)",
+                "dosage": "Clinician Discretion \u2014 Discuss walking interval durations with treating physiotherapist.",
+                "intensity": "Active",
+                "instructions": "Perform structured walking intervals in a quiet hallway with appropriate mobility support.",
+                "clinical_rationale": "Relative walking speed index is 0.14. Velocity interval training increases endurance."
+            }
+        ],
+        "therapist_notes": "",
+        "video_debug": {
+            "video_filename": "PT-2026-0001_session_17_55d8e0_vidssave.com_Ataxic_Gait_720P.mp4",
+            "frame_count": 598,
+            "fps": 24.0,
+            "duration_seconds": 24.94,
+            "valid_pose_frames": 451,
+            "invalid_pose_frames": 147,
+            "pose_detection_rate": 75.42,
+            "video_quality_status": "Good",
+            "video_quality_warning": null,
+            "detected_steps": 36,
+            "left_step_events": [
+                203,
+                213,
+                227,
+                236,
+                246,
+                272,
+                291,
+                302,
+                312,
+                356,
+                365,
+                379,
+                392,
+                409,
+                419,
+                429,
+                440,
+                448
+            ],
+            "right_step_events": [
+                214,
+                225,
+                234,
+                246,
+                257,
+                266,
+                289,
+                298,
+                311,
+                356,
+                365,
+                376,
+                392,
+                401,
+                413,
+                425,
+                438,
+                448
+            ],
+            "knee_flexion_peak_deg": 164.18,
+            "hip_extension_deg": 175.4,
+            "asymmetry_observed": "Symmetric movement pattern",
+            "asymmetry_pct": 34.8,
+            "debug_image_path": "D:\\MP\\backend\\uploads\\debug_pose.jpg"
+        },
+        "video_quality": {
+            "category": "Good",
+            "score": 75.4,
+            "fps": 24.0,
+            "total_frames": 598,
+            "tracked_frames": 451,
+            "resolution": "1280x720",
+            "reasons": []
+        },
+        "_id": "728e0fd0-ccb3-49ae-9c4b-00c1057b027f"
     }
 ]

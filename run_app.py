@@ -10,8 +10,8 @@ def run():
     print("==================================================================")
 
     # 1. Start FastAPI Backend
-    print("\n[+] Starting FastAPI backend on http://localhost:8000 ...")
-    backend_cmd = [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    print("\n[+] Starting FastAPI backend on http://localhost:8080 ...")
+    backend_cmd = [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
     backend_process = subprocess.Popen(
         backend_cmd,
         stdout=subprocess.PIPE,
@@ -51,7 +51,7 @@ def run():
     t2.start()
 
     print("\n[OK] Both services are running.")
-    print("    - API Docs: http://localhost:8000/docs")
+    print("    - API Docs: http://localhost:8080/docs")
     print("    - Web Client: http://localhost:5173")
     print("\nPress Ctrl+C to terminate both servers.")
 

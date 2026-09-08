@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Patients from './pages/Patients';
 import PatientProfile from './pages/PatientProfile';
+import Methodology from './pages/Methodology';
 import Admin from './pages/Admin';
 import Settings from './pages/Settings';
 import { getAuthToken, getStoredUser } from './api';
@@ -62,6 +63,7 @@ export const App: React.FC = () => {
           <Route path="/" element={<Dashboard />} />
           <Route path="/patients" element={<Patients />} />
           <Route path="/patients/:id" element={<PatientProfile />} />
+          <Route path="/methodology" element={<Methodology />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/settings" element={<Settings darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
         </Route>

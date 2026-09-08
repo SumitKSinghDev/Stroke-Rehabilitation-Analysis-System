@@ -22,7 +22,8 @@ import {
   Target,
   Zap,
   Clock,
-  ShieldCheck
+  ShieldCheck,
+  Check
 } from 'lucide-react';
 import { 
   LineChart, 
@@ -32,9 +33,7 @@ import {
   CartesianGrid, 
   Tooltip, 
   Legend, 
-  ResponsiveContainer,
-  BarChart,
-  Bar
+  ResponsiveContainer
 } from 'recharts';
 import { api, Patient, Assessment, ProgressSummary } from '../api';
 import SkeletonViewer from '../components/SkeletonViewer';
@@ -89,7 +88,7 @@ export const PatientProfile: React.FC = () => {
       }
     } catch (err) {
       console.error('Error loading patient profile:', err);
-    } finally {
+    } fontFinally: {
       setLoading(false);
     }
   };
@@ -187,7 +186,6 @@ export const PatientProfile: React.FC = () => {
     );
   }
 
-  // Define tab headers
   const tabs = [
     { id: 'sessions', label: 'Diagnostics Log', icon: FileText },
     { id: 'trends', label: 'Recovery Trends', icon: TrendingUp },
@@ -198,14 +196,26 @@ export const PatientProfile: React.FC = () => {
     tabs.push({ id: 'inspector', label: 'Biomechanical Inspector', icon: Cpu });
   }
 
-  const getSeverityBadgeColor = (level: string) => {
-    switch (level) {
-      case 'Normal': return 'bg-emerald-500/10 text-emerald-500 border-emerald-500/25';
-      case 'Mild': return 'bg-blue-500/10 text-blue-500 border-blue-500/25';
-      case 'Moderate': return 'bg-amber-500/10 text-amber-500 border-amber-500/25';
-      case 'Severe': return 'bg-rose-500/10 text-rose-500 border-rose-500/25';
-      case 'Very Severe': return 'bg-red-900/20 text-red-400 border-red-900/30';
-      default: return 'bg-slate-500/10 text-slate-500 border-slate-500/25';
+  const getSeverityBadgeColor = (level?: string) => {
+    if (!level) return 'bg-slate-500/10 text-slate-500 border-slate-500/25';
+    if (level.includes('Healthy') || level.includes('Normal')) {
+      return 'bg-emerald-500/10 text-emerald-500 border-emerald-500/25';
+    }
+    if (level.includes('Restricted') || level.includes('Asymmetric') || level.includes('Mild') || level.includes('Moderate')) {
+      return 'bg-purple-500/10 text-purple-500 border-purple-500/25';
+    }
+    if (level.includes('Unstable') || level.includes('Severe')) {
+      return 'bg-rose-500/10 text-rose-500 border-rose-500/25';
+    }
+    return 'bg-amber-500/10 text-amber-500 border-amber-500/25';
+  };
+
+  const getQualityBadgeColor = (cat?: string) => {
+    switch (cat) {
+      case 'Excellent': return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30';
+      case 'Good': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/30';
+      case 'Fair': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30';
+      default: return 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/30';
     }
   };
 
@@ -315,6 +325,7 @@ export const PatientProfile: React.FC = () => {
                   <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 dark:text-slate-500 uppercase tracking-widest font-extrabold">
                     <th className="pb-3 pl-2">Session</th>
                     <th className="pb-3">Date</th>
+                    <th className="pb-3 text-center">Video QC Grade</th>
                     <th className="pb-3 text-center">Model Classification</th>
                     <th className="pb-3 text-center">FMA Score</th>
                     <th className="pb-3 text-center">BBS Score</th>
@@ -335,8 +346,13 @@ export const PatientProfile: React.FC = () => {
                         {new Date(s.assessment_date).toLocaleDateString()}
                       </td>
                       <td className="py-3.5 text-center">
+                        <span className={`inline-block px-2.5 py-0.5 rounded-full font-extrabold text-[10px] border ${getQualityBadgeColor(s.video_quality?.category)}`}>
+                          {s.video_quality?.category || 'Passed'}
+                        </span>
+                      </td>
+                      <td className="py-3.5 text-center">
                         <span className={`inline-block px-2.5 py-0.5 rounded-full font-bold text-[10px] border ${getSeverityBadgeColor(s.predictions?.impairment_level)}`}>
-                          {s.predictions?.impairment_level}
+                          {s.predictions?.impairment_level || 'Not measured'}
                         </span>
                       </td>
                       <td className="py-3.5 text-center font-semibold text-slate-700 dark:text-slate-300">
@@ -360,7 +376,7 @@ export const PatientProfile: React.FC = () => {
                         </button>
                         <button
                           onClick={() => handleDownloadReport(s._id, s.session_number)}
-                          className="px-2.5 py-1.5 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg font-bold text-[10px] transition-all flex inline-flex items-center space-x-1"
+                          className="px-2.5 py-1.5 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg font-bold text-[10px] transition-all inline-flex items-center space-x-1"
                         >
                           <Download className="w-3 h-3" />
                           <span>PDF</span>
@@ -402,7 +418,7 @@ export const PatientProfile: React.FC = () => {
                       +{progress.recent_comparison.walking_speed?.improvement_pct}%
                     </span>
                     <span className="text-xs text-slate-500 dark:text-slate-400">
-                      ({progress.recent_comparison.walking_speed?.initial} → {progress.recent_comparison.walking_speed?.current} m/s)
+                      ({progress.recent_comparison.walking_speed?.initial} → {progress.recent_comparison.walking_speed?.current} Index)
                     </span>
                   </div>
                 </div>
@@ -414,7 +430,7 @@ export const PatientProfile: React.FC = () => {
                       +{progress.recent_comparison.balance?.improvement_pct}%
                     </span>
                     <span className="text-xs text-slate-500 dark:text-slate-400">
-                      ({progress.recent_comparison.balance?.initial} → {progress.recent_comparison.balance?.current} pts)
+                      ({progress.recent_comparison.balance?.initial} → {progress.recent_comparison.balance?.current} %)
                     </span>
                   </div>
                 </div>
@@ -448,7 +464,7 @@ export const PatientProfile: React.FC = () => {
                         <Tooltip />
                         <Legend wrapperStyle={{ fontSize: '10px' }} />
                         <Line type="monotone" dataKey="walking_speed" name="Speed Index" stroke="#2563EB" strokeWidth={2.5} activeDot={{ r: 6 }} />
-                        <Line type="monotone" dataKey="balance" name="Balance Score (%)" stroke="#14B8A6" strokeWidth={2.5} />
+                        <Line type="monotone" dataKey="balance" name="Balance Stability (%)" stroke="#14B8A6" strokeWidth={2.5} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -466,9 +482,9 @@ export const PatientProfile: React.FC = () => {
                         <YAxis stroke="#94A3B8" fontSize={10} />
                         <Tooltip />
                         <Legend wrapperStyle={{ fontSize: '10px' }} />
-                        <Line type="monotone" dataKey="knee_angle" name="Knee Extension (°)" stroke="#EF4444" strokeWidth={2.5} />
+                        <Line type="monotone" dataKey="knee_angle" name="Peak Knee Flexion (°)" stroke="#EF4444" strokeWidth={2.5} />
                         <Line type="monotone" dataKey="hip_angle" name="Hip Extension (°)" stroke="#F59E0B" strokeWidth={2.5} />
-                        <Line type="monotone" dataKey="upper_limb_movement" name="Upper Limb Rom (%)" stroke="#06B6D4" strokeWidth={2.5} />
+                        <Line type="monotone" dataKey="upper_limb_movement" name="Upper Limb ROM (%)" stroke="#06B6D4" strokeWidth={2.5} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -591,7 +607,7 @@ export const PatientProfile: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Classifier Model</label>
+                    <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 pl-0.5">Subject-Independent ML Classifier</label>
                     <select
                       value={modelUsed}
                       onChange={(e) => setModelUsed(e.target.value)}
@@ -599,6 +615,7 @@ export const PatientProfile: React.FC = () => {
                     >
                       <option value="Random Forest">Random Forest Classifier</option>
                       <option value="SVM">Support Vector Machine (SVM)</option>
+                      <option value="Logistic Regression">Logistic Regression</option>
                       <option value="XGBoost">XGBoost Classifier (Ensemble)</option>
                     </select>
                   </div>
@@ -710,11 +727,20 @@ export const PatientProfile: React.FC = () => {
             
             {/* Visual Canvas Box */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
                 <div>
                   <h3 className="font-extrabold text-slate-800 dark:text-white text-base">MediaPipe Pose Estimator</h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">33 body-node coordinate mesh | Session #{selectedAssessment.session_number}</p>
                 </div>
+
+                {/* Video Quality Badge */}
+                {selectedAssessment.video_quality && (
+                  <div className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-2 ${getQualityBadgeColor(selectedAssessment.video_quality.category)}`}>
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>QC: {selectedAssessment.video_quality.category} ({selectedAssessment.video_quality.score}/100)</span>
+                  </div>
+                )}
+
                 <div className="text-xs font-bold text-slate-400 flex items-center space-x-1.5">
                   <Calendar className="w-4 h-4" />
                   <span>{new Date(selectedAssessment.assessment_date).toLocaleDateString()}</span>
@@ -734,59 +760,105 @@ export const PatientProfile: React.FC = () => {
               {/* Gait parameters */}
               <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
                 <h4 className="font-extrabold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest pl-0.5">
-                  Gait Metrics
+                  GAIT METRICS
                 </h4>
                 
                 <div className="space-y-3.5 text-xs">
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Relative Walking Speed</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.walking_speed_ms} Index</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Relative Walking Speed Index</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.gait?.walking_speed_index !== null && selectedAssessment.extracted_features?.gait?.walking_speed_index !== undefined 
+                        ? `${selectedAssessment.extracted_features.gait.walking_speed_index} Index`
+                        : selectedAssessment.extracted_features?.gait?.walking_speed_ms !== null && selectedAssessment.extracted_features?.gait?.walking_speed_ms !== undefined
+                        ? `${selectedAssessment.extracted_features.gait.walking_speed_ms} Index`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Stride Length</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.stride_length_m} m</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Relative Stride Length Index</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.gait?.stride_length_index !== null && selectedAssessment.extracted_features?.gait?.stride_length_index !== undefined 
+                        ? `${selectedAssessment.extracted_features.gait.stride_length_index} Index`
+                        : selectedAssessment.extracted_features?.gait?.stride_length_m !== null && selectedAssessment.extracted_features?.gait?.stride_length_m !== undefined
+                        ? `${selectedAssessment.extracted_features.gait.stride_length_m} Index`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                     <span className="text-slate-500 dark:text-slate-400 font-semibold">Cadence</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.cadence_steps_min} steps/min</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.gait?.cadence_steps_min !== null && selectedAssessment.extracted_features?.gait?.cadence_steps_min !== undefined 
+                        ? `${selectedAssessment.extracted_features.gait.cadence_steps_min} steps/min` 
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                     <span className="text-slate-500 dark:text-slate-400 font-semibold">Step Symmetry Ratio</span>
-                    <span className="font-bold text-red-500">{selectedAssessment.extracted_features?.gait.step_symmetry_ratio}</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.gait?.step_symmetry_ratio !== null && selectedAssessment.extracted_features?.gait?.step_symmetry_ratio !== undefined 
+                        ? selectedAssessment.extracted_features.gait.step_symmetry_ratio 
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between pb-1">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Step Width</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.gait.step_width_m} m</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Relative Step Width Index</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.gait?.step_width_index !== null && selectedAssessment.extracted_features?.gait?.step_width_index !== undefined 
+                        ? `${selectedAssessment.extracted_features.gait.step_width_index} Index`
+                        : selectedAssessment.extracted_features?.gait?.step_width_m !== null && selectedAssessment.extracted_features?.gait?.step_width_m !== undefined
+                        ? `${selectedAssessment.extracted_features.gait.step_width_m} Index`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Joint angles */}
+              {/* Joint movement */}
               <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
                 <h4 className="font-extrabold text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest pl-0.5">
-                  Joint Range of Motion
+                  JOINT MOVEMENT
                 </h4>
                 
                 <div className="space-y-3.5 text-xs">
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Knee Flexion (max)</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.angles.knee_angle_deg}°</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Peak Knee Flexion Angle (180° - joint)</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.angles?.knee_angle_deg !== null && selectedAssessment.extracted_features?.angles?.knee_angle_deg !== undefined
+                        ? `${selectedAssessment.extracted_features.angles.knee_angle_deg}°`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Hip Extension (max)</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.angles.hip_angle_deg}°</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Hip Range of Motion</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.angles?.hip_angle_deg !== null && selectedAssessment.extracted_features?.angles?.hip_angle_deg !== undefined
+                        ? `${selectedAssessment.extracted_features.angles.hip_angle_deg}°`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                     <span className="text-slate-500 dark:text-slate-400 font-semibold">Shoulder Mobility</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.angles.shoulder_angle_deg}°</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.angles?.shoulder_angle_deg !== null && selectedAssessment.extracted_features?.angles?.shoulder_angle_deg !== undefined
+                        ? `${selectedAssessment.extracted_features.angles.shoulder_angle_deg}°`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
                     <span className="text-slate-500 dark:text-slate-400 font-semibold">Elbow Flexion</span>
-                    <span className="font-bold text-slate-800 dark:text-white">{selectedAssessment.extracted_features?.angles.elbow_angle_deg}°</span>
+                    <span className="font-bold text-slate-800 dark:text-white">
+                      {selectedAssessment.extracted_features?.angles?.elbow_angle_deg !== null && selectedAssessment.extracted_features?.angles?.elbow_angle_deg !== undefined
+                        ? `${selectedAssessment.extracted_features.angles.elbow_angle_deg}°`
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                   <div className="flex justify-between pb-1">
-                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Balance Stability score</span>
-                    <span className="font-bold text-teal-500">{selectedAssessment.extracted_features?.balance_stability_score}%</span>
+                    <span className="text-slate-500 dark:text-slate-400 font-semibold">Pose-Based Stability Index</span>
+                    <span className="font-bold text-teal-500">
+                      {selectedAssessment.extracted_features?.balance_stability_score !== null && selectedAssessment.extracted_features?.balance_stability_score !== undefined 
+                        ? `${selectedAssessment.extracted_features.balance_stability_score}%` 
+                        : <span className="text-slate-400 font-normal">Not reliably measurable</span>}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -802,16 +874,16 @@ export const PatientProfile: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-extrabold text-slate-800 dark:text-white text-base">
-                      Prescribed Rehabilitation Program
+                      ANALYSIS-BASED EXERCISE CONSIDERATIONS
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
-                      Evidence-based exercise protocols tailored to detected kinematic deficits
+                      Research prototype suggestions — clinician review required.
                     </p>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-full text-[10px] font-bold">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Clinical Decision Support</span>
+                <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-full text-[10px] font-bold">
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  <span>Clinician Review Required</span>
                 </div>
               </div>
 
@@ -886,6 +958,29 @@ export const PatientProfile: React.FC = () => {
               )}
             </div>
 
+            {/* Developer Video Telemetry Object Box */}
+            {selectedAssessment.video_debug && (
+              <div className="bg-slate-900 text-slate-200 border border-slate-800 p-5 rounded-3xl font-mono text-[11px] space-y-3">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <span className="font-bold text-amber-400 uppercase tracking-widest text-[10px]">Developer Video Analysis Telemetry</span>
+                  <span className="text-[9px] bg-slate-800 px-2 py-0.5 rounded text-slate-400">DEBUG OBJECT</span>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <div>File: <span className="text-white">{selectedAssessment.video_debug.video_filename}</span></div>
+                  <div>Frames: <span className="text-white">{selectedAssessment.video_debug.valid_pose_frames} / {selectedAssessment.video_debug.frame_count}</span></div>
+                  <div>FPS: <span className="text-white">{selectedAssessment.video_debug.fps}</span></div>
+                  <div>Duration: <span className="text-white">{selectedAssessment.video_debug.duration_seconds}s</span></div>
+                  <div>Detection Rate: <span className="text-emerald-400">{selectedAssessment.video_debug.pose_detection_rate}%</span></div>
+                  <div>Detected Steps: <span className="text-amber-400">{selectedAssessment.video_debug.detected_steps ?? 0}</span></div>
+                </div>
+                {selectedAssessment.video_debug.asymmetry_observed && (
+                  <div className="text-[10px] text-cyan-300 pt-1 border-t border-slate-800">
+                    Side Analysis: {selectedAssessment.video_debug.asymmetry_observed}
+                  </div>
+                )}
+              </div>
+            )}
+
           </div>
 
           {/* Right 1 Column: ML Prediction details & Clinical Scores */}
@@ -894,61 +989,96 @@ export const PatientProfile: React.FC = () => {
             {/* ML prediction card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-5">
               <div>
-                <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">AI Movement Analysis</h4>
-                <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">Machine Learning classifier decision</p>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">AI PROTOTYPE ANALYSIS</h4>
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">Subject-independent preliminary classification</p>
               </div>
 
               {/* Large impairment counter */}
               <div className="text-center p-5 bg-slate-50 dark:bg-slate-800/30 rounded-2xl border border-slate-100 dark:border-slate-800">
-                <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Predicted Level</span>
+                <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">Predicted Pattern Class</span>
                 <span className={`text-xl font-extrabold block mt-2 ${
-                  selectedAssessment.predictions.impairment_level === 'Normal' ? 'text-emerald-500' :
-                  selectedAssessment.predictions.impairment_level === 'Mild' ? 'text-blue-500' :
-                  selectedAssessment.predictions.impairment_level === 'Moderate' ? 'text-amber-500' :
-                  'text-rose-500'
+                  !selectedAssessment.predictions?.impairment_level ? 'text-slate-500' :
+                  selectedAssessment.predictions.impairment_level.includes('Healthy') || selectedAssessment.predictions.impairment_level.includes('Normal') ? 'text-emerald-500' :
+                  selectedAssessment.predictions.impairment_level.includes('Restricted') || selectedAssessment.predictions.impairment_level.includes('Asymmetric') || selectedAssessment.predictions.impairment_level.includes('Mild') || selectedAssessment.predictions.impairment_level.includes('Moderate') ? 'text-purple-500' :
+                  selectedAssessment.predictions.impairment_level.includes('Unstable') || selectedAssessment.predictions.impairment_level.includes('Severe') ? 'text-rose-500' :
+                  'text-amber-500'
                 }`}>
-                  {selectedAssessment.predictions.impairment_level}
+                  {selectedAssessment.predictions?.impairment_level || 'Not measured'}
                 </span>
                 
-                {selectedAssessment.predictions.confidence !== undefined && (
+                {selectedAssessment.predictions?.confidence !== undefined && selectedAssessment.predictions?.confidence !== null && (
                   <div className="flex items-center justify-center space-x-1.5 mt-3 text-[10px] text-slate-500">
                     <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Confidence: <span className="font-bold">{Math.round(selectedAssessment.predictions.confidence * 100)}%</span></span>
+                    <span>Classifier Confidence: <span className="font-bold">
+                      {selectedAssessment.predictions.confidence > 1 ? Math.round(selectedAssessment.predictions.confidence) : Math.round(selectedAssessment.predictions.confidence * 100)}%
+                    </span></span>
                   </div>
                 )}
               </div>
 
+              {/* Class Probability Distribution Breakdown */}
+              {selectedAssessment.predictions?.prediction_probabilities && (
+                <div className="space-y-2.5 pt-1">
+                  <h5 className="font-bold text-[10px] text-slate-400 uppercase tracking-wider pl-0.5">Class Probabilities Breakdown P(c)</h5>
+                  <div className="space-y-2 text-xs">
+                    {Object.entries(selectedAssessment.predictions.prediction_probabilities).map(([cls, prob]) => {
+                      const probVal = prob > 1 ? Math.round(prob) : Math.round(prob * 100);
+                      const isSelected = cls === selectedAssessment.predictions?.impairment_level;
+                      return (
+                        <div key={cls} className="space-y-1">
+                          <div className="flex justify-between text-[10px] font-semibold text-slate-600 dark:text-slate-400">
+                            <span className={isSelected ? "font-bold text-slate-900 dark:text-white" : ""}>{cls}</span>
+                            <span>{probVal}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div 
+                              className={`h-full rounded-full ${isSelected ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'}`}
+                              style={{ width: `${probVal}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* Feature importance weights */}
-              <div className="space-y-2">
-                <h5 className="font-bold text-[10px] text-slate-400 uppercase tracking-wider pl-0.5">Feature Importance Weights</h5>
-                {selectedAssessment.predictions.feature_importances ? (
-                  <div className="space-y-2">
-                    {Object.entries(selectedAssessment.predictions.feature_importances).slice(0, 4).map(([name, val]) => (
-                      <div key={name} className="space-y-1">
-                        <div className="flex justify-between text-[10px] font-semibold text-slate-600 dark:text-slate-400 capitalize">
-                          <span>{name.replace('_', ' ')}</span>
-                          <span>{Math.round(val * 100)}%</span>
+              <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                <h5 className="font-bold text-[10px] text-slate-400 uppercase tracking-wider pl-0.5">MODEL INFORMATION</h5>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">Classifier: <strong>{selectedAssessment.predictions?.model_used || 'Random Forest'}</strong></p>
+                {selectedAssessment.predictions?.feature_importances ? (
+                  <div className="space-y-2 pt-1">
+                    <span className="text-[9px] font-bold text-slate-400 uppercase">Trained Feature Importances</span>
+                    {Object.entries(selectedAssessment.predictions.feature_importances).slice(0, 5).map(([name, val]) => {
+                      const impVal = val > 1 ? Math.round(val) : Math.round(val * 100);
+                      return (
+                        <div key={name} className="space-y-1">
+                          <div className="flex justify-between text-[10px] font-semibold text-slate-600 dark:text-slate-400 capitalize">
+                            <span>{name.replace(/_/g, ' ')}</span>
+                            <span>{impVal}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-teal-500 rounded-full"
+                              style={{ width: `${impVal}%` }}
+                            ></div>
+                          </div>
                         </div>
-                        <div className="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-primary rounded-full"
-                            style={{ width: `${val * 100}%` }}
-                          ></div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ) : (
                   <p className="text-[10px] text-slate-400 font-medium italic p-2 bg-slate-50 dark:bg-slate-800/30 rounded-lg">
-                    Feature importances are not available for non-tree models (e.g., SVM).
+                    Feature importance not available for this model.
                   </p>
                 )}
               </div>
             </div>
 
-            {/* Clinical scores comparison card */}
+            {/* Clinical scores card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
-              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Clinician-Entered Assessment Scores</h4>
+              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">CLINICIAN-ENTERED ASSESSMENT</h4>
               
               <div className="space-y-3.5 text-xs">
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
@@ -964,49 +1094,27 @@ export const PatientProfile: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex justify-between border-b border-slate-50 dark:border-slate-800/80 pb-2">
+                  <span className="text-slate-500 dark:text-slate-400 font-semibold">FAC Rating</span>
+                  <span className="font-bold text-slate-800 dark:text-white">
+                    {selectedAssessment.clinical_scores.fac_score > 0 ? `Category ${selectedAssessment.clinical_scores.fac_score}` : 'Not provided'}
+                  </span>
+                </div>
+                <div className="flex justify-between pb-1">
                   <span className="text-slate-500 dark:text-slate-400 font-semibold">TUG Score</span>
                   <span className="font-bold text-slate-800 dark:text-white">
                     {selectedAssessment.clinical_scores.tug_score > 0 ? `${selectedAssessment.clinical_scores.tug_score}s` : 'Not provided'}
                   </span>
                 </div>
-                
-                {/* Visual score comparison HUD */}
-                <div className="pt-2">
-                  <div className="flex justify-between font-bold text-[10px] uppercase text-slate-400 mb-2">
-                    <span>Clinical Score</span>
-                    <span>AI Predicted</span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="p-3 bg-blue-500/5 dark:bg-blue-500/10 rounded-xl border border-blue-500/10">
-                      <span className="text-lg font-black text-blue-600 dark:text-blue-400">
-                        {(selectedAssessment.clinical_scores?.overall_clinical_score ?? 0) > 0 ? `${selectedAssessment.clinical_scores.overall_clinical_score}%` : 'N/A'}
-                      </span>
-                      <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Validation</p>
-                    </div>
-                    
-                    <div className="p-3 bg-teal-500/5 dark:bg-teal-500/10 rounded-xl border border-teal-500/10">
-                      <span className="text-lg font-black text-teal-600 dark:text-teal-400">
-                        {selectedAssessment.predictions.impairment_level === 'Normal' ? '98%' :
-                         selectedAssessment.predictions.impairment_level === 'Mild' ? '85%' :
-                         selectedAssessment.predictions.impairment_level === 'Moderate' ? '60%' :
-                         selectedAssessment.predictions.impairment_level === 'Severe' ? '35%' :
-                         selectedAssessment.predictions.impairment_level === 'Very Severe' ? '15%' : 'N/A'}
-                      </span>
-                      <p className="text-[8px] font-bold text-slate-400 uppercase mt-0.5">Objective</p>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
 
             {/* Recommendations card */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm space-y-4">
-              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">Physiotherapeutic Decision Support</h4>
+              <h4 className="font-extrabold text-slate-800 dark:text-white text-sm">MOVEMENT-BASED CONSIDERATIONS</h4>
               
               <div className="space-y-3">
                 {selectedAssessment.recommendations.map((rec, i) => {
-                  const isDisclaimer = rec.includes("qualified healthcare professionals");
+                  const isDisclaimer = rec.includes("clinician review required") || rec.includes("qualified healthcare professionals");
                   return (
                     <div 
                       key={i} 
@@ -1032,7 +1140,7 @@ export const PatientProfile: React.FC = () => {
       <div className="p-4 bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 rounded-2xl text-xs font-medium leading-relaxed flex items-start space-x-3 mt-8">
         <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
         <span>
-          <strong>Scientific Limitation & Clinical Disclaimer:</strong> This system provides movement analysis and machine-learning predictions for research/rehabilitation support. It does not provide a medical diagnosis. Clinical assessments must be performed and interpreted by qualified healthcare professionals.
+          <strong>Scientific Limitation & Clinical Disclaimer:</strong> This application is designed for MOVEMENT ANALYSIS / REHABILITATION ANALYSIS, NOT MEDICAL DIAGNOSIS. All predictions, gait indices, and exercise considerations must be reviewed and interpreted by qualified clinical professionals.
         </span>
       </div>
 

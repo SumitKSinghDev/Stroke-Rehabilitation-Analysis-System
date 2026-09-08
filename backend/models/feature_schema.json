@@ -1,0 +1,103 @@
+{
+  "feature_names": [
+    "hip_angle_deg",
+    "peak_knee_flexion_deg",
+    "shoulder_mobility_deg",
+    "elbow_flexion_deg",
+    "stride_length_index",
+    "cadence_steps_min",
+    "walking_speed_index",
+    "step_width_index",
+    "step_symmetry_ratio",
+    "arm_swing_deg",
+    "rom_score",
+    "balance_stability_score"
+  ],
+  "feature_count": 12,
+  "feature_dictionary": {
+    "hip_angle_deg": {
+      "name": "Hip Sagittal Range of Motion",
+      "definition": "Range of motion excursion angle at hip vertex (Shoulder-Hip-Knee vector)",
+      "formula": "ROM_hip = max(theta_hip) - min(theta_hip)",
+      "unit": "degrees (\u00b0)",
+      "interpretation": "Measures pelvic postural excursion and forward stride propulsion."
+    },
+    "peak_knee_flexion_deg": {
+      "name": "Peak Knee Flexion Angle",
+      "definition": "Anatomical knee flexion angle during swing phase (180\u00b0 minus interior knee joint angle)",
+      "formula": "peak_knee_flexion = 180.0 - min(theta_knee)",
+      "unit": "degrees (\u00b0)",
+      "interpretation": "Measures limb swing clearance capability; identifies stiff-knee gait."
+    },
+    "shoulder_mobility_deg": {
+      "name": "Shoulder Mobility ROM",
+      "definition": "Sagittal shoulder swing excursion angle (Hip-Shoulder-Elbow vector)",
+      "formula": "ROM_shoulder = max(theta_shoulder) - min(theta_shoulder)",
+      "unit": "degrees (\u00b0)",
+      "interpretation": "Evaluates upper-limb elevation and shoulder mobility."
+    },
+    "elbow_flexion_deg": {
+      "name": "Elbow Flexion Angle",
+      "definition": "Interior angle at elbow vertex (Shoulder-Elbow-Wrist vector)",
+      "formula": "theta_elbow = arccos((v_sh_el . v_wrist_el) / (|v_sh_el| * |v_wrist_el|))",
+      "unit": "degrees (\u00b0)",
+      "interpretation": "Detects upper-limb flexor hypertonia and spastic synergy patterns."
+    },
+    "stride_length_index": {
+      "name": "Relative Stride Length Index",
+      "definition": "Normalized peak horizontal displacement between ankle landmarks relative to leg length",
+      "formula": "stride_index = max(|x_ankle_left - x_ankle_right|) / leg_length",
+      "unit": "Unitless Index (video-derived proxy)",
+      "interpretation": "Quantifies spatial step stride normalized for uncalibrated cameras."
+    },
+    "cadence_steps_min": {
+      "name": "Step Cadence",
+      "definition": "Frequency of detected peak heel-strike ground contact events per minute",
+      "formula": "cadence = (total_detected_steps / duration_seconds) * 60.0",
+      "unit": "steps/min",
+      "interpretation": "Measures temporal stepping rate and rhythmicity."
+    },
+    "walking_speed_index": {
+      "name": "Relative Walking Speed Index",
+      "definition": "Product of relative stride length index and stepping cadence",
+      "formula": "speed_index = (stride_length_index * cadence) / 120.0",
+      "unit": "Unitless Index (video-derived proxy)",
+      "interpretation": "Combines spatial and temporal parameters into gait progression velocity index."
+    },
+    "step_width_index": {
+      "name": "Relative Step Width Index",
+      "definition": "Estimated lateral base of support width from ankle trajectories relative to inter-hip width",
+      "formula": "step_width_index = mean(|x_foot_left - x_foot_right|) / hip_width",
+      "unit": "Unitless Index (video-derived proxy)",
+      "interpretation": "Indicates lateral base-of-support width for balance control."
+    },
+    "step_symmetry_ratio": {
+      "name": "Step Symmetry Ratio",
+      "definition": "Bilateral temporal step ratio between left and right stance durations",
+      "formula": "symmetry_ratio = min(t_step_left, t_step_right) / max(t_step_left, t_step_right)",
+      "unit": "ratio (0.0 to 1.0)",
+      "interpretation": "1.0 indicates perfect temporal step symmetry."
+    },
+    "arm_swing_deg": {
+      "name": "Arm Swing Amplitude",
+      "definition": "Peak sagittal wrist displacement angle relative to shoulder joint during walking",
+      "formula": "arm_swing = max(wrist_swing_angle) - min(wrist_swing_angle)",
+      "unit": "degrees (\u00b0)",
+      "interpretation": "Evaluates reciprocal upper-limb counter-rotation."
+    },
+    "rom_score": {
+      "name": "Composite Range of Motion (ROM)",
+      "definition": "Arithmetic mean of hip, knee, shoulder, and elbow ROM percentages",
+      "formula": "rom_score = (rom_hip + rom_knee + rom_shoulder + rom_elbow) / 4.0",
+      "unit": "percentage (%)",
+      "interpretation": "Global multi-joint mobility score."
+    },
+    "balance_stability_score": {
+      "name": "Pose Stability Index",
+      "definition": "Inverse lateral sway variance of trunk center proxy across tracking frames",
+      "formula": "pose_stability_index = max(0.0, min(100.0, 100.0 - (var(x_trunk) * 15000)))",
+      "unit": "percentage (%)",
+      "interpretation": "Pose-derived proxy metric for dynamic balance stability."
+    }
+  }
+}

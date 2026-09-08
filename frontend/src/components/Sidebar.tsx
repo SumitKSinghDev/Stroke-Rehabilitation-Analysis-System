@@ -7,7 +7,8 @@ import {
   ShieldAlert, 
   LogOut, 
   Activity, 
-  UserCircle 
+  UserCircle,
+  BookOpen
 } from 'lucide-react';
 import { clearAuthToken, getStoredUser } from '../api';
 
@@ -28,12 +29,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) =>
   const navItems = [
     { to: '/', label: 'Dashboard', icon: LayoutDashboard, roles: ['Admin', 'Physiotherapist', 'Doctor'] },
     { to: '/patients', label: 'Patients', icon: Users, roles: ['Admin', 'Physiotherapist', 'Doctor'] },
+    { to: '/methodology', label: 'Methodology', icon: BookOpen, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
     { to: '/settings', label: 'Settings', icon: Settings, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
   ];
 
   // If user is Admin, add the Admin Portal item
   if (user?.role === 'Admin') {
-    navItems.splice(2, 0, { to: '/admin', label: 'Admin Portal', icon: ShieldAlert, roles: ['Admin'] });
+    navItems.splice(3, 0, { to: '/admin', label: 'Admin Portal', icon: ShieldAlert, roles: ['Admin'] });
   }
 
   return (

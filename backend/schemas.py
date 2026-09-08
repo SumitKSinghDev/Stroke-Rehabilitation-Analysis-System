@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
 from typing import List, Dict, Optional, Any
 from datetime import datetime
 
@@ -20,6 +20,11 @@ class UserLogin(BaseModel):
 class UserResponse(UserBase):
     id: str = Field(..., alias="_id")
     created_at: Optional[str] = None
+
+    @field_validator("id", mode="before")
+    @classmethod
+    def convert_id(cls, v):
+        return str(v) if v is not None else v
 
     class Config:
         populate_by_name = True
@@ -90,17 +95,20 @@ class ClinicalScores(BaseModel):
     overall_clinical_score: Optional[float] = 0.0
 
 class JointAngles(BaseModel):
-    hip_angle_deg: float
-    knee_angle_deg: float
-    shoulder_angle_deg: float
-    elbow_angle_deg: float
+    hip_angle_deg: Optional[float] = None
+    knee_angle_deg: Optional[float] = None
+    shoulder_angle_deg: Optional[float] = None
+    elbow_angle_deg: Optional[float] = None
 
 class GaitParameters(BaseModel):
-    stride_length_m: float
-    cadence_steps_min: float
-    walking_speed_ms: float
-    step_width_m: float
-    step_symmetry_ratio: float
+    stride_length_m: Optional[float] = None
+    stride_length_index: Optional[float] = None
+    cadence_steps_min: Optional[float] = None
+    walking_speed_ms: Optional[float] = None
+    walking_speed_index: Optional[float] = None
+    step_width_m: Optional[float] = None
+    step_width_index: Optional[float] = None
+    step_symmetry_ratio: Optional[float] = None
 
 class Landmark(BaseModel):
     id: int
@@ -110,18 +118,21 @@ class Landmark(BaseModel):
     visibility: float
 
 class MovementFeatures(BaseModel):
-    angles: JointAngles
-    gait: GaitParameters
-    arm_swing_deg: float
-    rom_score: float
-    balance_stability_score: float
+    angles: Optional[JointAngles] = None
+    gait: Optional[GaitParameters] = None
+    arm_swing_deg: Optional[float] = None
+    rom_score: Optional[float] = None
+    balance_stability_score: Optional[float] = None
     landmarks: Optional[List[Landmark]] = []
+    feature_vector: Optional[List[Optional[float]]] = None
 
 class MLPrediction(BaseModel):
-    impairment_level: str = Field(..., description="Normal, Mild, Moderate, Severe, Very Severe")
-    model_used: str = Field("Random Forest", description="Random Forest, SVM, XGBoost")
-    confidence: float = Field(..., ge=0.0, le=1.0)
-    feature_importances: Dict[str, float]
+    impairment_level: str = Field(..., description="Normal Gait, Asymmetric Gait, Unstable Gait, Restricted Upper-Limb Gait, Not reliably measurable")
+    model_used: str = Field("Random Forest", description="Random Forest, SVM, Logistic Regression, XGBoost")
+    confidence: Optional[float] = Field(None, description="Model confidence percentage (0-100)")
+    feature_importances: Optional[Dict[str, float]] = None
+    prediction_probabilities: Optional[Dict[str, float]] = None
+    compatibility_note: Optional[str] = None
 
 class AssessmentCreate(BaseModel):
     patient_id: str
@@ -159,6 +170,8 @@ class AssessmentResponse(BaseModel):
     recommendations: List[str] = []
     prescribed_exercises: Optional[List[PrescribedExercise]] = []
     therapist_notes: Optional[str] = ""
+    video_debug: Optional[Dict[str, Any]] = None
+    video_quality: Optional[Dict[str, Any]] = None
 
     class Config:
         populate_by_name = True

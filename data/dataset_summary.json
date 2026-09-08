@@ -1,0 +1,28 @@
+{
+  "primary_ml_dataset": {
+    "name": "StrokeRehab Dataset",
+    "source_url": "https://strokerehabdata.github.io/",
+    "total_participants": 71,
+    "stroke_impaired_participants": 51,
+    "healthy_control_participants": 20,
+    "total_trials": 355,
+    "functional_primitives": [
+      "Reach",
+      "Transport",
+      "Reposition",
+      "Stabilize",
+      "Idle"
+    ],
+    "target_classification_modes": [
+      "Cohort (Stroke-Impaired vs Healthy)",
+      "Functional Primitive Action Recognition"
+    ]
+  },
+  "secondary_gait_reference_dataset": {
+    "name": "PhysioNet Multi-Camera and Multimodal Dataset for Posture and Gait Analysis",
+    "source_url": "https://physionet.org/content/multi-gait-posture/1.0.0/",
+    "total_participants": 14,
+    "cohort": "Healthy Participants Gait & Posture Reference",
+    "purpose": "Gait measurement validation & relative index calibration"
+  }
+}

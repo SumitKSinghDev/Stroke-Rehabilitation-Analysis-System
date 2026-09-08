@@ -167,7 +167,7 @@ export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affec
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#14B8A6] border border-white/20"></div>
-          <span className="font-semibold text-slate-300">Healthy Side</span>
+          <span className="font-semibold text-slate-300">Reference Side</span>
         </div>
         <div className="flex items-center space-x-2">
           <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444] border border-white/20"></div>

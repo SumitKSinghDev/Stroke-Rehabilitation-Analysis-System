@@ -1,0 +1,129 @@
+{
+  "dataset_name": "StrokeRehab Dataset",
+  "dataset_source": "https://strokerehabdata.github.io/",
+  "training_date": "2026-09-08T15:21:44.949678",
+  "total_participants": 71,
+  "stroke_impaired_subjects": 51,
+  "healthy_control_subjects": 20,
+  "total_trials": 355,
+  "feature_names": [
+    "hip_angle_deg",
+    "peak_knee_flexion_deg",
+    "shoulder_mobility_deg",
+    "elbow_flexion_deg",
+    "stride_length_index",
+    "cadence_steps_min",
+    "walking_speed_index",
+    "step_width_index",
+    "step_symmetry_ratio",
+    "arm_swing_deg",
+    "rom_score",
+    "balance_stability_score"
+  ],
+  "target_labels": [
+    "Healthy-like movement pattern",
+    "Restricted / asymmetric movement pattern",
+    "Unstable gait / stance pattern"
+  ],
+  "validation_protocol": "5-Fold Subject-Independent StratifiedGroupKFold",
+  "selected_model": "Logistic Regression",
+  "primary_selection_criterion": "Macro F1 Score",
+  "cv_results": {
+    "Random Forest": {
+      "accuracy": 0.9857,
+      "macro_precision": 0.9859,
+      "macro_recall": 0.9869,
+      "macro_f1": 0.9864,
+      "weighted_f1": 0.9859,
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0
+        ],
+        [
+          0,
+          100,
+          2
+        ],
+        [
+          0,
+          3,
+          150
+        ]
+      ]
+    },
+    "SVM": {
+      "accuracy": 0.9914,
+      "macro_precision": 0.9913,
+      "macro_recall": 0.9924,
+      "macro_f1": 0.9918,
+      "weighted_f1": 0.9916,
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0
+        ],
+        [
+          0,
+          101,
+          1
+        ],
+        [
+          0,
+          2,
+          151
+        ]
+      ]
+    },
+    "Logistic Regression": {
+      "accuracy": 0.9943,
+      "macro_precision": 0.9946,
+      "macro_recall": 0.9946,
+      "macro_f1": 0.9946,
+      "weighted_f1": 0.9944,
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0
+        ],
+        [
+          0,
+          101,
+          1
+        ],
+        [
+          0,
+          1,
+          152
+        ]
+      ]
+    },
+    "XGBoost": {
+      "accuracy": 0.9634,
+      "macro_precision": 0.9649,
+      "macro_recall": 0.9641,
+      "macro_f1": 0.9644,
+      "weighted_f1": 0.9633,
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0
+        ],
+        [
+          0,
+          95,
+          7
+        ],
+        [
+          1,
+          5,
+          147
+        ]
+      ]
+    }
+  }
+}

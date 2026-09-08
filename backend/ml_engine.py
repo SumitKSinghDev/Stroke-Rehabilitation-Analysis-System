@@ -1,20 +1,40 @@
+"""
+Machine Learning Inference Engine
+=================================
+
+Evaluates 12-dimensional biomechanical feature vectors against subject-independent ML models
+(Random Forest, SVM, Logistic Regression, XGBoost) trained on the StrokeRehab Dataset.
+Performs feature schema compatibility checks, strict probability normalization (summing to 100%),
+and model-specific feature explanations.
+"""
+
 import os
+import sys
+import json
 import logging
 from pathlib import Path
 from typing import Dict, Tuple, Any, Optional
 import numpy as np
+
+try:
+    from backend.feature_extractor import FEATURE_NAMES, build_feature_vector
+except ImportError:
+    from feature_extractor import FEATURE_NAMES, build_feature_vector
 
 logger = logging.getLogger("ml_engine")
 
 MODEL_DIR = Path(__file__).parent / "models"
 MODEL_PATH = MODEL_DIR / "gait_classifier.joblib"
 SCALER_PATH = MODEL_DIR / "gait_scaler.joblib"
+ENCODER_PATH = MODEL_DIR / "label_encoder.joblib"
+SCHEMA_PATH = MODEL_DIR / "feature_schema.json"
+METADATA_PATH = MODEL_DIR / "model_metadata.json"
 
-# Try importing ML packages
 try:
     from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+    from sklearn.linear_model import LogisticRegression
     from sklearn.svm import SVC
-    from sklearn.preprocessing import StandardScaler
+    from sklearn.preprocessing import StandardScaler, LabelEncoder
     import joblib
     SKLEARN_AVAILABLE = True
 except ImportError:
@@ -32,221 +52,217 @@ class MLEngine:
     def __init__(self):
         self.rf_model = None
         self.svm_model = None
+        self.lr_model = None
         self.xgb_model = None
         self.scaler = None
-        self.feature_names = [
-            "hip_angle", "knee_angle", "shoulder_angle", "elbow_angle",
-            "stride_length", "cadence", "walking_speed", "step_width",
-            "step_symmetry", "arm_swing", "rom_score", "balance_stability"
-        ]
-        self.class_names = ["Normal", "Mild", "Moderate", "Severe", "Very Severe"]
+        self.label_encoder = None
+        self.feature_names = FEATURE_NAMES
+        self.class_names = []
+        self.metadata = {}
         self.is_trained = False
+        self.schema_valid = False
 
         if SKLEARN_AVAILABLE:
-            self._load_or_train_models()
+            self._load_models_and_verify_schema()
 
-    def _generate_training_data(self) -> Tuple[np.ndarray, np.ndarray]:
-        """Generate training dataset based on biomechanical range distributions."""
-        np.random.seed(42)
-        n_samples_per_class = 50
-        X_list = []
-        y_list = []
-
-        # Class 0: Normal
-        for _ in range(n_samples_per_class):
-            X_list.append([
-                np.random.uniform(40, 50), np.random.uniform(55, 65), np.random.uniform(40, 50), np.random.uniform(140, 160),
-                np.random.uniform(0.65, 0.85), np.random.uniform(95, 115), np.random.uniform(1.0, 1.4), np.random.uniform(0.10, 0.18),
-                np.random.uniform(0.92, 1.0), np.random.uniform(15, 25), np.random.uniform(65, 80), np.random.uniform(85, 99)
-            ])
-            y_list.append(0)
-
-        # Class 1: Mild
-        for _ in range(n_samples_per_class):
-            X_list.append([
-                np.random.uniform(35, 45), np.random.uniform(45, 55), np.random.uniform(35, 45), np.random.uniform(120, 140),
-                np.random.uniform(0.55, 0.70), np.random.uniform(80, 95), np.random.uniform(0.75, 1.0), np.random.uniform(0.15, 0.22),
-                np.random.uniform(0.80, 0.91), np.random.uniform(12, 18), np.random.uniform(55, 68), np.random.uniform(70, 85)
-            ])
-            y_list.append(1)
-
-        # Class 2: Moderate
-        for _ in range(n_samples_per_class):
-            X_list.append([
-                np.random.uniform(28, 38), np.random.uniform(35, 48), np.random.uniform(25, 38), np.random.uniform(100, 125),
-                np.random.uniform(0.42, 0.58), np.random.uniform(65, 82), np.random.uniform(0.50, 0.76), np.random.uniform(0.18, 0.26),
-                np.random.uniform(0.65, 0.82), np.random.uniform(8, 14), np.random.uniform(42, 58), np.random.uniform(52, 72)
-            ])
-            y_list.append(2)
-
-        # Class 3: Severe
-        for _ in range(n_samples_per_class):
-            X_list.append([
-                np.random.uniform(20, 30), np.random.uniform(25, 38), np.random.uniform(18, 28), np.random.uniform(85, 105),
-                np.random.uniform(0.30, 0.45), np.random.uniform(50, 68), np.random.uniform(0.30, 0.52), np.random.uniform(0.22, 0.30),
-                np.random.uniform(0.50, 0.68), np.random.uniform(5, 10), np.random.uniform(30, 45), np.random.uniform(35, 55)
-            ])
-            y_list.append(3)
-
-        # Class 4: Very Severe
-        for _ in range(n_samples_per_class):
-            X_list.append([
-                np.random.uniform(12, 22), np.random.uniform(15, 28), np.random.uniform(10, 20), np.random.uniform(70, 90),
-                np.random.uniform(0.15, 0.32), np.random.uniform(35, 52), np.random.uniform(0.10, 0.32), np.random.uniform(0.25, 0.35),
-                np.random.uniform(0.32, 0.52), np.random.uniform(2, 6), np.random.uniform(18, 32), np.random.uniform(15, 38)
-            ])
-            y_list.append(4)
-
-        return np.array(X_list), np.array(y_list)
-
-    def _load_or_train_models(self):
-        """Load trained models from disk, or train and persist them if missing."""
+    def _load_models_and_verify_schema(self):
+        """Load trained models from disk and verify feature schema compatibility."""
         MODEL_DIR.mkdir(parents=True, exist_ok=True)
         try:
-            if MODEL_PATH.exists() and SCALER_PATH.exists() and joblib is not None:
-                logger.info(f"Loading trained ML model and scaler from disk ({MODEL_PATH})...")
+            if MODEL_PATH.exists() and SCALER_PATH.exists() and ENCODER_PATH.exists() and joblib is not None:
+                logger.info(f"Loading StrokeRehab ML models from {MODEL_DIR}...")
                 models_dict = joblib.load(MODEL_PATH)
                 self.scaler = joblib.load(SCALER_PATH)
+                self.label_encoder = joblib.load(ENCODER_PATH)
+
                 self.rf_model = models_dict.get("rf")
                 self.svm_model = models_dict.get("svm")
+                self.lr_model = models_dict.get("lr")
                 self.xgb_model = models_dict.get("xgb")
+
+                if hasattr(self.label_encoder, "classes_"):
+                    self.class_names = [str(c) for c in self.label_encoder.classes_]
+
+                # Verify Schema Compatibility
+                if SCHEMA_PATH.exists():
+                    with open(SCHEMA_PATH, "r") as f:
+                        schema = json.load(f)
+                    saved_names = schema.get("feature_names", [])
+                    if len(saved_names) != len(self.feature_names) or saved_names != self.feature_names:
+                        logger.error(f"Feature schema mismatch! Expected {len(self.feature_names)} features ({self.feature_names}), saved {len(saved_names)} ({saved_names}).")
+                        self.schema_valid = False
+                    else:
+                        self.schema_valid = True
+
+                if METADATA_PATH.exists():
+                    with open(METADATA_PATH, "r") as f:
+                        self.metadata = json.load(f)
+
                 self.is_trained = True
-                logger.info("Trained ML models loaded successfully from disk!")
+                logger.info(f"Loaded trained models successfully. Target Classes ({len(self.class_names)}): {self.class_names}")
                 return
         except Exception as err:
-            logger.warning(f"Could not load ML models from disk: {err}. Re-training model...")
+            logger.warning(f"Could not load ML models from disk: {err}. Retraining pipeline...")
 
+        # Invoke train_models if models missing
         try:
-            X, y = self._generate_training_data()
-            self.scaler = StandardScaler()
-            X_scaled = self.scaler.fit_transform(X)
-
-            self.rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
-            self.rf_model.fit(X_scaled, y)
-
-            self.svm_model = SVC(probability=True, kernel="rbf", C=1.0, random_state=42)
-            self.svm_model.fit(X_scaled, y)
-
-            if XGBOOST_AVAILABLE:
-                self.xgb_model = xgb.XGBClassifier(
-                    n_estimators=50, max_depth=3, learning_rate=0.1, 
-                    random_state=42, eval_metric="mlogloss"
-                )
-                self.xgb_model.fit(X_scaled, y)
-            else:
-                self.xgb_model = GradientBoostingClassifier(n_estimators=50, learning_rate=0.1, max_depth=3, random_state=42)
-                self.xgb_model.fit(X_scaled, y)
-
-            self.is_trained = True
-
-            if joblib is not None:
-                joblib.dump({"rf": self.rf_model, "svm": self.svm_model, "xgb": self.xgb_model}, MODEL_PATH)
-                joblib.dump(self.scaler, SCALER_PATH)
-                logger.info(f"ML Engine models successfully trained and saved to disk ({MODEL_PATH}).")
+            from train_models import train_and_evaluate_models
+            train_and_evaluate_models()
+            if MODEL_PATH.exists() and SCALER_PATH.exists() and ENCODER_PATH.exists() and joblib is not None:
+                models_dict = joblib.load(MODEL_PATH)
+                self.scaler = joblib.load(SCALER_PATH)
+                self.label_encoder = joblib.load(ENCODER_PATH)
+                self.rf_model = models_dict.get("rf")
+                self.svm_model = models_dict.get("svm")
+                self.lr_model = models_dict.get("lr")
+                self.xgb_model = models_dict.get("xgb")
+                if hasattr(self.label_encoder, "classes_"):
+                    self.class_names = [str(c) for c in self.label_encoder.classes_]
+                self.is_trained = True
+                self.schema_valid = True
         except Exception as e:
-            logger.error(f"Error training/saving ML models: {e}")
+            logger.error(f"Failed to train ML models: {e}")
             self.is_trained = False
 
     def predict(self, features: dict, model_name: str = "Random Forest") -> dict:
-        """Run ML prediction and output confidence levels + feature importances."""
+        """
+        Run ML classification, returning strictly normalized probabilities (summing to 100%)
+        and model-specific feature explanations.
+        """
         if not self.is_trained or not SKLEARN_AVAILABLE or self.scaler is None:
             return {
-                "impairment_level": "Unavailable",
+                "impairment_level": "Not reliably measurable",
                 "model_used": model_name,
                 "confidence": None,
                 "feature_importances": None,
-                "compatibility_note": "ML classification from this video is unavailable because trained model dependencies are not loaded."
+                "prediction_probabilities": None,
+                "compatibility_note": "ML classification unavailable: trained model dependencies not loaded."
             }
 
-        try:
-            f_arr = [
-                features["angles"]["hip_angle_deg"],
-                features["angles"]["knee_angle_deg"],
-                features["angles"]["shoulder_angle_deg"],
-                features["angles"]["elbow_angle_deg"],
-                features["gait"]["stride_length_m"],
-                features["gait"]["cadence_steps_min"],
-                features["gait"]["walking_speed_ms"],
-                features["gait"]["step_width_m"],
-                features["gait"]["step_symmetry_ratio"],
-                features["arm_swing_deg"],
-                features["rom_score"],
-                features["balance_stability_score"]
-            ]
-        except (KeyError, TypeError) as err:
-            logger.error(f"Feature extraction dictionary incomplete: {err}")
+        # Extract 12-dimensional feature vector
+        f_vec = features.get("feature_vector")
+        if f_vec is None or len(f_vec) != len(self.feature_names) or any(v is None for v in f_vec):
+            f_vec = build_feature_vector(features)
+
+        if f_vec is None or len(f_vec) != len(self.feature_names) or any(v is None for v in f_vec):
+            logger.warning("Incomplete or incompatible feature vector for ML inference.")
             return {
-                "impairment_level": "Unavailable",
+                "impairment_level": "Not reliably measurable",
                 "model_used": model_name,
                 "confidence": None,
                 "feature_importances": None,
-                "compatibility_note": f"Feature format incompatible: {err}"
+                "prediction_probabilities": None,
+                "compatibility_note": "Not reliably measurable due to incomplete pose keypoints or tracking loss."
             }
 
         try:
-            x_input = np.array([f_arr])
-            
-            # Select target model
-            if model_name == "SVM":
+            x_input = np.array([f_vec], dtype=np.float32)
+
+            # Model Selection
+            clean_name = model_name.strip().title()
+            if "Svm" in clean_name or "Support Vector" in clean_name:
                 target_model = self.svm_model
-            elif model_name == "XGBoost":
+                actual_name = "SVM"
+            elif "Xgboost" in clean_name or "Xgb" in clean_name:
                 target_model = self.xgb_model
+                actual_name = "XGBoost"
+            elif "Logistic" in clean_name:
+                target_model = self.lr_model
+                actual_name = "Logistic Regression"
             else:
                 target_model = self.rf_model
+                actual_name = "Random Forest"
 
             if target_model is None:
                 target_model = self.rf_model
+                actual_name = "Random Forest"
 
-            # Verify input dimension feature compatibility
+            # Feature schema compatibility check against model
             expected_n_features = getattr(target_model, "n_features_in_", 12)
             if x_input.shape[1] != expected_n_features:
-                logger.error(f"Feature dimension mismatch: Model expects {expected_n_features} features, got {x_input.shape[1]}")
+                logger.error(f"Feature dimension mismatch: Model expects {expected_n_features} features, got {x_input.shape[1]}.")
                 return {
-                    "impairment_level": "Unavailable",
+                    "impairment_level": "Not reliably measurable",
                     "model_used": model_name,
                     "confidence": None,
                     "feature_importances": None,
-                    "compatibility_note": f"ML classification from this video is unavailable because the current trained model expects a different feature representation ({expected_n_features} vs {x_input.shape[1]})."
+                    "prediction_probabilities": None,
+                    "compatibility_note": f"Model feature schema mismatch. Expected {expected_n_features} features, got {x_input.shape[1]}."
                 }
 
             x_scaled = self.scaler.transform(x_input)
-            pred_probs = target_model.predict_proba(x_scaled)[0]
+            pred_probs_raw = target_model.predict_proba(x_scaled)[0]
 
+            # Strict Probability Normalization (guaranteeing sum == 100.0%)
+            prob_sum = float(np.sum(pred_probs_raw))
+            if prob_sum > 0:
+                pred_probs_norm = pred_probs_raw / prob_sum
+            else:
+                pred_probs_norm = np.ones_like(pred_probs_raw) / len(pred_probs_raw)
+
+            # Round to 1 decimal place and adjust max probability by remainder
+            raw_rounded = [round(float(p) * 100.0, 1) for p in pred_probs_norm]
+            remainder = round(100.0 - sum(raw_rounded), 1)
+            if abs(remainder) > 0 and len(raw_rounded) > 0:
+                max_i = int(np.argmax(pred_probs_norm))
+                raw_rounded[max_i] = round(raw_rounded[max_i] + remainder, 1)
+
+            prob_dict = {}
+            for idx, prob_val in enumerate(raw_rounded):
+                c_name = str(self.class_names[idx]) if idx < len(self.class_names) else f"Class {idx}"
+                prob_dict[c_name] = prob_val
+
+            assert abs(sum(prob_dict.values()) - 100.0) < 0.1, f"Probability total must sum to 100.0%, got {sum(prob_dict.values())}"
+
+            # Model-Specific Feature Explanations
             feature_imp = None
             if hasattr(target_model, "feature_importances_"):
                 importances = target_model.feature_importances_
                 feature_imp = {self.feature_names[i]: float(importances[i]) for i in range(len(self.feature_names))}
+            elif hasattr(target_model, "coef_"):
+                # For Logistic Regression: normalized coefficient magnitude as "Relative Feature Weight"
+                coef_mag = np.mean(np.abs(target_model.coef_), axis=0)
+                total_mag = float(np.sum(coef_mag))
+                if total_mag > 0:
+                    coef_norm = coef_mag / total_mag
+                    feature_imp = {self.feature_names[i]: float(coef_norm[i]) for i in range(len(self.feature_names))}
 
-            pred_class_idx = int(np.argmax(pred_probs))
-            impairment_level = self.class_names[pred_class_idx]
-            confidence = float(pred_probs[pred_class_idx])
+            pred_class_idx = int(np.argmax(pred_probs_norm))
+            impairment_level = str(self.class_names[pred_class_idx]) if pred_class_idx < len(self.class_names) else "Unknown"
+            confidence = float(pred_probs_norm[pred_class_idx]) * 100.0
 
             return {
                 "impairment_level": impairment_level,
-                "model_used": model_name,
-                "confidence": round(confidence, 2),
-                "feature_importances": self._normalize_importances(feature_imp) if feature_imp is not None else None
+                "model_used": actual_name,
+                "confidence": round(confidence, 1),
+                "feature_importances": self._normalize_importances(feature_imp) if feature_imp is not None else None,
+                "prediction_probabilities": prob_dict
             }
+
         except Exception as e:
             logger.error(f"Error during ML prediction: {e}")
             return {
-                "impairment_level": "Unavailable",
+                "impairment_level": "Not reliably measurable",
                 "model_used": model_name,
                 "confidence": None,
                 "feature_importances": None,
-                "compatibility_note": f"ML prediction calculation error: {e}"
+                "prediction_probabilities": None,
+                "compatibility_note": f"ML classification calculation error: {e}"
             }
 
     def _normalize_importances(self, importances: Dict[str, float]) -> Dict[str, float]:
         if not importances:
             return None
+        total = sum(importances.values())
+        if total <= 0:
+            return None
         sorted_imp = dict(sorted(importances.items(), key=lambda item: item[1], reverse=True))
-        return {k: round(v, 3) for k, v in sorted_imp.items()}
+        return {k: round((v / total) * 100.0, 1) for k, v in sorted_imp.items()}
 
 
 # Global instance of ML engine
 ml_engine = MLEngine()
 
+
 def predict_impairment(features: dict, model_name: str = "Random Forest") -> dict:
     return ml_engine.predict(features, model_name)
-
