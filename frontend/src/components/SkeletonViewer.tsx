@@ -2,11 +2,11 @@ import React from 'react';
 import { Landmark } from '../api';
 
 interface SkeletonViewerProps {
-  landmarks: Landmark[];
+  landmarks?: Landmark[];
   affectedSide?: 'Left' | 'Right' | 'Bilateral';
 }
 
-export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks, affectedSide = 'Right' }) => {
+export const SkeletonViewer: React.FC<SkeletonViewerProps> = ({ landmarks = [], affectedSide = 'Right' }) => {
   const [viewPerspective, setViewPerspective] = React.useState<'raw' | 'enhanced'>('enhanced');
   const [isFlipped, setIsFlipped] = React.useState<boolean>(false);
 

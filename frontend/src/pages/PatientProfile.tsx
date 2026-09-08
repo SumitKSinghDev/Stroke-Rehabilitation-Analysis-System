@@ -749,7 +749,7 @@ export const PatientProfile: React.FC = () => {
               
               {/* Skeleton overlay component */}
               <SkeletonViewer 
-                landmarks={selectedAssessment.extracted_features?.landmarks} 
+                landmarks={selectedAssessment.extracted_features?.landmarks || []} 
                 affectedSide={patient.affected_side}
               />
             </div>
