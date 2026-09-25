@@ -57,7 +57,7 @@ export const Dashboard: React.FC = () => {
   const totalPatients = patients.length;
   const totalAssessments = assessments.length;
   
-  const improvingCount = patients.filter(p => p.current_status === 'Improving').length;
+  const improvingCount = patients.filter(p => p.current_status?.toLowerCase() === 'improving').length;
   const improvingRate = totalPatients > 0 ? Math.round((improvingCount / totalPatients) * 100) : 0;
   
   // Pending reviews: assessments with no doctor notes or session logged recently
