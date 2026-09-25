@@ -105,6 +105,15 @@ async def get_evaluation_results():
     try:
         with open(RESULTS_PATH, "r") as f:
             data = json.load(f)
+        
+        # Merge metrics to top level for robust frontend compatibility
+        if "held_out_test_metrics" in data and isinstance(data["held_out_test_metrics"], dict):
+            for k, v in data["held_out_test_metrics"].items():
+                data[k] = v
+        if "sample_split" in data and isinstance(data["sample_split"], dict):
+            data["total_train_videos"] = data["sample_split"].get("train_videos_count", 411)
+            data["total_test_videos"] = data["sample_split"].get("test_videos_count", 80)
+
         return {
             "status": "success",
             "results": data

@@ -505,25 +505,43 @@ export interface PerExerciseMetric {
 }
 
 export interface DatasetValidationResults {
-  dataset_name: string;
-  evaluation_type: string;
-  random_seed: number;
-  total_train_videos: number;
-  total_test_videos: number;
-  correct_predictions: number;
-  incorrect_predictions: number;
-  accuracy: number;
-  accuracy_percent: string;
-  macro_precision: number;
-  macro_recall: number;
-  macro_f1: number;
-  weighted_f1: number;
-  confusion_matrix: {
+  dataset_name?: string;
+  evaluation_stage?: string;
+  evaluation_type?: string;
+  selected_model_architecture?: string;
+  random_seed?: number;
+  total_train_videos?: number;
+  total_test_videos?: number;
+  correct_predictions?: number;
+  incorrect_predictions?: number;
+  accuracy?: number;
+  accuracy_percent?: string;
+  macro_precision?: number;
+  macro_recall?: number;
+  macro_f1?: number;
+  weighted_f1?: number;
+  sample_split?: {
+    train_videos_count: number;
+    test_videos_count: number;
+    total_videos: number;
+  };
+  held_out_test_metrics?: {
+    accuracy: number;
+    accuracy_percent: string;
+    macro_precision: number;
+    macro_recall: number;
+    macro_f1: number;
+    weighted_f1: number;
+    correct_predictions: number;
+    incorrect_predictions: number;
+    total_test_videos: number;
+  };
+  confusion_matrix?: {
     labels: string[];
     matrix: number[][];
   };
-  per_exercise_metrics: Record<string, PerExerciseMetric>;
-  disclaimer: string;
+  per_exercise_metrics?: Record<string, PerExerciseMetric>;
+  disclaimer?: string;
 }
 
 export interface DatasetTestCase {
