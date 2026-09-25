@@ -230,8 +230,8 @@ export const Dashboard: React.FC = () => {
         <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Rehab Assessment Logs</h3>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Diagnostic volumes over time</p>
+              <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Movement Analysis Sessions</h3>
+              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Movement Analysis Sessions Over Time</p>
             </div>
           </div>
           
@@ -257,7 +257,7 @@ export const Dashboard: React.FC = () => {
                       borderColor: '#475569' 
                     }} 
                   />
-                  <Area type="monotone" dataKey="count" name="Diagnostics Run" stroke="#2563EB" strokeWidth={2.5} fillOpacity={1} fill="url(#colorCount)" />
+                  <Area type="monotone" dataKey="count" name="Sessions Run" stroke="#2563EB" strokeWidth={2.5} fillOpacity={1} fill="url(#colorCount)" />
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
@@ -271,9 +271,10 @@ export const Dashboard: React.FC = () => {
         {/* AI Prediction Distribution (PieChart) */}
         <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Movement Classification Distribution</h3>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Severity distribution of all runs</p>
+            <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Movement Pattern Distribution</h3>
+            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Classification distribution of analysis runs</p>
           </div>
+
 
           <div className="h-56 w-full flex justify-center items-center relative">
             {pieChartData.length > 0 ? (

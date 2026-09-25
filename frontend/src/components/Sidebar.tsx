@@ -8,7 +8,9 @@ import {
   LogOut, 
   Activity, 
   UserCircle,
-  BookOpen
+  BookOpen,
+  FlaskConical,
+  FileCheck
 } from 'lucide-react';
 import { clearAuthToken, getStoredUser } from '../api';
 
@@ -30,8 +32,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode }) =>
     { to: '/', label: 'Dashboard', icon: LayoutDashboard, roles: ['Admin', 'Physiotherapist', 'Doctor'] },
     { to: '/patients', label: 'Patients', icon: Users, roles: ['Admin', 'Physiotherapist', 'Doctor'] },
     { to: '/methodology', label: 'Methodology', icon: BookOpen, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
+    { to: '/research', label: 'Research ML Evaluation', icon: FlaskConical, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
+    { to: '/dataset-validation', label: 'Dataset Video Validation', icon: FileCheck, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
     { to: '/settings', label: 'Settings', icon: Settings, roles: ['Admin', 'Physiotherapist', 'Doctor', 'Patient'] },
   ];
+
+
 
   // If user is Admin, add the Admin Portal item
   if (user?.role === 'Admin') {

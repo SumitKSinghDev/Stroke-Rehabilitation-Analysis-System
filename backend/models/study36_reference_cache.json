@@ -1,0 +1,74 @@
+{
+  "dataset_name": "Study36 Healthy-Control Kinematic Dataset",
+  "dataset_description": "Dataset-derived healthy-control movement reference characteristics from monocular/sensor motion capture time series",
+  "sampling_frequency_hz": 100,
+  "total_csv_files": 1426,
+  "healthy_subjects_count": 20,
+  "recorded_activities": [
+    "RTT left side",
+    "RTT right side",
+    "Shelf left side",
+    "Shelf right side",
+    "brushing",
+    "combing",
+    "deodorant",
+    "deodrant",
+    "drinking",
+    "face wash",
+    "feeding",
+    "glasses",
+    "shelf left side",
+    "shelf right side"
+  ],
+  "joint_kinematics_reference": {
+    "elbow_flexion_left_deg": {
+      "mean": 76.13,
+      "std": 23.7,
+      "p25": 60.33,
+      "p50": 76.52,
+      "p75": 92.67
+    },
+    "elbow_flexion_right_deg": {
+      "mean": 76.9,
+      "std": 24.53,
+      "p25": 61.8,
+      "p50": 77.83,
+      "p75": 94.23
+    },
+    "shoulder_total_flexion_left_deg": {
+      "mean": 34.91,
+      "std": 19.45,
+      "p25": 20.01,
+      "p50": 31.2,
+      "p75": 46.68
+    },
+    "shoulder_total_flexion_right_deg": {
+      "mean": 39.43,
+      "std": 20.38,
+      "p25": 23.75,
+      "p50": 36.16,
+      "p75": 52.81
+    },
+    "lumbar_flexion_deg": {
+      "mean": 15.61,
+      "std": 15.16,
+      "p25": 5.98,
+      "p50": 16.64,
+      "p75": 26.39
+    },
+    "thoracic_flexion_deg": {
+      "mean": 8.07,
+      "std": 11.8,
+      "p25": 0.0,
+      "p50": 6.93,
+      "p75": 14.8
+    }
+  },
+  "bilateral_symmetry_reference": {
+    "elbow_symmetry_ratio_mean": 0.94,
+    "shoulder_symmetry_ratio_mean": 0.91,
+    "interpretation": "Derived average left/right joint angle excursion ratio in healthy control subjects"
+  },
+  "terminology_note": "Dataset-derived healthy-control movement reference characteristics. Not universal clinical normative ranges.",
+  "is_clinical_norm": false
+}

@@ -161,3 +161,235 @@ def build_feature_vector(extracted_features: dict) -> Optional[np.ndarray]:
     ]
 
     return np.array(vector, dtype=np.float32)
+
+
+# 14-Dimensional Upper-Limb Kinematic Feature Registry (MediaPipe Pose 33-point derived)
+UPPER_LIMB_FEATURE_NAMES = [
+    "shoulder_rom_active_deg",
+    "elbow_rom_active_deg",
+    "elbow_min_angle_deg",
+    "elbow_max_angle_deg",
+    "elbow_mean_angle_deg",
+    "shoulder_mean_angle_deg",
+    "wrist_vertical_excursion",
+    "wrist_horizontal_excursion",
+    "wrist_max_reach_dist",
+    "peak_elbow_angular_velocity_dps",
+    "mean_elbow_angular_velocity_dps",
+    "peak_shoulder_angular_velocity_dps",
+    "movement_smoothness_index",
+    "bilateral_rom_asymmetry_deg"
+]
+
+UPPER_LIMB_FEATURE_DICTIONARY: Dict[str, Dict[str, str]] = {
+    "shoulder_rom_active_deg": {
+        "name": "Active Shoulder Elevation ROM",
+        "definition": "Range of motion excursion of dominant/active shoulder vertex",
+        "unit": "degrees (°)"
+    },
+    "elbow_rom_active_deg": {
+        "name": "Active Elbow Extension ROM",
+        "definition": "Range of motion excursion of active elbow joint",
+        "unit": "degrees (°)"
+    },
+    "elbow_min_angle_deg": {
+        "name": "Minimum Elbow Angle",
+        "definition": "Minimum interior angle at elbow (indicates flexor posturing/spasticity)",
+        "unit": "degrees (°)"
+    },
+    "elbow_max_angle_deg": {
+        "name": "Maximum Elbow Extension Angle",
+        "definition": "Maximum interior angle at elbow during extension phase",
+        "unit": "degrees (°)"
+    },
+    "elbow_mean_angle_deg": {
+        "name": "Mean Elbow Angle",
+        "definition": "Temporal average of elbow interior angle",
+        "unit": "degrees (°)"
+    },
+    "shoulder_mean_angle_deg": {
+        "name": "Mean Shoulder Angle",
+        "definition": "Temporal average of shoulder elevation angle",
+        "unit": "degrees (°)"
+    },
+    "wrist_vertical_excursion": {
+        "name": "Vertical Wrist Excursion",
+        "definition": "Normalized vertical range of motion of wrist landmark",
+        "unit": "normalized displacement"
+    },
+    "wrist_horizontal_excursion": {
+        "name": "Horizontal Wrist Excursion",
+        "definition": "Normalized horizontal range of motion of wrist landmark",
+        "unit": "normalized displacement"
+    },
+    "wrist_max_reach_dist": {
+        "name": "Maximum Reach Distance",
+        "definition": "Peak normalized Euclidean distance between wrist and shoulder",
+        "unit": "normalized distance"
+    },
+    "peak_elbow_angular_velocity_dps": {
+        "name": "Peak Elbow Angular Velocity",
+        "definition": "Maximum rate of change of elbow angle across execution",
+        "unit": "deg/s"
+    },
+    "mean_elbow_angular_velocity_dps": {
+        "name": "Mean Elbow Angular Velocity",
+        "definition": "Average angular velocity magnitude of elbow joint",
+        "unit": "deg/s"
+    },
+    "peak_shoulder_angular_velocity_dps": {
+        "name": "Peak Shoulder Angular Velocity",
+        "definition": "Maximum rate of change of shoulder angle across execution",
+        "unit": "deg/s"
+    },
+    "movement_smoothness_index": {
+        "name": "Movement Smoothness Index",
+        "definition": "Inverse variance of joint angular acceleration (smoothness proxy)",
+        "unit": "dimensionless index"
+    },
+    "bilateral_rom_asymmetry_deg": {
+        "name": "Bilateral Arm ROM Asymmetry",
+        "definition": "Absolute difference between left and right arm joint excursion ranges",
+        "unit": "degrees (°)"
+    }
+}
+
+
+def compute_angle_2d(a: tuple, b: tuple, c: tuple) -> float:
+    """Calculate 2D angle (in degrees) between three points (a, b, c) with b as vertex."""
+    import math
+    try:
+        ang = math.degrees(
+            math.atan2(c[1] - b[1], c[0] - b[0]) - math.atan2(a[1] - b[1], a[0] - b[0])
+        )
+        ang = abs(ang)
+        if ang > 180:
+            ang = 360 - ang
+        return float(ang)
+    except Exception:
+        return 0.0
+
+
+def extract_upper_limb_features_from_history(landmark_history: List[List[Dict[str, Any]]], fps: float = 30.0) -> Optional[np.ndarray]:
+    """
+    Extracts 14-dimensional upper-limb kinematic feature vector from MediaPipe 33-keypoint sequence.
+    Excludes all lower-limb gait and step detection features.
+    """
+    if not landmark_history or len(landmark_history) < 5:
+        return None
+
+    dt = 1.0 / max(5.0, fps)
+
+    sh_l_angles = []
+    sh_r_angles = []
+    el_l_angles = []
+    el_r_angles = []
+    wrist_l_y = []
+    wrist_r_y = []
+    wrist_l_x = []
+    wrist_r_x = []
+    reach_l_dist = []
+    reach_r_dist = []
+
+    for lms in landmark_history:
+        if len(lms) < 33:
+            continue
+        # Left upper limb: 11 (Sh), 13 (El), 15 (Wr), 23 (Hip)
+        # Right upper limb: 12 (Sh), 14 (El), 16 (Wr), 24 (Hip)
+        sh_l = (lms[11]["x"], lms[11]["y"])
+        sh_r = (lms[12]["x"], lms[12]["y"])
+        el_l = (lms[13]["x"], lms[13]["y"])
+        el_r = (lms[14]["x"], lms[14]["y"])
+        wr_l = (lms[15]["x"], lms[15]["y"])
+        wr_r = (lms[16]["x"], lms[16]["y"])
+        hip_l = (lms[23]["x"], lms[23]["y"])
+        hip_r = (lms[24]["x"], lms[24]["y"])
+
+        ang_sh_l = compute_angle_2d(hip_l, sh_l, el_l)
+        ang_sh_r = compute_angle_2d(hip_r, sh_r, el_r)
+        ang_el_l = compute_angle_2d(sh_l, el_l, wr_l)
+        ang_el_r = compute_angle_2d(sh_r, el_r, wr_r)
+
+        sh_l_angles.append(ang_sh_l)
+        sh_r_angles.append(ang_sh_r)
+        el_l_angles.append(ang_el_l)
+        el_r_angles.append(ang_el_r)
+
+        wrist_l_y.append(wr_l[1])
+        wrist_r_y.append(wr_r[1])
+        wrist_l_x.append(wr_l[0])
+        wrist_r_x.append(wr_r[0])
+
+        d_l = np.sqrt((wr_l[0] - sh_l[0]) ** 2 + (wr_l[1] - sh_l[1]) ** 2)
+        d_r = np.sqrt((wr_r[0] - sh_r[0]) ** 2 + (wr_r[1] - sh_r[1]) ** 2)
+        reach_l_dist.append(d_l)
+        reach_r_dist.append(d_r)
+
+    if not el_l_angles or not el_r_angles:
+        return None
+
+    # Determine dominant/active limb based on maximum range of motion
+    rom_el_l = max(el_l_angles) - min(el_l_angles)
+    rom_el_r = max(el_r_angles) - min(el_r_angles)
+    rom_sh_l = max(sh_l_angles) - min(sh_l_angles)
+    rom_sh_r = max(sh_r_angles) - min(sh_r_angles)
+
+    active_side = "right" if (rom_el_r + rom_sh_r) >= (rom_el_l + rom_sh_l) else "left"
+
+    if active_side == "right":
+        el_active = np.array(el_r_angles)
+        sh_active = np.array(sh_r_angles)
+        wrist_y_active = np.array(wrist_r_y)
+        wrist_x_active = np.array(wrist_r_x)
+        reach_active = np.array(reach_r_dist)
+    else:
+        el_active = np.array(el_l_angles)
+        sh_active = np.array(sh_l_angles)
+        wrist_y_active = np.array(wrist_l_y)
+        wrist_x_active = np.array(wrist_l_x)
+        reach_active = np.array(reach_l_dist)
+
+    sh_rom = float(np.max(sh_active) - np.min(sh_active))
+    el_rom = float(np.max(el_active) - np.min(el_active))
+    el_min = float(np.min(el_active))
+    el_max = float(np.max(el_active))
+    el_mean = float(np.mean(el_active))
+    sh_mean = float(np.mean(sh_active))
+
+    wrist_vert_excursion = float(np.max(wrist_y_active) - np.min(wrist_y_active))
+    wrist_horiz_excursion = float(np.max(wrist_x_active) - np.min(wrist_x_active))
+    wrist_max_reach = float(np.max(reach_active))
+
+    # Angular velocities and accelerations
+    vel_el = np.abs(np.diff(el_active) / dt) if len(el_active) > 1 else np.array([0.0])
+    vel_sh = np.abs(np.diff(sh_active) / dt) if len(sh_active) > 1 else np.array([0.0])
+    acc_el = np.diff(vel_el) / dt if len(vel_el) > 1 else np.array([0.0])
+
+    peak_el_vel = float(np.max(vel_el)) if len(vel_el) > 0 else 0.0
+    mean_el_vel = float(np.mean(vel_el)) if len(vel_el) > 0 else 0.0
+    peak_sh_vel = float(np.max(vel_sh)) if len(vel_sh) > 0 else 0.0
+
+    acc_var = float(np.var(acc_el)) if len(acc_el) > 0 else 0.0
+    smoothness_index = float(100.0 / (1.0 + np.sqrt(acc_var) * 0.01))
+
+    bilateral_asymm = float(abs(rom_el_l - rom_el_r) + abs(rom_sh_l - rom_sh_r)) / 2.0
+
+    vec = [
+        sh_rom,
+        el_rom,
+        el_min,
+        el_max,
+        el_mean,
+        sh_mean,
+        wrist_vert_excursion,
+        wrist_horiz_excursion,
+        wrist_max_reach,
+        peak_el_vel,
+        mean_el_vel,
+        peak_sh_vel,
+        smoothness_index,
+        bilateral_asymm
+    ]
+
+    return np.array(vec, dtype=np.float32)
+

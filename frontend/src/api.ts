@@ -403,5 +403,148 @@ export const api = {
       window.URL.revokeObjectURL(url);
       a.remove();
     }
+  },
+
+  research: {
+    getResults: async (): Promise<ResearchMLResults> => {
+      return request<ResearchMLResults>('/api/research/ml-results');
+    },
+    getStudy36Reference: async (): Promise<any> => {
+      return request<any>('/api/research/study36-reference');
+    }
+  },
+
+  datasetValidation: {
+    getSummary: async (): Promise<DatasetValidationSummary> => {
+      return request<DatasetValidationSummary>('/api/dataset-validation/summary');
+    },
+    getResults: async (): Promise<{ status: string; results: DatasetValidationResults | null }> => {
+      return request<any>('/api/dataset-validation/results');
+    },
+    getTestCases: async (): Promise<{ count: number; test_cases: DatasetTestCase[] }> => {
+      return request<any>('/api/dataset-validation/test-cases');
+    },
+    predict: async (formData: FormData): Promise<DatasetPredictResponse> => {
+      return request<DatasetPredictResponse>('/api/dataset-validation/predict', {
+        method: 'POST',
+        body: formData
+      });
+    }
   }
 };
+
+
+export interface ResearchMLResults {
+  dataset_name: string;
+  dataset_citation: string;
+  task_name: string;
+  model_architecture: string;
+  feature_count: number;
+  constant_features_removed: number;
+  classes: string[];
+  subject_split: {
+    train_subjects: number;
+    validation_subjects: number;
+    test_subjects: number;
+    total_subjects: number;
+  };
+  validation_metrics: {
+    accuracy: number;
+    accuracy_percent: string;
+    macro_f1: number;
+    description?: string;
+  };
+  final_test_metrics: {
+    label: string;
+    accuracy: number;
+    accuracy_percent: string;
+    macro_f1: number;
+    temporal_smoothing?: string;
+    description?: string;
+  };
+  raw_test_metrics: {
+    label: string;
+    accuracy: number;
+    accuracy_percent: string;
+    macro_f1: number;
+    description?: string;
+  };
+  temporal_smoothing: {
+    method: string;
+    window_size: number;
+  };
+  evaluation_stage: string;
+  is_clinical_diagnosis: boolean;
+  limitations_note: string;
+}
+
+export interface DatasetValidationSummary {
+  dataset_name: string;
+  dataset_available_on_disk: boolean;
+  dataset_path: string | null;
+  total_videos: number;
+  train_videos: number;
+  test_videos: number;
+  train_participants: string[];
+  test_participants: string[];
+  partition_strategy: string;
+  exercises: string[];
+  labels: string[];
+  disclaimer: string;
+}
+
+export interface PerExerciseMetric {
+  exercise_name: string;
+  test_video_count: number;
+  correct_count: number;
+  accuracy: number;
+  accuracy_percent: string;
+  precision: number;
+  recall: number;
+  f1_score: number;
+}
+
+export interface DatasetValidationResults {
+  dataset_name: string;
+  evaluation_type: string;
+  random_seed: number;
+  total_train_videos: number;
+  total_test_videos: number;
+  correct_predictions: number;
+  incorrect_predictions: number;
+  accuracy: number;
+  accuracy_percent: string;
+  macro_precision: number;
+  macro_recall: number;
+  macro_f1: number;
+  weighted_f1: number;
+  confusion_matrix: {
+    labels: string[];
+    matrix: number[][];
+  };
+  per_exercise_metrics: Record<string, PerExerciseMetric>;
+  disclaimer: string;
+}
+
+export interface DatasetTestCase {
+  video_name: string;
+  file_path: string;
+  exercise: string;
+  participant_id: string;
+  ground_truth: string;
+}
+
+export interface DatasetPredictResponse {
+  processing_status: string;
+  video_name: string;
+  exercise: string;
+  prediction: string | null;
+  confidence: number | null;
+  ground_truth: string | null;
+  match_status: 'MATCH' | 'MISMATCH' | 'UNKNOWN_GROUND_TRUTH' | 'UNABLE_TO_PROCESS' | string;
+  is_dataset_case: boolean;
+  video_quality?: any;
+  message?: string;
+}
+
+

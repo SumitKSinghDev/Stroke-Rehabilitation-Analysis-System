@@ -5,7 +5,7 @@
 ---
 
 ## Abstract
-Stroke remains a leading cause of long-term adult disability globally. Objective, quantitative assessment of motor impairment is critical for monitoring rehabilitation progress and tailoring physical therapy interventions. Traditional clinical validation scales, such as the Fugl-Meyer Assessment (FMA) and Berg Balance Scale (BBS), rely on manual scoring by trained clinicians, which introduces inter-rater variability and periodic sampling constraints. This paper presents a markerless, monocular computer vision and subject-independent machine learning framework for quantitative movement analysis. Trained on the open-access **StrokeRehab Dataset** (71 participants: 51 stroke-impaired, 20 healthy control; 355 total ADL trials) with gait parameter reference validation from the **PhysioNet Multi-Gait Dataset**, the system utilizes MediaPipe 33-landmark pose tracking, peak-based heel strike detection, and a 12-dimensional biomechanical feature representation to classify stroke movement impairment patterns into ground-truth categories (*Healthy Control Gait & Movement*, *Stroke Motor Impairment: Restricted Upper-Limb & Asymmetric*, *Stroke Motor Impairment: Unstable Gait & Stance*). Evaluated via 5-Fold StratifiedGroupKFold cross-validation across 71 unique subjects to prevent intra-subject data leakage, Logistic Regression achieved 99.43% accuracy (Macro F1 = 0.9946), SVM achieved 99.14% accuracy (Macro F1 = 0.9918), and Random Forest achieved 98.57% accuracy (Macro F1 = 0.9864). The application incorporates automated Video Quality Control (QC) filtering, relative spatial index normalization, and analysis-based exercise considerations while maintaining strict adherence to decision-support guidelines without fabricating medical diagnoses.
+Stroke remains a leading cause of long-term adult disability globally. Objective, quantitative assessment of motor impairment is critical for monitoring rehabilitation progress and tailoring physical therapy interventions. Traditional clinical validation scales rely on manual scoring by trained clinicians, which introduces inter-rater variability. This paper presents a markerless monocular computer vision and machine learning framework for quantitative movement analysis. The system combines MediaPipe 33-landmark pose tracking, movement-specific kinematic feature extraction, and multi-session patient progress monitoring. In parallel, a separate research evaluation module benchmarked on the open-access **StrokeRehab Dataset** (Kaku et al., NeurIPS 2022; 431 released video feature dimensions; 5 functional primitives: *Rest, Reach, Transport, Stabilize, Reposition*) achieved 69.24% validation accuracy (Macro F1 = 0.6593) and 63.92% held-out test accuracy (Macro F1 = 0.6233) using Random Forest classification with majority-vote temporal smoothing (window = 9). The application incorporates automated video quality control filtering and relative spatial index normalization while maintaining strict adherence to decision-support guidelines without fabricating medical diagnoses.
 
 ---
 
@@ -54,15 +54,14 @@ To normalize spatial measurements across uncalibrated cameras, spatial parameter
 
 ## III. Experiments & Validation Results
 
-### A. Subject-Independent StratifiedGroupKFold Validation
-The dataset comprises 355 trials across 71 distinct subjects (51 stroke-impaired, 20 healthy control) grouped strictly by `subject_id`. Evaluation was executed via 5-Fold `StratifiedGroupKFold` cross-validation:
+### A. Subject-Independent Research ML Benchmark
+The research machine learning evaluation module was benchmarked on the open-access **StrokeRehab Dataset** (Kaku et al., NeurIPS 2022; 431 released video feature dimensions; 5 functional primitives: *Rest, Reach, Transport, Stabilize, Reposition*) using a strict **subject-independent split** (33 training, 8 validation, and 8 held-out test subjects):
 
-| Model Classifier | GroupKFold Accuracy | Macro F1 Score | Weighted Precision | Weighted Recall | Weighted F1 Score |
-|---|---|---|---|---|---|
-| **Logistic Regression (L2)** | **99.43%** | **0.9946** | **0.9946** | **0.9943** | **0.9944** |
-| **SVM (RBF Kernel)** | **99.14%** | **0.9918** | **0.9918** | **0.9914** | **0.9916** |
-| **Random Forest (100 Trees)** | **98.57%** | **0.9864** | **0.9860** | **0.9857** | **0.9859** |
-| **XGBoost Classifier** | **96.34%** | **0.9644** | **0.9634** | **0.9634** | **0.9633** |
+| Evaluation Mode | Model Architecture | Accuracy | Macro F1 Score | Protocol Description |
+|---|---|---|---|---|
+| **Validation Set (Fold Evaluation)** | Random Forest + Temporal Smoothing (Window=9) | **69.24%** | **0.6593** | Validation set performance across 8 subject-independent folds |
+| **Final Held-Out Test Set** | Random Forest + Temporal Smoothing (Window=9) | **63.92%** | **0.6233** | Held-out test performance across 8 unseen test subjects |
+| **Raw Test Set (No Smoothing)** | Random Forest Classifier (Raw Sequence) | **59.07%** | **0.5748** | Baseline performance prior to majority-vote temporal smoothing |
 
 ---
 

@@ -17,36 +17,23 @@ In earlier development phases, proprietary or dataset-specific formats (such as 
 
 ---
 
-## 2. Benchmark Feature Mapping
+## 2. Research Datasets & Their Distinct Roles
 
-The system maps 33 body coordinate keypoints into a 12-dimensional biomechanical feature vector:
+RehabShield incorporates three open-access research datasets, each fulfilling a distinct, non-overlapping role:
 
-| Index | Feature Symbol | Description | Units / Scale |
-|---|---|---|---|
-| 1 | `hip_angle_deg` | Sagittal Hip Range of Motion | Degrees (°) |
-| 2 | `peak_knee_flexion_deg` | Peak Swing-Phase Knee Flexion | Degrees (°) |
-| 3 | `shoulder_mobility_deg` | Sagittal Shoulder Excursion | Degrees (°) |
-| 4 | `elbow_flexion_deg` | Elbow Flexion Synergy Angle | Degrees (°) |
-| 5 | `stride_length_index` | Relative Stride Length Index | Unitless Index |
-| 6 | `cadence_steps_min` | Temporal Stepping Cadence | Steps / min |
-| 7 | `walking_speed_index` | Relative Walking Speed Index | Unitless Index |
-| 8 | `step_width_index` | Base of Support Width Index | Unitless Index |
-| 9 | `step_symmetry_ratio` | Bilateral Temporal Step Ratio | Ratio (0.0 - 1.0) |
-| 10 | `arm_swing_deg` | Bilateral Arm Swing Amplitude | Degrees (°) |
-| 11 | `rom_score` | Composite Joint Mobility | Percentage (%) |
-| 12 | `balance_stability_score` | Center-of-Mass Sway Control | Percentage (%) |
+1. **Study36 Dataset** (`data/study36-2026-09-08-07-53.zip`):
+   - **Role**: Dataset-derived healthy-control movement reference characteristics.
+   - **Structure**: 1,426 CSV files across 20 healthy control subjects, 106 joint-angle kinematic time-series columns sampled at 100 Hz.
+   - **Usage**: Provides empirical normative baseline distributions for healthy joint ranges of motion (e.g., shoulder swing, elbow flexion) to benchmark patient movement.
 
----
+2. **Study37 / StrokeRehab Dataset** (`data/study37-2026-09-08-08-09.zip`):
+   - **Role**: Standalone Research ML Benchmark for Temporal Primitive Recognition.
+   - **Structure**: 3,058 trials across 51 stroke-impaired participants; 431 released video feature dimensions; 5 temporal functional primitives (*Rest, Reach, Transport, Stabilize, Reposition*).
+   - **Validation Metrics**: Validation Accuracy = **69.24%** (Macro F1 = 0.6593); Held-out Test Accuracy = **63.92%** (Macro F1 = 0.6233); Raw Test Accuracy = **59.07%** (Macro F1 = 0.5748).
 
-## 3. Subject-Independent StratifiedGroupKFold Validation Protocol
-
-To prevent **intra-subject data leakage** (where frames or trials from the same patient are present in both training and testing splits), models are evaluated using `StratifiedGroupKFold` cross-validation (5 folds) grouped strictly by `subject_id` across 71 unique participants.
-
-### Validation Results across 71 Subjects (355 Trials):
-- **Logistic Regression (L2 Penalty)**: GroupKFold Accuracy = 99.43%, Macro F1 = 0.9946, Weighted F1 = 0.9944
-- **Support Vector Machine (SVM)**: GroupKFold Accuracy = 99.14%, Macro F1 = 0.9918, Weighted F1 = 0.9916
-- **Random Forest (100 Trees)**: GroupKFold Accuracy = 98.57%, Macro F1 = 0.9864, Weighted F1 = 0.9859
-- **XGBoost (Ensemble)**: GroupKFold Accuracy = 96.34%, Macro F1 = 0.9644, Weighted F1 = 0.9633
+3. **Upper-Limb Exercise Video Dataset** (`data/An upper limb stroke rehabilitation exercise video.zip`):
+   - **Role**: Video-Based Upper-Limb Exercise Completion Evaluation.
+   - **Structure**: 491 MP4 videos across 4 exercises (*Lifting an Object, Extending the Elbow, Lifting the Wrist, Opening the Hand*) labeled as *Complete* vs. *Incomplete* (411 Train, 80 Test).
 
 ---
 

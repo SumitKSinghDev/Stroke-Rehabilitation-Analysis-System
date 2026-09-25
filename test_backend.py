@@ -32,7 +32,10 @@ def run_tests():
     print("\n[Test 2] Running CV Landmark & Angles simulation...")
     try:
       from backend.mp_engine import analyze_video
-      result = analyze_video(video_path=None, affected_side="Right", current_status="Improving")
+      from backend.config import UPLOAD_DIR
+      sample_videos = list(UPLOAD_DIR.glob("*.mp4"))
+      test_video = str(sample_videos[0]) if sample_videos else None
+      result = analyze_video(video_path=test_video, movement_type="gait")
       
       assert "angles" in result, "Angles dictionary missing"
       assert "gait" in result, "Gait parameters missing"

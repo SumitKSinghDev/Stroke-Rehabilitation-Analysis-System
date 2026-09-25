@@ -1,0 +1,567 @@
+import React, { useEffect, useState } from 'react';
+import { 
+  CheckCircle2, 
+  XCircle, 
+  AlertTriangle, 
+  Database, 
+  Cpu, 
+  Layers, 
+  FileCheck, 
+  Upload, 
+  BarChart2, 
+  Play, 
+  ShieldCheck, 
+  RefreshCw,
+  Sliders,
+  HelpCircle,
+  Video
+} from 'lucide-react';
+import { 
+  api, 
+  DatasetValidationSummary, 
+  DatasetValidationResults, 
+  DatasetTestCase, 
+  DatasetPredictResponse 
+} from '../api';
+
+export const DatasetValidation: React.FC = () => {
+  const [summary, setSummary] = useState<DatasetValidationSummary | null>(null);
+  const [results, setResults] = useState<DatasetValidationResults | null>(null);
+  const [testCases, setTestCases] = useState<DatasetTestCase[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Demo interactive state
+  const [selectedTestCase, setSelectedTestCase] = useState<string>('');
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [evaluating, setEvaluating] = useState<boolean>(false);
+  const [demoResult, setDemoResult] = useState<DatasetPredictResponse | null>(null);
+  const [demoError, setDemoError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadAll = async () => {
+      try {
+        setLoading(true);
+        const sumRes = await api.datasetValidation.getSummary();
+        setSummary(sumRes);
+
+        const resData = await api.datasetValidation.getResults();
+        if (resData.status === 'success' && resData.results) {
+          setResults(resData.results);
+        }
+
+        const casesData = await api.datasetValidation.getTestCases();
+        setTestCases(casesData.test_cases || []);
+      } catch (err: any) {
+        console.error('Failed to load dataset validation info:', err);
+        setError(err.message || 'Failed to load dataset validation data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadAll();
+  }, []);
+
+  const handleRunDemo = async () => {
+    if (!selectedTestCase && !uploadedFile) {
+      setDemoError('Please select a known dataset test video or upload a video file.');
+      return;
+    }
+
+    try {
+      setEvaluating(true);
+      setDemoError(null);
+      setDemoResult(null);
+
+      const formData = new FormData();
+      if (uploadedFile) {
+        formData.append('file', uploadedFile);
+      }
+      if (selectedTestCase) {
+        formData.append('test_video_name', selectedTestCase);
+      }
+
+      const res = await api.datasetValidation.predict(formData);
+      setDemoResult(res);
+    } catch (err: any) {
+      console.error('Validation prediction failed:', err);
+      setDemoError(err.message || 'Evaluation prediction failed');
+    } finally {
+      setEvaluating(false);
+    }
+  };
+
+  return (
+    <div className="space-y-8 font-sans max-w-6xl mx-auto pb-12">
+      
+      {/* Header Banner */}
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-900 to-slate-900 text-white p-8 rounded-3xl shadow-xl border border-emerald-500/20 space-y-4 relative overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+          <FileCheck className="w-64 h-64 text-emerald-300" />
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 rounded-full text-xs font-bold uppercase tracking-wider">
+            <FileCheck className="w-3.5 h-3.5" />
+            <span>Dataset Video Validation</span>
+          </span>
+          <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-200 rounded-full text-xs font-bold uppercase tracking-wider">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Participant-Independent Test</span>
+          </span>
+        </div>
+
+        <h1 className="text-2xl md:text-3xl font-black leading-tight text-white tracking-tight">
+          Dataset Video Validation
+        </h1>
+        <p className="text-xs md:text-sm text-slate-200 leading-relaxed max-w-4xl">
+          Reproducible evaluation of RehabShield's video-analysis pipeline using labeled rehabilitation videos.
+        </p>
+      </div>
+
+      {/* Prominent Information Box */}
+      <div className="p-5 bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/30 rounded-3xl text-amber-900 dark:text-amber-200 text-xs leading-relaxed flex items-start space-x-3 shadow-sm">
+        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+        <div>
+          <h4 className="font-extrabold mb-0.5 text-sm">Evaluation Mandate & Terminology Notice</h4>
+          <p>
+            Evaluation uses held-out videos from a public rehabilitation exercise dataset. The dataset label is used only as ground truth for evaluation and is not generated by RehabShield. Reported metrics reflect <strong>dataset-label agreement</strong> during research evaluation and do not constitute clinical diagnosis.
+          </p>
+        </div>
+      </div>
+
+      {loading && (
+        <div className="p-12 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800">
+          <div className="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-sm font-semibold text-slate-600 dark:text-slate-400">Loading dataset validation specifications & test results...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="p-6 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 rounded-3xl text-rose-700 dark:text-rose-400 text-sm flex items-center space-x-3">
+          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {!loading && (
+        <div className="space-y-8">
+          
+          {/* SECTION 1 — Dataset Overview */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-5">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <Database className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg font-extrabold text-slate-800 dark:text-white">SECTION 1 — Dataset Overview</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Verified structure of the public upper-limb rehabilitation exercise video dataset</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+              
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                <span className="text-[10px] uppercase font-extrabold text-slate-400">Total Video Corpus</span>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  {summary?.total_videos || 491} Videos
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1">411 Train / 80 Test</p>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                <span className="text-[10px] uppercase font-extrabold text-slate-400">Participant Split</span>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  10 Subjects
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1">Train: 01–06 | Test: 07–10</p>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                <span className="text-[10px] uppercase font-extrabold text-slate-400">Upper Limb Exercises</span>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  4 Exercises
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1">Object, Elbow, Wrist, Hand</p>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                <span className="text-[10px] uppercase font-extrabold text-slate-400">Exercise Completion Labels</span>
+                <div className="text-2xl font-black text-slate-900 dark:text-white mt-1">
+                  Binary Class
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1">Complete vs. Incomplete</p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* SECTION 2 — Evaluation Method */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-2xl bg-teal-500/10 flex items-center justify-center text-teal-600 dark:text-teal-400">
+                <Cpu className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg font-extrabold text-slate-800 dark:text-white">SECTION 2 — Evaluation Method & Architecture</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Pure vision processing through RehabShield's feature extraction engine</p>
+              </div>
+            </div>
+
+            {/* Visual Workflow Diagram */}
+            <div className="grid grid-cols-1 md:grid-cols-7 gap-2 pt-2 items-center text-center">
+              
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-800 space-y-1">
+                <span className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-xs flex items-center justify-center mx-auto">1</span>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-xs">Dataset MP4</h4>
+                <p className="text-[9px] text-slate-500">Public video input</p>
+              </div>
+
+              <div className="text-slate-400 font-bold hidden md:block">→</div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-800 space-y-1">
+                <span className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-xs flex items-center justify-center mx-auto">2</span>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-xs">OpenCV + MediaPipe</h4>
+                <p className="text-[9px] text-slate-500">33 Pose Landmarks</p>
+              </div>
+
+              <div className="text-slate-400 font-bold hidden md:block">→</div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-800 space-y-1">
+                <span className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-xs flex items-center justify-center mx-auto">3</span>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-xs">RehabShield Features</h4>
+                <p className="text-[9px] text-slate-500">12-D Kinematic Vector</p>
+              </div>
+
+              <div className="text-slate-400 font-bold hidden md:block">→</div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-3.5 rounded-2xl border border-slate-200/60 dark:border-slate-800 space-y-1">
+                <span className="w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-xs flex items-center justify-center mx-auto">4</span>
+                <h4 className="font-extrabold text-slate-800 dark:text-white text-xs">Ground-Truth Match</h4>
+                <p className="text-[9px] text-slate-500">Complete / Incomplete</p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* SECTION 3 — Held-Out Test Results */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                <BarChart2 className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg font-extrabold text-slate-800 dark:text-white">SECTION 3 — Held-Out Test Performance</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Actual calculated metrics on 80 unseen test videos across subjects 07, 08, 09, 10</p>
+              </div>
+            </div>
+
+            {!results ? (
+              <div className="p-8 text-center text-xs text-slate-500 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200 dark:border-slate-800">
+                Evaluation not yet completed. Please execute backend/train_upper_limb_completion.py script.
+              </div>
+            ) : (
+              <div className="space-y-6">
+                
+                {/* Metric Cards (4 Cards) */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  
+                  <div className="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-emerald-500/30">
+                    <span className="text-[10px] uppercase font-extrabold text-emerald-600 dark:text-emerald-400">Test Accuracy</span>
+                    <div className="text-3xl font-black text-slate-900 dark:text-white mt-1">
+                      {results.accuracy_percent}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1 font-medium">
+                      {results.correct_predictions} / {results.total_test_videos} Correct Predictions
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                    <span className="text-[10px] uppercase font-extrabold text-slate-400">Macro Precision</span>
+                    <div className="text-3xl font-black text-slate-900 dark:text-white mt-1">
+                      {results.macro_precision.toFixed(4)}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1 font-medium">Class-Balanced Precision</p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                    <span className="text-[10px] uppercase font-extrabold text-slate-400">Macro Recall</span>
+                    <div className="text-3xl font-black text-slate-900 dark:text-white mt-1">
+                      {results.macro_recall.toFixed(4)}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1 font-medium">Class-Balanced Recall</p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                    <span className="text-[10px] uppercase font-extrabold text-slate-400">Macro F1-Score</span>
+                    <div className="text-3xl font-black text-slate-900 dark:text-white mt-1">
+                      {results.macro_f1.toFixed(4)}
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1 font-medium">Balanced Harmonic Mean</p>
+                  </div>
+
+                </div>
+
+                {/* Confusion Matrix Table */}
+                {results.confusion_matrix && (
+                  <div className="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200/60 dark:border-slate-800 space-y-3">
+                    <h4 className="font-extrabold text-slate-800 dark:text-white text-xs">Held-Out Confusion Matrix</h4>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-center text-xs">
+                        <thead>
+                          <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-400 uppercase font-bold">
+                            <th className="py-2 text-left pl-2">Actual \ Predicted</th>
+                            {results.confusion_matrix.labels.map(l => (
+                              <th key={l} className="py-2">{l}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                          {results.confusion_matrix.matrix.map((row, idx) => (
+                            <tr key={idx}>
+                              <td className="py-2.5 font-bold text-slate-800 dark:text-slate-200 text-left pl-2">
+                                {results.confusion_matrix.labels[idx]}
+                              </td>
+                              {row.map((val, cIdx) => (
+                                <td key={cIdx} className={`py-2.5 font-mono font-bold ${idx === cIdx ? 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10' : 'text-slate-500'}`}>
+                                  {val}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            )}
+          </div>
+
+          {/* SECTION 4 — Per-Exercise Results */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-5">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                <Layers className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg font-extrabold text-slate-800 dark:text-white">SECTION 4 — Per-Exercise Accuracy Breakdown</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Independent test performance evaluated across the 4 specific upper-limb exercises</p>
+              </div>
+            </div>
+
+            {results?.per_exercise_metrics ? (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <thead>
+                    <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 font-extrabold uppercase tracking-wider">
+                      <th className="py-3 pl-2">Exercise Name</th>
+                      <th className="py-3">Test Videos</th>
+                      <th className="py-3">Correct Predictions</th>
+                      <th className="py-3">Accuracy</th>
+                      <th className="py-3">Precision</th>
+                      <th className="py-3">Recall</th>
+                      <th className="py-3 pr-2">F1-Score</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {Object.entries(results.per_exercise_metrics).map(([exKey, exData]) => (
+                      <tr key={exKey}>
+                        <td className="py-3.5 pl-2 font-bold text-slate-800 dark:text-white">{exData.exercise_name}</td>
+                        <td className="py-3.5 text-slate-500 font-medium">{exData.test_video_count} Videos</td>
+                        <td className="py-3.5 font-semibold text-slate-700 dark:text-slate-300">{exData.correct_count} / {exData.test_video_count}</td>
+                        <td className="py-3.5 font-bold text-emerald-600 dark:text-emerald-400 font-mono">{exData.accuracy_percent}</td>
+                        <td className="py-3.5 text-slate-500 font-mono">{exData.precision.toFixed(4)}</td>
+                        <td className="py-3.5 text-slate-500 font-mono">{exData.recall.toFixed(4)}</td>
+                        <td className="py-3.5 pr-2 font-bold text-slate-800 dark:text-slate-200 font-mono">{exData.f1_score.toFixed(4)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="text-xs text-slate-500 italic">No per-exercise metrics recorded yet.</p>
+            )}
+          </div>
+
+          {/* SECTION 5 — Video Validation Interactive Demo */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-3xl shadow-sm space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <Video className="w-5 h-5" />
+              </div>
+              <div>
+                <h2 className="text-lg font-extrabold text-slate-800 dark:text-white">SECTION 5 — Video Validation Demo</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Select a known dataset test video or upload a video file to run prediction vs. ground-truth comparison</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
+              
+              {/* Controls Form */}
+              <div className="space-y-4 p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200/60 dark:border-slate-800">
+                
+                <div>
+                  <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Option A: Select Known Dataset Test Video (80 Held-Out Cases)
+                  </label>
+                  <select
+                    value={selectedTestCase}
+                    onChange={(e) => {
+                      setSelectedTestCase(e.target.value);
+                      setUploadedFile(null);
+                    }}
+                    className="w-full text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  >
+                    <option value="">-- Choose a test video from dataset manifest --</option>
+                    {testCases.map((tc) => (
+                      <option key={tc.video_name} value={tc.video_name}>
+                        [{tc.exercise}] {tc.video_name} (Ground Truth: {tc.ground_truth})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="text-center text-slate-400 text-xs font-semibold uppercase tracking-wider">— OR —</div>
+
+                <div>
+                  <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-300 mb-1.5">
+                    Option B: Upload Rehabilitation MP4 Video File
+                  </label>
+                  <input
+                    type="file"
+                    accept="video/mp4,video/avi"
+                    onChange={(e) => {
+                      if (e.target.files && e.target.files[0]) {
+                        setUploadedFile(e.target.files[0]);
+                        setSelectedTestCase('');
+                      }
+                    }}
+                    className="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-500/10 file:text-emerald-600 dark:file:text-emerald-400 hover:file:bg-emerald-500/20"
+                  />
+                </div>
+
+                <button
+                  onClick={handleRunDemo}
+                  disabled={evaluating || (!selectedTestCase && !uploadedFile)}
+                  className="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-xs rounded-xl shadow-md transition-all duration-200 flex items-center justify-center space-x-2"
+                >
+                  {evaluating ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Processing MediaPipe Pose & Model Inference...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Play className="w-4 h-4 fill-current" />
+                      <span>Run Dataset Video Validation</span>
+                    </>
+                  )}
+                </button>
+
+                {demoError && (
+                  <p className="text-xs text-rose-600 dark:text-rose-400 font-semibold">{demoError}</p>
+                )}
+
+              </div>
+
+              {/* Demo Results Display Card */}
+              <div className="p-5 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200/60 dark:border-slate-800 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-extrabold text-slate-800 dark:text-white text-sm mb-3">Validation Outcome & Ground Truth Match</h3>
+                  
+                  {!demoResult ? (
+                    <div className="p-8 text-center text-slate-400 text-xs border border-dashed border-slate-300 dark:border-slate-700 rounded-xl">
+                      Select or upload a video and click "Run Dataset Video Validation" to display evaluation telemetry.
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                          <span className="text-[10px] uppercase font-bold text-slate-400 block">Ground Truth Label</span>
+                          <span className="text-sm font-extrabold text-slate-800 dark:text-white">
+                            {demoResult.ground_truth || 'Unknown (Uploaded Video)'}
+                          </span>
+                        </div>
+
+                        <div className="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                          <span className="text-[10px] uppercase font-bold text-slate-400 block">RehabShield Prediction</span>
+                          <span className="text-sm font-extrabold text-emerald-600 dark:text-emerald-400">
+                            {demoResult.prediction || 'Unable to process'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Match / Mismatch Banner */}
+                      {demoResult.match_status === 'MATCH' && (
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-700 dark:text-emerald-300 flex items-center space-x-3">
+                          <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0" />
+                          <div>
+                            <span className="font-black text-sm block tracking-wide">✓ MATCH</span>
+                            <span className="text-[11px]">RehabShield prediction matches the dataset ground-truth label.</span>
+                          </div>
+                        </div>
+                      )}
+
+                      {demoResult.match_status === 'MISMATCH' && (
+                        <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl text-rose-700 dark:text-rose-300 flex items-center space-x-3">
+                          <XCircle className="w-6 h-6 text-rose-500 flex-shrink-0" />
+                          <div>
+                            <span className="font-black text-sm block tracking-wide">✕ MISMATCH</span>
+                            <span className="text-[11px]">Prediction differs from ground truth label for this specific trial.</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="text-[11px] text-slate-500 space-y-1">
+                        <div><strong>Exercise:</strong> {demoResult.exercise}</div>
+                        <div><strong>Video File:</strong> {demoResult.video_name}</div>
+                        <div><strong>Confidence:</strong> {demoResult.confidence}%</div>
+                      </div>
+
+                    </div>
+                  )}
+                </div>
+
+                <p className="text-[10px] text-slate-400 mt-4 italic">
+                  Note: Match status reflects dataset-label agreement during evaluation, not medical correctness.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* SECTION 6 — Reproducibility & Audit Protocol */}
+          <div className="p-6 bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 rounded-3xl text-xs text-slate-600 dark:text-slate-300 space-y-3">
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              <h3 className="font-extrabold text-slate-900 dark:text-white text-sm">SECTION 6 — Reproducibility & Audit Specifications</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs leading-relaxed">
+              <div>
+                <div><strong>Dataset Partition:</strong> Official Participant-Independent Split</div>
+                <div><strong>Training Subjects:</strong> 01, 02, 03, 04, 05, 06 (411 Videos)</div>
+                <div><strong>Held-Out Test Subjects:</strong> 07, 08, 09, 10 (80 Videos)</div>
+              </div>
+              <div>
+                <div><strong>Feature Extraction:</strong> OpenCV + MediaPipe 33 Pose Landmarks (12-D)</div>
+                <div><strong>Model Architecture:</strong> RandomForestClassifier (n_estimators=100, max_depth=5)</div>
+                <div><strong>Random Seed:</strong> 42 (Fixed)</div>
+              </div>
+            </div>
+            <p className="pt-2 text-[11px] font-bold text-slate-700 dark:text-slate-200 border-t border-slate-200 dark:border-slate-700">
+              All reported metrics are generated from the held-out dataset evaluation and are not manually entered.
+            </p>
+          </div>
+
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+export default DatasetValidation;

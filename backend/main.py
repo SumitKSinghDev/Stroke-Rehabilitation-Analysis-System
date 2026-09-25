@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from backend.config import UPLOAD_DIR, REPORT_DIR
 from backend.db import get_collection
 from backend.auth import get_password_hash
-from backend.routes import auth, patients, assessments, progress, admin, reports
+from backend.routes import auth, patients, assessments, progress, admin, reports, research, dataset_validation
 
 app = FastAPI(
     title="Stroke Rehab AI-Assisted Decision Support System",
@@ -14,11 +14,21 @@ app = FastAPI(
 )
 
 # CORS Policy configuration
+cors_origins_env = os.getenv("CORS_ORIGINS", "")
+allowed_origins = [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
+if not allowed_origins:
+    allowed_origins = [
+        "http://localhost:5173",
+        "http://localhost:8080",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:8080"
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow development clients
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -36,6 +46,10 @@ app.include_router(assessments.router, prefix="/api")
 app.include_router(progress.router, prefix="/api")
 app.include_router(admin.router, prefix="/api")
 app.include_router(reports.router, prefix="/api")
+app.include_router(research.router, prefix="/api")
+app.include_router(dataset_validation.router, prefix="/api")
+
+
 
 # Serve built React frontend in production if dist directory exists
 FRONTEND_DIST = Path(__file__).resolve().parent.parent / "frontend" / "dist"

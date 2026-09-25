@@ -1,0 +1,148 @@
+{
+  "dataset_name": "Upper Limb Stroke Rehabilitation Exercise Video Dataset",
+  "evaluation_stage": "Held-Out Test Evaluation",
+  "selected_model_architecture": "HistGradientBoosting",
+  "feature_count": 14,
+  "features": [
+    "shoulder_rom_active_deg",
+    "elbow_rom_active_deg",
+    "elbow_min_angle_deg",
+    "elbow_max_angle_deg",
+    "elbow_mean_angle_deg",
+    "shoulder_mean_angle_deg",
+    "wrist_vertical_excursion",
+    "wrist_horizontal_excursion",
+    "wrist_max_reach_dist",
+    "peak_elbow_angular_velocity_dps",
+    "mean_elbow_angular_velocity_dps",
+    "peak_shoulder_angular_velocity_dps",
+    "movement_smoothness_index",
+    "bilateral_rom_asymmetry_deg"
+  ],
+  "classes": [
+    "Complete",
+    "Incomplete"
+  ],
+  "sample_split": {
+    "train_videos_count": 411,
+    "test_videos_count": 80,
+    "total_videos": 491
+  },
+  "validation_model_comparison": {
+    "Random Forest": {
+      "validation_accuracy": 0.6667,
+      "validation_macro_precision": 0.6675,
+      "validation_macro_recall": 0.6659,
+      "validation_macro_f1": 0.6655
+    },
+    "Extra Trees": {
+      "validation_accuracy": 0.6813,
+      "validation_macro_precision": 0.689,
+      "validation_macro_recall": 0.6794,
+      "validation_macro_f1": 0.6765
+    },
+    "Logistic Regression": {
+      "validation_accuracy": 0.635,
+      "validation_macro_precision": 0.6351,
+      "validation_macro_recall": 0.6345,
+      "validation_macro_f1": 0.6344
+    },
+    "HistGradientBoosting": {
+      "validation_accuracy": 0.6813,
+      "validation_macro_precision": 0.6818,
+      "validation_macro_recall": 0.6806,
+      "validation_macro_f1": 0.6805
+    },
+    "SVM (RBF)": {
+      "validation_accuracy": 0.6691,
+      "validation_macro_precision": 0.6718,
+      "validation_macro_recall": 0.6678,
+      "validation_macro_f1": 0.6667
+    }
+  },
+  "held_out_test_metrics": {
+    "accuracy": 0.5125,
+    "accuracy_percent": "51.25%",
+    "macro_precision": 0.5126,
+    "macro_recall": 0.5125,
+    "macro_f1": 0.5118,
+    "weighted_f1": 0.5118,
+    "correct_predictions": 41,
+    "incorrect_predictions": 39,
+    "total_test_videos": 80
+  },
+  "class_wise_metrics": {
+    "Complete": {
+      "precision": 0.5116,
+      "recall": 0.55,
+      "f1_score": 0.5301,
+      "support": 40
+    },
+    "Incomplete": {
+      "precision": 0.5135,
+      "recall": 0.475,
+      "f1_score": 0.4935,
+      "support": 40
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "Complete",
+      "Incomplete"
+    ],
+    "matrix": [
+      [
+        22,
+        18
+      ],
+      [
+        21,
+        19
+      ]
+    ]
+  },
+  "per_exercise_metrics": {
+    "Lifting an Object": {
+      "exercise_name": "Lifting an Object",
+      "test_video_count": 20,
+      "correct_count": 15,
+      "accuracy": 0.75,
+      "accuracy_percent": "75.00%",
+      "precision": 0.7747,
+      "recall": 0.75,
+      "f1_score": 0.7442
+    },
+    "Extending the Elbow": {
+      "exercise_name": "Extending the Elbow",
+      "test_video_count": 20,
+      "correct_count": 11,
+      "accuracy": 0.55,
+      "accuracy_percent": "55.00%",
+      "precision": 0.5549,
+      "recall": 0.55,
+      "f1_score": 0.5396
+    },
+    "Lifting the Wrist": {
+      "exercise_name": "Lifting the Wrist",
+      "test_video_count": 20,
+      "correct_count": 10,
+      "accuracy": 0.5,
+      "accuracy_percent": "50.00%",
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1_score": 0.4792
+    },
+    "Opening the Hand": {
+      "exercise_name": "Opening the Hand",
+      "test_video_count": 20,
+      "correct_count": 5,
+      "accuracy": 0.25,
+      "accuracy_percent": "25.00%",
+      "precision": 0.2475,
+      "recall": 0.25,
+      "f1_score": 0.2481
+    }
+  },
+  "timestamp": "2026-09-25T16:19:23.037601",
+  "disclaimer": "The reported metrics reflect dataset-label agreement evaluated on the official held-out test partition. This is a research evaluation and does not constitute a clinical diagnosis."
+}

@@ -1,12 +1,14 @@
 """
-StrokeRehab Subject-Independent Machine Learning Training Pipeline
-===================================================================
+[PROTOTYPE / DEPRECATED] StrokeRehab Application Classifier Training Script
+=============================================================================
 
-Trains machine learning classifiers (Random Forest, SVM, Logistic Regression, XGBoost / Gradient Boosting)
-using the authentic StrokeRehab Dataset manifest (355 trials across 71 subjects: 51 Stroke-Impaired, 20 Healthy Control).
+NOTE: This script trains the application prototype classifier (gait_classifier.joblib) 
+used for single-video movement pattern demonstration. 
 
-Enforces 5-Fold Subject-Independent StratifiedGroupKFold cross-validation grouped strictly by subject_id.
-Saves model.joblib, scaler.joblib, label_encoder.joblib, feature_schema.json, and model_metadata.json.
+IT DOES NOT GENERATE AUTHORITATIVE RESEARCH BENCHMARK METRICS.
+All authoritative research results are evaluated on authentic datasets:
+- StrokeRehab 431-D Released Features (routes/research.py)
+- Upper-Limb Exercise Dataset (routes/dataset_validation.py)
 """
 
 import os

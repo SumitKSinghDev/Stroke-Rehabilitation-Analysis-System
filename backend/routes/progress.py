@@ -132,17 +132,17 @@ def get_patient_progress(patient_id: str, current_user: dict = Depends(get_curre
             }
         }
 
-    # Recovery status assessment
+    # Movement metric trend assessment (Non-diagnostic scientific language)
     if len(sessions) < 2:
-        status_text = "Baseline session logged. Awaiting subsequent assessments."
+        status_text = "Baseline session logged. Awaiting subsequent assessments for trend comparison."
     elif improvement_pct > 15:
-        status_text = "Significant functional recovery demonstrated."
+        status_text = "Positive change observed in measured movement metrics across sessions."
     elif improvement_pct > 3:
-        status_text = "Gradual motor improvement observed."
+        status_text = "Gradual positive trend observed in measured joint excursion parameters."
     elif improvement_pct >= -3:
-        status_text = "Condition stable. Check range of motion fluctuations."
+        status_text = "Measured movement parameters remain stable across sessions."
     else:
-        status_text = "Motor regression detected. Review physical therapy plan."
+        status_text = "Measured movement parameters indicate reduced joint range in recent session."
 
     return {
         "patient_id": patient_id,

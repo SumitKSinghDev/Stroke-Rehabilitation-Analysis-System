@@ -236,7 +236,8 @@ class MLEngine:
                 "model_used": actual_name,
                 "confidence": round(confidence, 1),
                 "feature_importances": self._normalize_importances(feature_imp) if feature_imp is not None else None,
-                "prediction_probabilities": prob_dict
+                "prediction_probabilities": prob_dict,
+                "prototype_disclaimer": "Application movement pattern classification (Prototype / Non-clinical model)"
             }
 
         except Exception as e:

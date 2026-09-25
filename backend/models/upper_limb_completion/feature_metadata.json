@@ -1,0 +1,98 @@
+{
+  "model_name": "Upper Limb Exercise Completion Classifier",
+  "model_type": "HistGradientBoosting",
+  "feature_count": 14,
+  "feature_names": [
+    "shoulder_rom_active_deg",
+    "elbow_rom_active_deg",
+    "elbow_min_angle_deg",
+    "elbow_max_angle_deg",
+    "elbow_mean_angle_deg",
+    "shoulder_mean_angle_deg",
+    "wrist_vertical_excursion",
+    "wrist_horizontal_excursion",
+    "wrist_max_reach_dist",
+    "peak_elbow_angular_velocity_dps",
+    "mean_elbow_angular_velocity_dps",
+    "peak_shoulder_angular_velocity_dps",
+    "movement_smoothness_index",
+    "bilateral_rom_asymmetry_deg"
+  ],
+  "classes": [
+    "Complete",
+    "Incomplete"
+  ],
+  "feature_dictionary": {
+    "shoulder_rom_active_deg": {
+      "name": "Active Shoulder Elevation ROM",
+      "definition": "Range of motion excursion of dominant/active shoulder vertex",
+      "unit": "degrees (\u00b0)"
+    },
+    "elbow_rom_active_deg": {
+      "name": "Active Elbow Extension ROM",
+      "definition": "Range of motion excursion of active elbow joint",
+      "unit": "degrees (\u00b0)"
+    },
+    "elbow_min_angle_deg": {
+      "name": "Minimum Elbow Angle",
+      "definition": "Minimum interior angle at elbow (indicates flexor posturing/spasticity)",
+      "unit": "degrees (\u00b0)"
+    },
+    "elbow_max_angle_deg": {
+      "name": "Maximum Elbow Extension Angle",
+      "definition": "Maximum interior angle at elbow during extension phase",
+      "unit": "degrees (\u00b0)"
+    },
+    "elbow_mean_angle_deg": {
+      "name": "Mean Elbow Angle",
+      "definition": "Temporal average of elbow interior angle",
+      "unit": "degrees (\u00b0)"
+    },
+    "shoulder_mean_angle_deg": {
+      "name": "Mean Shoulder Angle",
+      "definition": "Temporal average of shoulder elevation angle",
+      "unit": "degrees (\u00b0)"
+    },
+    "wrist_vertical_excursion": {
+      "name": "Vertical Wrist Excursion",
+      "definition": "Normalized vertical range of motion of wrist landmark",
+      "unit": "normalized displacement"
+    },
+    "wrist_horizontal_excursion": {
+      "name": "Horizontal Wrist Excursion",
+      "definition": "Normalized horizontal range of motion of wrist landmark",
+      "unit": "normalized displacement"
+    },
+    "wrist_max_reach_dist": {
+      "name": "Maximum Reach Distance",
+      "definition": "Peak normalized Euclidean distance between wrist and shoulder",
+      "unit": "normalized distance"
+    },
+    "peak_elbow_angular_velocity_dps": {
+      "name": "Peak Elbow Angular Velocity",
+      "definition": "Maximum rate of change of elbow angle across execution",
+      "unit": "deg/s"
+    },
+    "mean_elbow_angular_velocity_dps": {
+      "name": "Mean Elbow Angular Velocity",
+      "definition": "Average angular velocity magnitude of elbow joint",
+      "unit": "deg/s"
+    },
+    "peak_shoulder_angular_velocity_dps": {
+      "name": "Peak Shoulder Angular Velocity",
+      "definition": "Maximum rate of change of shoulder angle across execution",
+      "unit": "deg/s"
+    },
+    "movement_smoothness_index": {
+      "name": "Movement Smoothness Index",
+      "definition": "Inverse variance of joint angular acceleration (smoothness proxy)",
+      "unit": "dimensionless index"
+    },
+    "bilateral_rom_asymmetry_deg": {
+      "name": "Bilateral Arm ROM Asymmetry",
+      "definition": "Absolute difference between left and right arm joint excursion ranges",
+      "unit": "degrees (\u00b0)"
+    }
+  },
+  "training_date": "2026-09-25T16:19:23.038694"
+}

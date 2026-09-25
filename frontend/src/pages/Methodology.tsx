@@ -211,13 +211,12 @@ export const Methodology: React.FC = () => {
               Traditional machine learning models often suffer from <strong>intra-subject data leakage</strong> when frames or trials from the same subject appear in both training and test splits, producing artificially inflated validation scores.
             </p>
             <p>
-              In our research methodology, classifiers are trained on the <strong>StrokeRehab Dataset</strong> (71 participants: 51 stroke-impaired, 20 healthy control; 355 total ADL trials) with relative gait reference validation from the <strong>PhysioNet Multi-Gait Dataset</strong>. Models are evaluated using <strong>5-Fold StratifiedGroupKFold Cross-Validation</strong> grouped strictly by <code>subject_id</code> across all 71 unique subjects:
+              In our research methodology, classifiers are evaluated on the <strong>StrokeRehab Dataset</strong> (Kaku et al., NeurIPS 2022; 431 released video feature dimensions; 5 functional primitives: <em>Rest, Reach, Transport, Stabilize, Reposition</em>) using a <strong>subject-independent split</strong> (33 training, 8 validation, and 8 held-out test subjects):
             </p>
             <ul className="space-y-1.5 pl-4 list-disc font-semibold text-slate-700 dark:text-slate-200">
-              <li><strong>Logistic Regression</strong>: GroupKFold Acc = 99.43%, Macro F1 = 0.9946, Weighted F1 = 0.9944</li>
-              <li><strong>Support Vector Machine (SVM)</strong>: GroupKFold Acc = 99.14%, Macro F1 = 0.9918, Weighted F1 = 0.9916</li>
-              <li><strong>Random Forest (100 Trees)</strong>: GroupKFold Acc = 98.57%, Macro F1 = 0.9864, Weighted F1 = 0.9859</li>
-              <li><strong>XGBoost Classifier</strong>: GroupKFold Acc = 96.34%, Macro F1 = 0.9644, Weighted F1 = 0.9633</li>
+              <li><strong>Validation Accuracy (Window = 9)</strong>: 69.24% (Macro F1 = 0.6593 across 8 subject-independent folds)</li>
+              <li><strong>Final Held-out Test Accuracy (Window = 9)</strong>: 63.92% (Macro F1 = 0.6233 across 8 unseen test subjects)</li>
+              <li><strong>Raw Test Accuracy (No Smoothing)</strong>: 59.07% (Macro F1 = 0.5748 without temporal window smoothing)</li>
             </ul>
           </div>
         </div>

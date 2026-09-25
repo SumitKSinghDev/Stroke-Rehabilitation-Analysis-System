@@ -311,9 +311,9 @@ export const PatientProfile: React.FC = () => {
           <div className="flex items-center justify-between">
             <h3 className="font-extrabold text-slate-800 dark:text-white text-base">Diagnostics Session Records</h3>
             {progress?.improvement_pct !== undefined && progress.session_count > 1 && (
-              <div className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-bold rounded-xl flex items-center space-x-2">
+              <div className="px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-bold rounded-xl flex items-center space-x-2">
                 <Sparkles className="w-4 h-4" />
-                <span>Overall Motor Improvement: +{progress.improvement_pct}%</span>
+                <span>Measured Movement Metric Change: {progress.improvement_pct >= 0 ? '+' : ''}{progress.improvement_pct}%</span>
               </div>
             )}
           </div>

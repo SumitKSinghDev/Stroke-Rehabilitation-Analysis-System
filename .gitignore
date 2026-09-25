@@ -51,5 +51,11 @@ backend/uploads/
 reports/*.pdf
 *.log
 
+# Datasets and Large Archives (>100MB GitHub limit)
+data/*.zip
+data/An upper limb stroke rehabilitation exercise video/
+data/upper_limb_exercise_dataset/
+*.mp4
+
 # Sub-projects
 Imfosys SpringBoard/
